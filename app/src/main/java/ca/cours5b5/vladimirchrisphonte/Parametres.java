@@ -12,7 +12,17 @@ public class Parametres extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametres);
 
-        Log.d("MonEtiquette", "Bonjour!");
+        String orientation;
+
+        if (this.getResources().getBoolean(R.bool.est_portrait)) {
+            orientation = "(portrait)";
+        } else {
+            orientation = " (paysage)";
+        }
+
+        Log.d("MonEtiquette",this.getResources().getString(R.string.bonjour) + orientation);
+
+
 
     }
 }
