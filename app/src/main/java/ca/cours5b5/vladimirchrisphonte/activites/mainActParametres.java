@@ -7,7 +7,7 @@ import android.util.Log;
 import ca.cours5b5.vladimirchrisphonte.R;
 
 
-public class AParametres extends AppCompatActivity {
+public class mainActParametres extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

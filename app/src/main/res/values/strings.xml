@@ -3,7 +3,9 @@
 
     <string name ="app_name">Vlad App</string>
 
-
+    <string name="largeur">Largeur</string>
+    <string name="hauteur">Hauteur</string>
+    <string name="gagner">Gagner</string>
 
 
 </resources>
