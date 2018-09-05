@@ -3,12 +3,13 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-import android.util.Log;
+
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
+
 
 import ca.cours5b5.vladimirchrisphonte.R;
+import ca.cours5b5.vladimirchrisphonte.global.GConstants;
 
 public class VParametres extends ConstraintLayout {
 
@@ -39,10 +40,10 @@ public class VParametres extends ConstraintLayout {
 
         spinnerLarger.setAdapter(adapterLarger);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = GConstants.LARGEUR_MIN; i <= GConstants.LARGEUR_MAX; i++) {
             adapterLarger.add(i);
         }
-        spinnerLarger.setSelection(0);
+        spinnerLarger.setSelection(GConstants.LAREUR_DEFAUT);
 
 
         //hauteur
@@ -51,10 +52,10 @@ public class VParametres extends ConstraintLayout {
                 R.layout.support_simple_spinner_dropdown_item);
 
         spinnerHauteur.setAdapter(adapterHauteur);
-        for (int j = 0; j < 5; j++) {
+        for (int j = GConstants.HAUTEUR_MIN; j <= GConstants.HAUTEUR_MAX; j++) {
             adapterHauteur.add(j);
         }
-        spinnerHauteur.setSelection(0);
+        spinnerHauteur.setSelection(GConstants.HAUTEUR_DEFAUT);
 
 
         //Win
@@ -64,10 +65,10 @@ public class VParametres extends ConstraintLayout {
 
         spinnerWin.setAdapter(adapterGagner);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = GConstants.GAGNER_MIN; i <= GConstants.GAGNER_MAX; i++) {
             adapterGagner.add(i);
         }
-        spinnerWin.setSelection(0);
+        spinnerWin.setSelection(GConstants.GAGNER_DEFAUT);
 
     }
 

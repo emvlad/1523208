@@ -17,14 +17,12 @@ public class mainActParametres extends AppCompatActivity {
         String orientation;
 
         if (this.getResources().getBoolean(R.bool.est_portrait)) {
-            orientation = "(portrait)";
+            orientation = " Affichage Portrait";
         } else {
-            orientation = "(paysage)";
+            orientation = " Affichage Paysage)";
         }
 
         Log.d("MonEtiquette",this.getResources().getString(R.string.bonjour) + orientation);
-
-
 
     }
 }

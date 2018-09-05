@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name ="bonjour">Bonjour</string>
-    <string name="txtHauteur">Hauteur</string>
-    <string name="txtLargeur">Largeur</string>
-    <string name="txtGagner">Gagner</string>
+    <string name="hauteur">Hauteur</string>
+    <string name="largeur">Largeur</string>
+    <string name="gagner">Gagner</string>
 </resources>

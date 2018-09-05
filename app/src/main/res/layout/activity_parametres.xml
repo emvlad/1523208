@@ -8,6 +8,7 @@
     tools:layout_editor_absoluteY="81dp">
 
 
+
     <TextView
         android:id="@+id/txtViewLargeur"
         android:layout_width="wrap_content"
@@ -81,4 +82,7 @@
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="294dp" />
 
+
+
 </ca.cours5b5.vladimirchrisphonte.vues.VParametres>
+
