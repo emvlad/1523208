@@ -1,13 +1,13 @@
 package ca.cours5b5.vladimirchrisphonte.activites;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 
 import ca.cours5b5.vladimirchrisphonte.R;
 
 
-public class mainActParametres extends AppCompatActivity {
+public class AParametres extends Activite {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
