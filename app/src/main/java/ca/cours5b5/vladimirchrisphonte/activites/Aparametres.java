@@ -9,6 +9,12 @@ import ca.cours5b5.vladimirchrisphonte.R;
 
 public class Aparametres extends Activite {
 
+
+    static {
+        Log.d("Atelier04", Activite.class.getSimpleName()+"::static");
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +29,9 @@ public class Aparametres extends Activite {
         }
 
         Log.d("MonEtiquette",this.getResources().getString(R.string.bonjour) + orientation);
+
+
+
 
     }
 }
