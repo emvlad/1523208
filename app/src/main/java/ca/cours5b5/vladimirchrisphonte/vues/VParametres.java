@@ -4,6 +4,7 @@ import android.content.Context;
 
 import android.util.AttributeSet;
 
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -30,7 +31,7 @@ public class VParametres extends Vue {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-       // Log.d("Atelier03", this.getClass().getSimpleName() + "::onFinishInflate");
+        Log.d("Atelier04", this.getClass().getSimpleName()+"::onFinishInflate");
 
         Spinner spinnerLarger = this.findViewById(R.id.spinLargeur);
         ArrayAdapter<Integer> adapterLarger = new ArrayAdapter<>(this.getContext(),

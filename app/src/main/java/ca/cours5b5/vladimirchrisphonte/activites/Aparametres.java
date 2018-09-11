@@ -11,7 +11,7 @@ public class Aparametres extends Activite {
 
 
     static {
-        Log.d("Atelier04", Activite.class.getSimpleName()+"::static");
+        Log.d("Atelier04", Aparametres.class.getSimpleName()+"::static");
 
     }
 
