@@ -7,7 +7,7 @@ import android.util.Log;
 import ca.cours5b5.vladimirchrisphonte.R;
 
 
-public class AParametres extends Activite {
+public class Aparametres extends Activite {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
