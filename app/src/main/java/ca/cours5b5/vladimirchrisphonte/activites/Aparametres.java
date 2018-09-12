@@ -30,8 +30,20 @@ public class Aparametres extends Activite {
 
         Log.d("MonEtiquette",this.getResources().getString(R.string.bonjour) + orientation);
 
+    }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
 
     }
+
+    private void restaurerParametres(Bundle savedInstanceState){
+
+    }
+
+    private void sauvegarderParametres(Bundle outState){
+
+    }
+
+
 }
