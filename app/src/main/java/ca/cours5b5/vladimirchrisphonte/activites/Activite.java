@@ -20,74 +20,74 @@ public abstract class Activite extends AppCompatActivity {
         Log.d("Atelier04", Activite.class.getSimpleName()+"::static");
 
     }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menuprincipal); //activity_parametres?
 
-        Log.d("Atelier04", this.getClass().getSimpleName()+"::onCreate");
-        if(savedInstanceState !=null){
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::onCreate");
 
+
+        if (savedInstanceState != null) {
             //récupérer les données
-            String json = savedInstanceState.getString("strKey");
+            String json = savedInstanceState.getString("maCle");
             Map<String, Object> objetJson = Jsonification.enObjetJson(json);
-
             monModele.aPartirObjetJson(objetJson);
         }
-
-
     }
 
-
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-
-
-        Log.d("Atelier04", this.getClass().getSimpleName()+"::onResume");
-    }
-
-
-    //Utiliser onPause pour sauvegarder les données
-    @Override
-    protected void onPause(){
-        super.onPause();
-
-        Log.d("Atelier04", this.getClass().getSimpleName()+"::onPause");
-
-    }
+    //TODO
     //sauvegarde temporaire
     @Override
-    protected void onSaveInstanceState(Bundle outState){
+    protected void onSaveInstanceState (Bundle outState){
         super.onSaveInstanceState(outState);
-
-        //code to save here
-        //ex: stoquer un entier
-        //  outState.putInt("Mirror",10);
-
-        Log.d("Atelier04", this.getClass().getSimpleName()+"::onSaveInstanceState");
-
 
         Map<String, Object> objetJson = monModele.enObjetJson();
         String json = Jsonification.enChaine(objetJson);
 
-        outState.putString("strKey",json);
+        outState.putString("maCle", json);
 
+
+
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::onSaveInstanceState");
+
+        //code to save here
+
+
+       // objetJson.put(__hauteur, hauteur.toString);
+
+        //récupérer
+       // hauteur = Integer.valueOf((String)entry.getValue);
 
     }
 
     @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.d("Atelier04", this.getClass().getSimpleName()+"::onDestroy");
+    protected void onResume () {
 
-        //juste avant de détruire
+        super.onResume();
+
+
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::onResume");
     }
 
+    //Utiliser onPause pour sauvegarder les données
+    @Override
+    protected void onPause () {
+        super.onPause();
 
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::onPause");
 
+    }
 
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::onDestroy");
+
+        //juste avant de détruire sauvegarder
+    }
 
 
 

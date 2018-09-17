@@ -12,14 +12,14 @@ public class Mparametres extends Modele {
 
     //FIXME: c'est temporaire; gestionnaire de modèles à venir at#7
 
-    //fields
-    public static Mparametres instance;
+    //instances
+    public static Mparametres instance = new Mparametres();
 
     @AttributSerialisable  //indique quel attribut(instance) du modèle sera sauvegardé.
     public Integer hauteur;
     private final String __hauteur = "hauteur";
 
-    @AttributSerialisable
+   @AttributSerialisable
     public Integer largeur;
     private final String __largeur = "largeur";
 
@@ -28,20 +28,20 @@ public class Mparametres extends Modele {
     public Integer pourGagner;
 
 
-
+    //TODO
     //méthodes
     public List<Integer> getChoixHauteur() {
-
-
 
         return null;
     }
 
     public List<Integer> getChoixLargeur() {
+
         return null;
     }
 
     public List<Integer> getChoixPourGagner() {
+
         return null;
     }
 
@@ -49,11 +49,17 @@ public class Mparametres extends Modele {
     @Override
     public void aPartirObjetJson(Map<String, Object> objetJson) {
 
+
+
     }
 
     @Override
     public Map<String, Object> enObjetJson() {
-        return null;
+
+
+
+
+        return enObjetJson();
     }
 }
 
