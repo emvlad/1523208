@@ -5,31 +5,17 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Map;
 
+import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
+
 public class Jsonification {
 
-
-    //TODO
-
-    //fields
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-
-
-    //à partir d'un objet Json - obtenir une chaine
-    public static String enChaine(Map<String, Object> objetJson) {
-
-        String chaineJson = gson.toJson(objetJson);
-
-        return chaineJson;
+    public static Map<String, Object> aPartirChaineJson(String json) throws ErreurSerialisation {
+        return gson.fromJson(json, Map.class);
     }
 
-
-    //à partir d'une chaine obtenir un objet Json
-    public static Map<String, Object> enObjetJson(String json) {
-
-        Map<String, Object> objetJson = gson.fromJson(json,Map.class);
-
-        return objetJson;
+    public static String enChaineJson(Map<String, Object> objetJson) throws ErreurSerialisation {
+        return gson.toJson(objetJson);
     }
-
 }

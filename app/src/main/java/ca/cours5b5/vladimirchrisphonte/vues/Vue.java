@@ -5,16 +5,7 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import ca.cours5b5.vladimirchrisphonte.activites.Aparametres;
-
 public abstract class Vue extends ConstraintLayout {
-
-    static {
-        Log.d("Atelier04", Vue.class.getSimpleName()+"::static");
-
-    }
-
-
     public Vue(Context context) {
         super(context);
     }
@@ -31,6 +22,6 @@ public abstract class Vue extends ConstraintLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        Log.d("Atelier04", this.getClass().getSimpleName()+"::onFinishInflate");
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onFinishInflate");
     }
 }

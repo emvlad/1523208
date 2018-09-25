@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name ="bonjour">Bonjour</string>
-    <string name="hauteur">Hauteur</string>
+
+    <string name ="app_name">Vlad App</string>
+
     <string name="largeur">Largeur</string>
+    <string name="hauteur">Hauteur</string>
     <string name="gagner">Gagner</string>
-    <string name="parameters">Paramètres</string>
+
+
 </resources>

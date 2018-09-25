@@ -1,11 +1,16 @@
 package ca.cours5b5.vladimirchrisphonte.vues;
 
-
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
+
 
 public class VMenuPrincipal extends Vue {
 
+    static{
+        Log.d("Atelier04", VMenuPrincipal.class.getSimpleName() + "::static");
+    }
 
     public VMenuPrincipal(Context context) {
         super(context);

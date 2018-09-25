@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name" translatable="false">VladimirChrisphonte</string>
 
-    <string name="app_name">Vlad App</string>
+    <string name="bonjour">Bonjour!</string>
 
-    <string name="largeur">Largeur</string>
-    <string name="hauteur">Hauteur</string>
-    <string name="gagner">Gagner</string>
-    <string name="parameters">Paramètres</string>
+    <string name="paysage">paysage</string>
 
+    <string name="portrait" translatable="false">portrait</string>
+
+    <string name="hauteur">Hauteur: </string>
+    <string name="largeur">Largeur: </string>
+    <string name="pour_gagner">Pour gagner: </string>
+
+    <string name="parametres">Parametres</string>
 
 </resources>
