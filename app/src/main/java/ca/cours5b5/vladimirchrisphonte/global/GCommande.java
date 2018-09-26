@@ -1,4 +1,6 @@
 package ca.cours5b5.vladimirchrisphonte.global;
 
-public class GCommande {
+public enum GCommande {
+
+    JOUER_COUP_ICI,
 }
