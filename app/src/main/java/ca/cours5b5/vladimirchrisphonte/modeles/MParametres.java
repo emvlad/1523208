@@ -14,30 +14,17 @@ import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
 public class MParametres extends Modele {
 
     // FIXME: c'est temporaire ; on va écrire un gestionnaire de modèles à l'Atelier07
-    public static MParametres instance;
+    public static MParametres instance = new MParametres();
 
-    static{
-        Log.d("Atelier04", MParametres.class.getSimpleName() + "::static");
-
-        instance = new MParametres();
+  
+	static{
+        Log.d("Atelier04", MParametres.class.getSimpleName() + "::static");        
     }
-
-
-
-    @AttributSerialisable
+	
+	//serialisations - instances
+	@AttributSerialisable
     public MParametresPartie parametres ;
-    private final String __parametres = "parametres";
-
-
-  /*  public MPartie(MParametresPartie parametres) {
-
-    }
-*/
-
-    public MParametresPartie getParametres() { return parametres;   }
-
-
-
+	
     @AttributSerialisable
     public Integer hauteur;
     private final String __hauteur = "hauteur";
@@ -50,11 +37,13 @@ public class MParametres extends Modele {
     public Integer pourGagner;
 
     private final String __pourGagner = "pourGagner";
-
-    private List<Integer> choixHauteur;
+	
+    private final String __parametres = "parametres";
+	private List<Integer> choixHauteur;
     private List<Integer> choixLargeur;
     private List<Integer> choixPourGagner;
-
+	
+	//Le constructeur
     public MParametres(){
         super();
 
@@ -65,7 +54,9 @@ public class MParametres extends Modele {
         genererListesDeChoix();
     }
 
-    public List<Integer> getChoixHauteur(){
+
+   //accesseurs
+	 public List<Integer> getChoixHauteur(){
         return choixHauteur;
     }
 
@@ -76,7 +67,7 @@ public class MParametres extends Modele {
     public List<Integer> getChoixPourGagner(){
         return choixPourGagner;
     }
-
+	
     public Integer getHauteur() {
         return hauteur;
     }
@@ -89,6 +80,7 @@ public class MParametres extends Modele {
         return pourGagner;
     }
 
+	//mutateurs
     public void setHauteur(int hauteur) {
         this.hauteur = hauteur;
     }
@@ -101,6 +93,13 @@ public class MParametres extends Modele {
         this.pourGagner = pourGagner;
     }
 
+	//méthodes
+	public MParametresPartie getParametresPartie() {
+        return null;
+    }
+   
+   public MParametresPartie getParametres() { return parametres;   }
+	
     private void genererListesDeChoix(){
         genererListeChoixHauteur();
         genererListeChoixLargeur();

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name ="bonjour">Hello</string>
-    <string name="txtHauteur">Height</string>
-    <string name="txtLargeur">Width</string>
-    <string name="txtGagner">Win</string>
-
-</resources>
