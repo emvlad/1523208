@@ -27,7 +27,7 @@ public class ControleurObservation {
     public static void observerModele(String nomModele, final ListenerObservateur listenerObservateur){
 
 		/*Enregistrer le listener dans le Map observations
-		*Appelr le listener une première fois
+		*Appeler le listener une première fois
 		 - MParametres.instance ou Controleur.partie
 
 		Bonus: pourquoi le modèle est identifié par son nom?
@@ -41,6 +41,14 @@ public class ControleurObservation {
             }
         });
 
+    }
+
+    public  static void lancerObservation(Modele modele){
+        /*
+        *Vérifier si le listener existe pour ce modele
+        * Appeler le listener
+
+         */
     }
 
 }
