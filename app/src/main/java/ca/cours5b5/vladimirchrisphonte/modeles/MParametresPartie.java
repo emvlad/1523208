@@ -22,10 +22,38 @@ public class MParametresPartie extends Modele {
     public Integer pourGagner;
     protected final String __pourGagner = "pourGagner";
 
+    //constructeur
+    public MParametresPartie() {
+
+    }
+
 
     public static MParametresPartie aPartirMParametres(MParametres mParametres) {
 
+/*  Retourne une instance de MParametresPartie aec
+    exactement les mêmes hauteur/largeur/pourGagner
+ */
+        return null;
+    }
+    public MParametresPartie cloner(){
+        /*
+        * Retournne une instance de MParametresPartie avec exactement les mêmes
+        * hauteur/largeur/pourGagner
+        * que l'objet courant
+         */
 
+        return null;
+
+    }
+
+
+    @Override
+    public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {
+
+    }
+
+    @Override
+    public Map<String, Object> enObjetJson() throws ErreurSerialisation {
         return null;
     }
 
@@ -56,14 +84,6 @@ public class MParametresPartie extends Modele {
     }
 
 
-    @Override
-    public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {
 
-    }
-
-    @Override
-    public Map<String, Object> enObjetJson() throws ErreurSerialisation {
-        return null;
-    }
 }
 

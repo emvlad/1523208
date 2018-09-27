@@ -1,13 +1,18 @@
 package ca.cours5b5.vladimirchrisphonte.controleurs.interfaces;
 
+import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
-public interface ListenerObservateur {
+public abstract class ListenerObservateur {
 
-    //l'écouteur de l'observateur a deux méthodes:
+    public void reagirNouveauModele(Modele modele){
+        //implantation par défaut est d'appeler reagirChangementAuModele
 
-//méthod_1
+
+        reagirChangementAuModele(modele);
+    }
+
+        public abstract  void reagirChangementAuModele(Modele modele);
 
 
-    //méthod_2
 
 }

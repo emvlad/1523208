@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.GridLayout;
 
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
-import ca.cours5b5.vladimirchrisphonte.modeles.MGrille;
 
 public class VGrille extends GridLayout {
 
@@ -38,9 +37,6 @@ public class VGrille extends GridLayout {
 
     }
 
-    void  afficherJetons(MGrille grille){
-
-    }
 
     private void afficherJeton(int colonne, int rangee, GCouleur jeton){
 
