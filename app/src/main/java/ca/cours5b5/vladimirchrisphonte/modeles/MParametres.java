@@ -57,8 +57,7 @@ public class MParametres extends Modele {
 
         genererListesDeChoix();
     }
-	
-	  public MParametres();
+
 
     public List<Integer> getChoixHauteur(){
         return choixHauteur;
