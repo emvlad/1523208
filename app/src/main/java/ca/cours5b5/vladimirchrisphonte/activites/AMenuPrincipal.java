@@ -35,20 +35,20 @@ public class AMenuPrincipal extends Activite {
 
 
         Button bouton2 = this.findViewById(R.id.button2);
-        bouton.setOnClickListener(new View.OnClickListener() {
+        bouton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                transitionJouer();
+                transitionAPartie();
             }
         });
 
 
-        Log.d("Atelier06", AMenuPrincipal.class.getSimpleName() + "::APartie");
+       // Log.d("Atelier06", AMenuPrincipal.class.getSimpleName() + "::APartie");
 
     }
 
-    private void transitionJouer(){
-        Intent intentionJouer = new Intent(this, APartir.class);
+    private void transitionAPartie(){
+        Intent intentionJouer = new Intent(this, APartie.class);
         startActivity(intentionJouer);
     }
 

@@ -20,13 +20,22 @@ public class VCase  extends AppCompatButton {
     public VCase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+	
+	public VCase (Context context, int rangee, int colonne){
+		
+		/*
+		*afficher la rangée et la colonne
+		*changer la couleur de fond si désiré
+		*/
+	}
+	
 
-    public void afficherJeton(GCouleur jeton){
+  //  public void afficherJeton(GCouleur jeton){
 
         /*
         * Changer la couleur de fond selon le jeton à afficher
          */
 
-    }
+   // }
 
 }

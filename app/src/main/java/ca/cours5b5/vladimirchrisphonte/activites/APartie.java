@@ -2,18 +2,16 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 
 
 import android.os.Bundle;
-import android.util.Log;
 
 import ca.cours5b5.vladimirchrisphonte.R;
-import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 
-public class APartir extends Activite {
+public class APartie extends Activite {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_partie);
+       setContentView(R.layout.activity_apartie);
 
         if(savedInstanceState != null){
             restaurerPartie(savedInstanceState);
@@ -27,8 +25,8 @@ public class APartir extends Activite {
 
     private void restaurerPartie(Bundle savedInstanceState){
 
-        Log.d("Atelier06", APartir.class.getSimpleName() + "::restaurerPartie, clé: "
-                +MPartie.class.getSimpleName());
+       // Log.d("Atelier06", APartie.class.getSimpleName() + "::restaurerPartie, clé: "
+       //         +MPartie.class.getSimpleName());
         
     }
 
@@ -41,8 +39,10 @@ public class APartir extends Activite {
     }
 
     private void sauvegarderPartie(Bundle outState) {
-        Log.d("Atelier06", APartir.class.getSimpleName() + "::sauvegarderPartie, clé: "
-                +MPartie.class.getSimpleName());
+      //  Log.d("Atelier06", APartie.class.getSimpleName() + "::sauvegarderPartie, clé: "
+        //        +MPartie.class.getSimpleName());
+
+
     }
 
 }

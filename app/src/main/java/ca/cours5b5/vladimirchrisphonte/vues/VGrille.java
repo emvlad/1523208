@@ -4,9 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridLayout;
 
-import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VGrille extends GridLayout {
+	
+	private int nombreRangees;
+	private List<Colonne> colonnesDeCases;
+	private List<VEntete> entetes;
 
     public VGrille(Context context) {
         super(context);
@@ -22,17 +27,58 @@ public class VGrille extends GridLayout {
 
     public VGrille(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+		
+		
     }
+	
+	private class Colonne extends ArrayList<VCase> {
+		
+	}
 
-    private void demanderActionEntete(){
+
+	@Override
+	protected void onFinishInflate() {
+
+		super.onFinishInflate();
+	}
+	private void creerGrille(int hauteur, int largeur){
+		
+	}
+	
+	private void initialiserColonnes(int largeur){
+		
+	}
+	
+	private void ajouterEntetes(int largeur){
+		
+	}
+	private LayoutParams getMiseEnPageEntete(int colonne){
+
+
+		return null;
+	}
+	private void ajouterCases(int hauteur, int largeur){
+		
+	}
+	
+	private LayoutParams getMiseEnPageCase(int rangee, int colonne){
+
+
+		return null;
+	}
+	
+	
+	
+
+   // private void demanderActionEntete(){
 
         /*
         * On demande l'action JOUER_COUP_ICI
         *
         * L'action est à exécuter quand l'usager clique sur un en-tête
          */
-    }
-
+   // }
+/*
     private void installerListenerEntete(VEntete entete, final int colonne){
 
     }
@@ -42,7 +88,7 @@ public class VGrille extends GridLayout {
 
     }
 
-
+*/
 
 
 }

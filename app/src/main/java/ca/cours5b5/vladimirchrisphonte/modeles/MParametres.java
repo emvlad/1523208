@@ -25,18 +25,16 @@ public class MParametres extends Modele {
 
 
     @AttributSerialisable
-    public MParametresPartie parametres ;
-    private final String __parametres = "parametres";
+    public MParametresPartie parametresPartie ;
+    private String __parametresPartie = "parametresPartie";
 
 
-  /*  public MPartie(MParametresPartie parametres) {
+    private final String __pourGagner = "pourGagner";
 
-    }
-*/
-
-    public MParametresPartie getParametres() { return parametres;   }
-
-
+    private List<Integer> choixHauteur;
+    private List<Integer> choixLargeur;
+    private List<Integer> choixPourGagner;
+	
 
     @AttributSerialisable
     public Integer hauteur;
@@ -49,11 +47,6 @@ public class MParametres extends Modele {
     @AttributSerialisable
     public Integer pourGagner;
 
-    private final String __pourGagner = "pourGagner";
-
-    private List<Integer> choixHauteur;
-    private List<Integer> choixLargeur;
-    private List<Integer> choixPourGagner;
 
     public MParametres(){
         super();
@@ -64,6 +57,8 @@ public class MParametres extends Modele {
 
         genererListesDeChoix();
     }
+	
+	  public MParametres();
 
     public List<Integer> getChoixHauteur(){
         return choixHauteur;
@@ -100,6 +95,11 @@ public class MParametres extends Modele {
     public void setPourGagner(int pourGagner) {
         this.pourGagner = pourGagner;
     }
+	
+	
+	public MParametresPartie getParametresPartie(){
+		return null;
+	}
 
     private void genererListesDeChoix(){
         genererListeChoixHauteur();

@@ -33,10 +33,10 @@ public class VPartie extends Vue{
         super.onFinishInflate();
     }
 
-    private void initialiser() {
+ /*   private void initialiser() {
 
     }
-
+*/
 
     //méthodes
     private void observerPartie(){
@@ -45,9 +45,11 @@ public class VPartie extends Vue{
         * Une fois le modèle obtenu, créer la grille d'affichage
          */
 
+
+
     }
 
-    private MPartie getPartie(Modele nodle) {
+    private MPartie getPartie(Modele modele) {
         return null;
     }
 

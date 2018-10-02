@@ -30,8 +30,8 @@ public class MParametresPartie extends Modele {
 
     public static MParametresPartie aPartirMParametres(MParametres mParametres) {
 
-/*  Retourne une instance de MParametresPartie aec
-    exactement les mêmes hauteur/largeur/pourGagner
+/*  Retourne une instance de MParametresPartie avec
+    exactement les mêmes paramètres que mParametres
  */
         return null;
     }
