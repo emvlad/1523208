@@ -3,7 +3,10 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import ca.cours5b5.vladimirchrisphonte.R;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 
 public class APartie extends Activite {
 
@@ -27,6 +30,8 @@ public class APartie extends Activite {
 
        // Log.d("Atelier06", APartie.class.getSimpleName() + "::restaurerPartie, clé: "
        //         +MPartie.class.getSimpleName());
+
+
         
     }
 
@@ -41,6 +46,9 @@ public class APartie extends Activite {
     private void sauvegarderPartie(Bundle outState) {
       //  Log.d("Atelier06", APartie.class.getSimpleName() + "::sauvegarderPartie, clé: "
         //        +MPartie.class.getSimpleName());
+
+
+
 
 
     }

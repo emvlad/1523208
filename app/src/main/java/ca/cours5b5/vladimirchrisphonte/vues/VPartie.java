@@ -3,15 +3,23 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
+import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
+import static ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation.observerModele;
+
+
 public class VPartie extends Vue{
 
-    public VGrille grille;
+    private MPartie grille  ;
+    private MPartie partie;
+
+    private ListenerObservateur listenerObservateur;
 
 
     //constructeurs
@@ -31,12 +39,14 @@ public class VPartie extends Vue{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+
+       initialiserGrille(grille);
+
+        observerPartie();
+
+
     }
 
- /*   private void initialiser() {
-
-    }
-*/
 
     //méthodes
     private void observerPartie(){
@@ -44,7 +54,9 @@ public class VPartie extends Vue{
         *Appeler observer pour obtenir le modèle
         * Une fois le modèle obtenu, créer la grille d'affichage
          */
+        observerModele(MPartie.class.getSimpleName(), listenerObservateur);
 
+        initialiserGrille(partie);
 
 
 
@@ -52,10 +64,16 @@ public class VPartie extends Vue{
 
     private MPartie getPartie(Modele modele) {
 
-        return null;
+       modele = this.partie;
+
+        return (MPartie) modele;
     }
 
     private  void initialiserGrille(MPartie partie){
+        ArrayAdapter<Integer> adapterGrille = new ArrayAdapter<>(getContext(), R.layout.activity_apartie);
+
+        //.....uncompleted
+
 
     }
 

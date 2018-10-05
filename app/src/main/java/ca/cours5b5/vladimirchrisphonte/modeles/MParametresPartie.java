@@ -6,6 +6,8 @@ import java.util.Map;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
 
+import static ca.cours5b5.vladimirchrisphonte.modeles.MParametres.instance;
+
 public class MParametresPartie extends Modele {
 
 
@@ -23,17 +25,25 @@ public class MParametresPartie extends Modele {
     protected final String __pourGagner = "pourGagner";
 
     //constructeur
-    public MParametresPartie() {
-
+    public MParametresPartie(Integer hauteur, Integer largeur, Integer pourGagner) {
+        this.hauteur = hauteur;
+        this.largeur = largeur;
+        this.pourGagner = pourGagner;
     }
 
 
-    public static MParametresPartie aPartirMParametres(MParametres mParametres) {
 
-/*  Retourne une instance de MParametresPartie avec
-    exactement les mêmes paramètres que mParametres
- */
-        return null;
+
+    public MParametresPartie aPartirMParametres(MParametres mParametres) {
+
+    /*  Retourne une instance de MParametresPartie avec
+        exactement les mêmes paramètres que mParametres
+     */
+        MParametresPartie instance ;
+
+        instance = cloner();
+
+        return instance;
     }
     public MParametresPartie cloner(){
         /*
@@ -42,7 +52,11 @@ public class MParametresPartie extends Modele {
         * que l'objet courant
          */
 
-        return null;
+        MParametresPartie instance = new MParametresPartie(
+                hauteur = this.getHauteur(), largeur = this.getLargeur(),
+                pourGagner =this.getPourGagner());
+
+        return instance;
 
     }
 
@@ -50,11 +64,14 @@ public class MParametresPartie extends Modele {
     @Override
     public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {
 
+
     }
 
     @Override
     public Map<String, Object> enObjetJson() throws ErreurSerialisation {
-        return null;
+
+        return this.enObjetJson();
+
     }
 
     public Integer getHauteur() {
