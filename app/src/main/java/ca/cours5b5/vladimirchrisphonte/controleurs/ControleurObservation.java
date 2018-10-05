@@ -30,6 +30,11 @@ public class ControleurObservation {
 		*Appeler le listener une première fois
 		 - MParametres.instance ou Controleur.partie
 
+
+
+
+
+
 		Bonus: pourquoi le modèle est identifié par son nom?
 		et(pas son objet comme dans le Map)
 

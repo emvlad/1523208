@@ -13,5 +13,10 @@
     <string name="parametres">Parameters</string>
 
     <string name="jouer">PLAY</string>
+    <string name="joueur1">PLAYER 1</string>
+    <string name="joueur2">PLAYER 2</string>
+
+
+
 
 </resources>

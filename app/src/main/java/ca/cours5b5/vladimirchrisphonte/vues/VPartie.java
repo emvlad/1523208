@@ -47,9 +47,11 @@ public class VPartie extends Vue{
 
 
 
+
     }
 
     private MPartie getPartie(Modele modele) {
+
         return null;
     }
 
