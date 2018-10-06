@@ -1,5 +1,6 @@
 package ca.cours5b5.vladimirchrisphonte.modeles;
 
+import android.graphics.ColorSpace;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
@@ -20,6 +22,7 @@ public class MParametres extends Modele {
         Log.d("Atelier04", MParametres.class.getSimpleName() + "::static");
 
         instance = new MParametres();
+
     }
 
 
@@ -97,7 +100,8 @@ public class MParametres extends Modele {
 	
 	
 	public MParametresPartie getParametresPartie(){
-		return null;
+
+		return this.parametresPartie;
 	}
 
     private void genererListesDeChoix(){

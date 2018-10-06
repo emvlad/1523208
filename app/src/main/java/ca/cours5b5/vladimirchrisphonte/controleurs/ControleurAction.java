@@ -25,7 +25,7 @@ public class ControleurAction {
          */
     }
 
-    public static Action demaderAction(GCommande commande) {
+    public static Action demanderAction(GCommande commande) {
 
         /*
          *Retourner l'action au demandeur
@@ -37,7 +37,7 @@ public class ControleurAction {
 
         /*
          *Enregistrer le fournisseur
-         * Appeler la méthode qui exécute chaque actin de la file d'attente(bonus:pourquoi)
+         * Appeler la méthode qui exécute chaque action de la file d'attente(bonus:pourquoi)
          *
          */
     }
@@ -55,11 +55,11 @@ public class ControleurAction {
     public static void executerActionsExecutables() {
 
         /*
-         *Itérer ls file d'attente
+         *Itérer la file d'attente
          * Si l'action est exécutable:
          *
          *  Avant d'exécuter l'action:
-         *  -l'emlever de la file d'attente
+         *  -l'enlever de la file d'attente
          *
          *  Appeler la méthode pour exécuter l'action maintenant
          *
@@ -75,11 +75,11 @@ public class ControleurAction {
         /*
          *Une action est exécutable si:
          *
-         * if (listenerFournisseur != null)
 
-         * excutable = true;
+        if (listenerFournisseur != null)
 
-         */
+          excutable = true;
+     */
 
         return executable;
     }
@@ -90,6 +90,13 @@ public class ControleurAction {
          * bonus: à qui sert synchronized = controler la séquence des actions.
 
          */
+
+        new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+
+            }
+        };
     }
 
     public static void lancerObservationSiApplicable(Action action) {
@@ -98,6 +105,8 @@ public class ControleurAction {
          * du fournisseur (seulement si le fournisseur est un modèle)
 
          */
+       // if(si le fournisseur est un modèle)
+        new ControleurObservation();
     }
 
     public static void enregistrerFournisseur(Fournisseur fournisseur, GCommande commande, ListenerFournisseur listenerFournisseur) {
@@ -114,6 +123,8 @@ public class ControleurAction {
         *
         * bonus: pourquoi un clone = crééer une image identique en attendant son exécution
          */
+
+
 
     }
 

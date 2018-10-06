@@ -3,6 +3,7 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.view.Display;
 
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
@@ -28,15 +29,21 @@ public class VCase  extends AppCompatButton {
 		*afficher la rangée et la colonne
 		*changer la couleur de fond si désiré
 		*/
-	}
+
+
+
+
+
+
+    }
 	
 
-  //  public void afficherJeton(GCouleur jeton){
+  public void afficherJeton(GCouleur jeton){
 
         /*
         * Changer la couleur de fond selon le jeton à afficher
          */
 
-   // }
+ }
 
 }

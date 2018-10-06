@@ -8,7 +8,8 @@ public class VEntete extends AppCompatButton {
 	
 	
 	private int colonne;
-	
+
+	//constructeurs
 	public VEntete(Context context){
 		 super(context);
 	}
@@ -24,6 +25,16 @@ public class VEntete extends AppCompatButton {
 		super(context);
 
 		// afficher le numéro de la colonne!
+
+
+
+		for(int i = 0; i < colonne; i++){
+
+
+
+		}
+
+
 	}
 	
 	

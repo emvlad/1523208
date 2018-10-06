@@ -5,6 +5,12 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
+
+
 public abstract class Vue extends ConstraintLayout {
     public Vue(Context context) {
         super(context);
@@ -22,6 +28,30 @@ public abstract class Vue extends ConstraintLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onFinishInflate");
+         ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
+            @Override
+            public void reagirChangementAuModele(Modele modele) {
+
+                afficherParametres((MParametres) modele);
+            }
+
+        });
+
+/*
+        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
+            @Override
+            public void reagirNouveauModele(Modele modele) {
+
+                afficherParametres((MParametres) modele);
+            }
+
+        });
+
+
+*/
+    }
+
+    private void afficherParametres(MParametres modele) {
+
     }
 }

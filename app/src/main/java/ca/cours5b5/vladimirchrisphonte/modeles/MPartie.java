@@ -16,11 +16,14 @@ public class MPartie extends Modele{
 	
 	
 	public MPartie(MParametresPartie parametres){
-		
+
+
 	}
 	
 	public MParametresPartie getParametres(){
-		return null;
+
+
+		return this.parametres;
 	}
 	
 	@Override

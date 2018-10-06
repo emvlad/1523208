@@ -9,12 +9,6 @@ import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 public class MColonne extends Modele{
 
     private List<GCouleur> jetons;
-/*
-    width;
-    height;
-    absoluteX;
-    absoluteY;
-    */
 
 
     //constructeur

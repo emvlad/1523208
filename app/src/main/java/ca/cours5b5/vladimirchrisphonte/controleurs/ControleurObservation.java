@@ -26,34 +26,45 @@ public class ControleurObservation {
     //reçoit 2 paramètres
     public static void observerModele(String nomModele, final ListenerObservateur listenerObservateur){
 
-		/*Enregistrer le listener dans le Map observations
-		*Appeler le listener une première fois
-		 - MParametres.instance ou Controleur.partie
+		//1- Enregistrer le listener dans le Map observations
+
+
+
+
+		//2- Appeler le listener une première fois - MParametres.instance ou Controleur.partie
+
+
+
+
+
+        //3- Bonus: pourquoi le modèle est identifié par son nom?
+		//et(pas son objet comme dans le Map)
 
 
 
 
 
 
-		Bonus: pourquoi le modèle est identifié par son nom?
-		et(pas son objet comme dans le Map)
-
-		*/
-        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur(){
-        //    @Override
-            public void reagirChangementAuModele(Modele modele){
-              //  afficherParametres((MParametres) modele);
-            }
-        });
 
     }
 
-    public  static void lancerObservation(Modele modele){
-        /*
-        *Vérifier si le listener existe pour ce modele
-        * Appeler le listener
 
-         */
+    public  static void lancerObservation(Modele modele){
+       //1- Vérifier si le listener existe pour ce modele
+
+        if(true ){
+
+
+            //2- Appeler le listener
+
+        }
+
+
+
+
+
+
+
     }
 
 }

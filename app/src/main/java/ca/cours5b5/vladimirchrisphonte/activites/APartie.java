@@ -47,7 +47,7 @@ public class APartie extends Activite {
       //  Log.d("Atelier06", APartie.class.getSimpleName() + "::sauvegarderPartie, clé: "
         //        +MPartie.class.getSimpleName());
 
-
+    super.onPause();
 
 
 

@@ -32,8 +32,6 @@ public class MParametresPartie extends Modele {
     }
 
 
-
-
     public MParametresPartie aPartirMParametres(MParametres mParametres) {
 
     /*  Retourne une instance de MParametresPartie avec
@@ -53,7 +51,8 @@ public class MParametresPartie extends Modele {
          */
 
         MParametresPartie instance = new MParametresPartie(
-                hauteur = this.getHauteur(), largeur = this.getLargeur(),
+                hauteur = this.getHauteur(),
+                largeur = this.getLargeur(),
                 pourGagner =this.getPourGagner());
 
         return instance;

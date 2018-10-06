@@ -9,7 +9,7 @@
 
 
     <ca.cours5b5.vladimirchrisphonte.vues.VGrille
-        android:id="@+id/VGrille"
+        android:id="@+id/vgrill"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="0dp"
