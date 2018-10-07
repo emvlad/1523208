@@ -1,5 +1,6 @@
 package ca.cours5b5.vladimirchrisphonte.modeles;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
@@ -17,11 +18,12 @@ public class MPartie extends Modele{
 	
 	public MPartie(MParametresPartie parametres){
 
+		this.parametres = parametres;
+
 
 	}
 	
 	public MParametresPartie getParametres(){
-
 
 		return this.parametres;
 	}
@@ -31,11 +33,21 @@ public class MPartie extends Modele{
 		
 		/*
 		*not used for now
+		*
+		*   for(Map.Entry<String, Object> entry : objetJson.entrySet()){
+
+            String chaineValeur = (String) entry.getValue();
 		*/
 	}
 
 	@Override
 	public Map<String, Object> enObjetJson() throws ErreurSerialisation {
-		return null;
+
+		Map<String, Object> objetJson = new HashMap<>();
+
+		//objetJson.put(__hauteur, hauteur.toString());
+
+
+		return objetJson;
 	}
 }

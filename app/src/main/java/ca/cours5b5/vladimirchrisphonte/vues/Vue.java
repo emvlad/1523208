@@ -55,7 +55,7 @@ public abstract class Vue extends ConstraintLayout {
             }
 
         });
-     
+
 
     }
 
