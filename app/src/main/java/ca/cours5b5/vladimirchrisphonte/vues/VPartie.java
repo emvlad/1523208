@@ -2,11 +2,7 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
-
 import android.widget.ArrayAdapter;
-import android.widget.GridLayout;
-
 
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;

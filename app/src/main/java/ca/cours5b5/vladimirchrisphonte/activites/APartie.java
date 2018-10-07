@@ -41,7 +41,7 @@ public class APartie extends Activite {
         Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
 
         Integer hauteur = null,largeur = null,pourGagner = null;
-        
+
         MParametresPartie.instance = new MParametresPartie(hauteur,largeur,pourGagner);
 
         MParametresPartie.instance.aPartirObjetJson(objetJson);
@@ -60,7 +60,7 @@ public class APartie extends Activite {
       //  Log.d("Atelier06", APartie.class.getSimpleName() + "::sauvegarderPartie, clé: "
         //        +MPartie.class.getSimpleName());
 
-        String cle = MParametres.class.getSimpleName();
+        String cle = MParametresPartie.class.getSimpleName();
         Map<String, Object> objetJson = MParametres.instance.enObjetJson();
 
         String json = Jsonification.enChaineJson(objetJson);
