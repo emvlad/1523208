@@ -33,8 +33,6 @@ public class VCase  extends AppCompatButton {
 
 
 
-
-
     }
 	
 

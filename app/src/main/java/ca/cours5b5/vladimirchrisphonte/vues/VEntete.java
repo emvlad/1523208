@@ -3,6 +3,8 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.view.Display;
+import android.widget.Toast;
 
 public class VEntete extends AppCompatButton {
 	
@@ -26,13 +28,8 @@ public class VEntete extends AppCompatButton {
 
 		// afficher le numéro de la colonne!
 
-
-
-		for(int i = 0; i < colonne; i++){
-
-
-
-		}
+		for(int i = 0; i < colonne; i++)
+		    Toast.makeText(getContext(), i, Toast.LENGTH_SHORT).show();
 
 
 	}
