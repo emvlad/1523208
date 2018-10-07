@@ -8,6 +8,8 @@ import android.util.Log;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
 
@@ -37,21 +39,31 @@ public abstract class Vue extends ConstraintLayout {
 
         });
 
-/*
-        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
+
+        ControleurObservation.observerModele(MParametresPartie.class.getSimpleName(), new ListenerObservateur() {
             @Override
             public void reagirNouveauModele(Modele modele) {
 
-                afficherParametres((MParametres) modele);
+                afficherParametres((MParametresPartie) modele);
+            }
+
+            @Override
+            public void reagirChangementAuModele(Modele modele) {
+
+                afficherParametres((MParametresPartie) modele);
+
             }
 
         });
+     
 
-
-*/
     }
 
     private void afficherParametres(MParametres modele) {
+
+    }
+
+    private void afficherParametres(MParametresPartie modele) {
 
     }
 }
