@@ -11,6 +11,7 @@ import static ca.cours5b5.vladimirchrisphonte.modeles.MParametres.instance;
 public class MParametresPartie extends Modele {
 
 
+    public static MParametresPartie instance;
     @AttributSerialisable
     public Integer hauteur;
     protected final String __hauteur = "hauteur";
@@ -23,6 +24,8 @@ public class MParametresPartie extends Modele {
     @AttributSerialisable
     public Integer pourGagner;
     protected final String __pourGagner = "pourGagner";
+
+ 
 
     //constructeur
     public MParametresPartie(Integer hauteur, Integer largeur, Integer pourGagner) {

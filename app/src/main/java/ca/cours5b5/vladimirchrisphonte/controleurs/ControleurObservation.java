@@ -52,6 +52,7 @@ public class ControleurObservation {
     public  static void lancerObservation(Modele modele){
        //1- Vérifier si le listener existe pour ce modele
 
+
         if(true ){
 
 

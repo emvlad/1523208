@@ -8,6 +8,7 @@ import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
 
@@ -39,9 +40,11 @@ public class APartie extends Activite {
 
         Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
 
-        MParametres.instance = new MParametres();
+        Integer hauteur = null,largeur = null,pourGagner = null;
+        
+        MParametresPartie.instance = new MParametresPartie(hauteur,largeur,pourGagner);
 
-        MParametres.instance.aPartirObjetJson(objetJson);
+        MParametresPartie.instance.aPartirObjetJson(objetJson);
         
     }
 

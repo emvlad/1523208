@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 
+
 import android.widget.GridLayout;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 public class VGrille extends GridLayout {
 	
 	private int nombreRangees;
-	private List<Colonne> colonnesDeCases;
+	private List<Colonne> colonnesDeCases  ;
 	private List<VEntete> entetes;
 
 
@@ -41,6 +42,26 @@ public class VGrille extends GridLayout {
 		
 		
     }
+
+
+	
+	private class Colonne extends ArrayList<VCase> {
+
+
+    }
+
+
+	@Override
+	protected void onFinishInflate() {
+
+		super.onFinishInflate();
+
+
+
+	}
+
+	private void creerGrille(int hauteur, int largeur){
+
   /*
 	Spec specRangee = GridLayout.Spec(rangee,poidsRangee);
 	Spec specColonne = GridLayout.Spec(colonne,poidsColonne);
@@ -56,26 +77,7 @@ public class VGrille extends GridLayout {
     GridLayout grille;
     grille.addView(monControle, mesParents);
 
- */
-	
-	private class Colonne extends ArrayList<VCase> {
-
-
-	}
-
-
-	@Override
-	protected void onFinishInflate() {
-
-		super.onFinishInflate();
-
-
-
-	}
-
-	private void creerGrille(int hauteur, int largeur){
-
-
+*/
 		
 	}
 	
@@ -117,6 +119,8 @@ public class VGrille extends GridLayout {
    }
 
     private void installerListenerEntete(VEntete entete, final int colonne){
+
+
 
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.Display;
+import android.widget.Toast;
 
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
@@ -30,7 +31,17 @@ public class VCase  extends AppCompatButton {
 		*changer la couleur de fond si désiré
 		*/
 
+        for (int i=0; i<rangee; i++){
 
+            Toast.makeText(getContext(), i, Toast.LENGTH_SHORT).show();
+
+            for(int j = 0; j<colonne;i++){
+
+                Toast.makeText(getContext(),j, Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
 
 
     }
@@ -41,6 +52,7 @@ public class VCase  extends AppCompatButton {
         /*
         * Changer la couleur de fond selon le jeton à afficher
          */
+
 
  }
 

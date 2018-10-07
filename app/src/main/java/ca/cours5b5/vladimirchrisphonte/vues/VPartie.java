@@ -3,7 +3,10 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.util.AttributeSet;
 
+
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
+
 
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
@@ -16,6 +19,7 @@ import static ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation.
 public class VPartie extends Vue{
 
     private MPartie grille ;
+
     private MPartie partie;
     private ListenerObservateur listenerObservateur;
 
@@ -31,7 +35,6 @@ public class VPartie extends Vue{
 
     public VPartie(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr); }
-
 
 
     @Override
@@ -68,9 +71,11 @@ public class VPartie extends Vue{
     }
 
     private  void initialiserGrille(MPartie partie){
-        ArrayAdapter<Integer> adapterGrille = new ArrayAdapter<>(getContext(), R.layout.activity_apartie);
+        ArrayAdapter<Integer> grillAdapter = new ArrayAdapter<>(getContext(), R.layout.activity_apartie);
 
         //.....uncompleted
+
+        //grille.setAdapter(grillAdapter);
 
 
     }
