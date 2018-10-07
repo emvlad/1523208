@@ -3,10 +3,13 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 
 import android.os.Bundle;
 
+
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.R;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
+
 
 public class APartie extends Activite {
 
@@ -31,7 +34,14 @@ public class APartie extends Activite {
        // Log.d("Atelier06", APartie.class.getSimpleName() + "::restaurerPartie, clé: "
        //         +MPartie.class.getSimpleName());
 
+        String cle = MParametres.class.getSimpleName();
+        String json = savedInstanceState.getString(cle);
 
+        Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
+
+        MParametres.instance = new MParametres();
+
+        MParametres.instance.aPartirObjetJson(objetJson);
         
     }
 
@@ -47,8 +57,11 @@ public class APartie extends Activite {
       //  Log.d("Atelier06", APartie.class.getSimpleName() + "::sauvegarderPartie, clé: "
         //        +MPartie.class.getSimpleName());
 
-    super.onPause();
+        String cle = MParametres.class.getSimpleName();
+        Map<String, Object> objetJson = MParametres.instance.enObjetJson();
 
+        String json = Jsonification.enChaineJson(objetJson);
+        outState.putString(cle, json);
 
 
     }
