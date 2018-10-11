@@ -8,6 +8,14 @@ import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
 public class VCase  extends AppCompatButton {
 
+
+    /*
+    width;
+    height;
+    absoluteX;
+    absoluteY;
+    */
+
     //constructeurs
     public VCase(Context context) {
         super(context);

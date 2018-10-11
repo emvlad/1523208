@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VGrille extends GridLayout {
+
+	/*
+    width;
+    height;
+    absoluteX;
+    absoluteY;
+    */
 	
 	private int nombreRangees;
 	private List<Colonne> colonnesDeCases;
