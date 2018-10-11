@@ -8,9 +8,6 @@ import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
 public class VCase  extends AppCompatButton {
 
-
-
-
     //constructeurs
     public VCase(Context context) {
         super(context);

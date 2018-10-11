@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ca.cours5b5.vladimirchrisphonte.vues.VGrille
+        android:id="@+id/vgrille"
         android:layout_width="368dp"
         android:layout_height="495dp"
         tools:layout_editor_absoluteX="8dp"

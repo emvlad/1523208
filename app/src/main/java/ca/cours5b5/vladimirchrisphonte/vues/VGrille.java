@@ -9,12 +9,7 @@ import java.util.List;
 
 public class VGrille extends GridLayout {
 
-	/*
-    width;
-    height;
-    absoluteX;
-    absoluteY;
-    */
+
 	
 	private int nombreRangees;
 	private List<Colonne> colonnesDeCases;
@@ -38,7 +33,7 @@ public class VGrille extends GridLayout {
 		
     }
 	
-	private class Colonne extends ArrayList<VCase> {
+	public class Colonne extends ArrayList<VCase> {
 		
 	}
 
@@ -47,29 +42,31 @@ public class VGrille extends GridLayout {
 	protected void onFinishInflate() {
 
 		super.onFinishInflate();
+
+
 	}
-	private void creerGrille(int hauteur, int largeur){
+	public void creerGrille(int hauteur, int largeur){
 
 		
 	}
 	
-	private void initialiserColonnes(int largeur){
+	public void initialiserColonnes(int largeur){
 		
 	}
 	
-	private void ajouterEntetes(int largeur){
+	public void ajouterEntetes(int largeur){
 		
 	}
-	private LayoutParams getMiseEnPageEntete(int colonne){
+	public LayoutParams getMiseEnPageEntete(int colonne){
 
 
 		return null;
 	}
-	private void ajouterCases(int hauteur, int largeur){
+	public void ajouterCases(int hauteur, int largeur){
 		
 	}
 	
-	private LayoutParams getMiseEnPageCase(int rangee, int colonne){
+	public LayoutParams getMiseEnPageCase(int rangee, int colonne){
 
 
 		return null;

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
@@ -34,12 +35,19 @@ public class ControleurObservation {
 		et(pas son objet comme dans le Map)
 
 		*/
-        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur(){
-        //    @Override
-            public void reagirChangementAuModele(Modele modele){
-              //  afficherParametres((MParametres) modele);
+		if(nomModele.equals("MParametres")){
+		   observations.put(MParametres.instance, listenerObservateur){
+		       lancerObservation(MParametres.instance);
+
+		       if(nomModele.equals("MPartie")){
+		           partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
+
+		           observations.put(ControleurObservation.partie,listenerObservateur);
+		           lancerObservation(ControleurObservation.partie);
+               }
             }
-        });
+
+        }
 
     }
 
@@ -49,6 +57,8 @@ public class ControleurObservation {
         * Appeler le listener
 
          */
+
+
     }
 
 }
