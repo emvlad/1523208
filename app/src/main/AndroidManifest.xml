@@ -10,13 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activites.AParametres">
 
+<<<<<<< HEAD
         </activity>
 
         <activity android:name=".activites.APartie">
 
         </activity>
+=======
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2
 
         <activity android:name=".activites.AMenuPrincipal">
             <intent-filter>
@@ -26,6 +28,16 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".activites.AParametres">
+
+        </activity>
+
+        <activity android:name=".activites.APartie"
+            android:screenOrientation="landscape">
+
+        </activity>
+
+
     </application>
 
 </manifest>

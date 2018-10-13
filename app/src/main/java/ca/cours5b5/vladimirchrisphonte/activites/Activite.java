@@ -1,59 +1,91 @@
 package ca.cours5b5.vladimirchrisphonte.activites;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-
+import java.util.Map;
 import ca.cours5b5.vladimirchrisphonte.R;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
-public class AMenuPrincipal extends Activite {
 
+public abstract class Activite extends AppCompatActivity {
+
+    MParametres mParametres = new MParametres();
     static{
-        Log.d("Atelier04", AMenuPrincipal.class.getSimpleName() + "::static");
+        Log.d("Atelier04", Activite.class.getSimpleName() + "::static");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_principal);
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onCreate");
+
+        affichageAtelier02();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        setContentView(R.layout.activity_parametres);
+        //Log.d("Atelier06",this.getClass().getSimpleName()+"::onCreate");
+
+        if(savedInstanceState != null){
+            String json = savedInstanceState.getString("MaCle");
+            Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
+            mParametres.aPartirObjetJson(objetJson);
+        }
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onPause");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onResume");
+    }
 
-        // FIXME: c'est temporaire, ça va dans une action (MVC)
-        Button bouton = this.findViewById(R.id.button);
-        bouton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                transitionParametres();
-            }
-        });
-
-
-        Button bouton2 = this.findViewById(R.id.button2);
-        bouton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                transitionAPartie();
-            }
-        });
-
-
-        // Log.d("Atelier06", AMenuPrincipal.class.getSimpleName() + "::APartie");
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onDestroy");
 
     }
 
-    private void transitionAPartie(){
-        Intent intentionJouer = new Intent(this, APartie.class);
-        startActivity(intentionJouer);
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onSaveInstanceState");
     }
 
-    private void transitionParametres(){
-        Intent intentionParametres = new Intent(this, AParametres.class);
-        startActivity(intentionParametres);
-    }
 
-}
+    private void affichageAtelier02(){
+
+        String message = this.getResources().getString(R.string.bonjour);
+
+        Log.d("Atelier01", message);
+
+        String ajoutOrientation = " (";
+
+        if(getResources().getBoolean(R.bool.si_portrait)){
+
+            ajoutOrientation += this.getResources().getString(R.string.portrait);
+
+        }else{
+
+            ajoutOrientation += this.getResources().getString(R.string.paysage);
+
+        }
+
+        message += ajoutOrientation + ")";
+
+        Log.d("Atelier02", message);
+    }
+}}

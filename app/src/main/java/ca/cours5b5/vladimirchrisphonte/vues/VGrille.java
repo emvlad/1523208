@@ -9,7 +9,11 @@ import java.util.List;
 public class VGrille extends GridLayout {
 
 
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2
 	private int nombreRangees;
 	private List<Colonne> colonnesDeCases;
 	private List<VEntete> entetes;
@@ -30,10 +34,21 @@ public class VGrille extends GridLayout {
 		super(context, attrs, defStyleAttr, defStyleRes);
 
 
+<<<<<<< HEAD
 	}
 
 	public class Colonne extends ArrayList<VCase> {
 
+=======
+    public VGrille(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+		
+		
+    }
+	
+	public class Colonne extends ArrayList<VCase> {
+		
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2
 	}
 
 
@@ -46,6 +61,7 @@ public class VGrille extends GridLayout {
 	}
 	public void creerGrille(int hauteur, int largeur){
 
+<<<<<<< HEAD
 
 	}
 
@@ -55,6 +71,17 @@ public class VGrille extends GridLayout {
 
 	public void ajouterEntetes(int largeur){
 
+=======
+		
+	}
+	
+	public void initialiserColonnes(int largeur){
+		
+	}
+	
+	public void ajouterEntetes(int largeur){
+		
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2
 	}
 	public LayoutParams getMiseEnPageEntete(int colonne){
 
@@ -62,9 +89,15 @@ public class VGrille extends GridLayout {
 		return null;
 	}
 	public void ajouterCases(int hauteur, int largeur){
+<<<<<<< HEAD
 
 	}
 
+=======
+		
+	}
+	
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2
 	public LayoutParams getMiseEnPageCase(int rangee, int colonne){
 
 

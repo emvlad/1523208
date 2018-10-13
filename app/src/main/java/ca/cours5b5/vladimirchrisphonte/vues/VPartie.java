@@ -92,3 +92,9 @@ public class VPartie extends Vue {
     }
 
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2

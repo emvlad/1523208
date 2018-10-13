@@ -1,4 +1,7 @@
-package ca.cours5b5.vladimirchrisphonte.controleurs;import java.util.Map;
+package ca.cours5b5.vladimirchrisphonte.controleurs;
+
+
+import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
@@ -32,15 +35,14 @@ public class ControleurObservation {
 		et(pas son objet comme dans le Map)
 		*/
         if(nomModele.equals("MParametres")){
-            observations.put(MParametres.instance, listenerObservateur){
-                lancerObservation(MParametres.instance);
+            observations.put(MParametres.instance, listenerObservateur);
+            lancerObservation(MParametres.instance);
 
-                if(nomModele.equals("MPartie")){
-                    partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
+            if(nomModele.equals("MPartie")){
+                partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
 
-                    observations.put(ControleurObservation.partie,listenerObservateur);
-                    lancerObservation(ControleurObservation.partie);
-                }
+                observations.put(ControleurObservation.partie,listenerObservateur);
+                lancerObservation(ControleurObservation.partie);
             }
 
         }

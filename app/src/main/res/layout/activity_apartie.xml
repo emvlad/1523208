@@ -10,6 +10,7 @@
 
     <ca.cours5b5.vladimirchrisphonte.vues.VGrille
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:id="@+id/vgrill"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -26,6 +27,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteY="46dp">
 =======
+=======
+>>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2
         android:id="@+id/vgrille"
         android:layout_width="368dp"
         android:layout_height="495dp"
