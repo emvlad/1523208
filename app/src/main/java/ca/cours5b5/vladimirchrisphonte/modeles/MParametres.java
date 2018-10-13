@@ -1,6 +1,5 @@
 package ca.cours5b5.vladimirchrisphonte.modeles;
 
-import android.graphics.ColorSpace;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -8,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
@@ -22,7 +20,6 @@ public class MParametres extends Modele {
         Log.d("Atelier04", MParametres.class.getSimpleName() + "::static");
 
         instance = new MParametres();
-
     }
 
 
@@ -37,7 +34,7 @@ public class MParametres extends Modele {
     private List<Integer> choixHauteur;
     private List<Integer> choixLargeur;
     private List<Integer> choixPourGagner;
-	
+
 
     @AttributSerialisable
     public Integer hauteur;
@@ -97,12 +94,11 @@ public class MParametres extends Modele {
     public void setPourGagner(int pourGagner) {
         this.pourGagner = pourGagner;
     }
-	
-	
-	public MParametresPartie getParametresPartie(){
 
-		return this.parametresPartie;
-	}
+
+    public MParametresPartie getParametresPartie(){
+        return null;
+    }
 
     private void genererListesDeChoix(){
         genererListeChoixHauteur();

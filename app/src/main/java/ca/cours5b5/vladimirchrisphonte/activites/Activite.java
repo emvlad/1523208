@@ -1,72 +1,59 @@
 package ca.cours5b5.vladimirchrisphonte.activites;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import ca.cours5b5.vladimirchrisphonte.R;
 
-
-public abstract class Activite extends AppCompatActivity {
+public class AMenuPrincipal extends Activite {
 
     static{
-        Log.d("Atelier04", Activite.class.getSimpleName() + "::static");
+        Log.d("Atelier04", AMenuPrincipal.class.getSimpleName() + "::static");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onCreate");
-
-        affichageAtelier02();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onPause");
+        setContentView(R.layout.activity_menu_principal);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onResume");
+
+        // FIXME: c'est temporaire, ça va dans une action (MVC)
+        Button bouton = this.findViewById(R.id.button);
+        bouton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transitionParametres();
+            }
+        });
+
+
+        Button bouton2 = this.findViewById(R.id.button2);
+        bouton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transitionAPartie();
+            }
+        });
+
+
+        // Log.d("Atelier06", AMenuPrincipal.class.getSimpleName() + "::APartie");
+
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onDestroy");
-
+    private void transitionAPartie(){
+        Intent intentionJouer = new Intent(this, APartie.class);
+        startActivity(intentionJouer);
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onSaveInstanceState");
+    private void transitionParametres(){
+        Intent intentionParametres = new Intent(this, AParametres.class);
+        startActivity(intentionParametres);
     }
 
-
-    private void affichageAtelier02(){
-
-        String message = this.getResources().getString(R.string.bonjour);
-
-        Log.d("Atelier01", message);
-
-        String ajoutOrientation = " (";
-
-        if(getResources().getBoolean(R.bool.si_portrait)){
-
-            ajoutOrientation += this.getResources().getString(R.string.portrait);
-
-        }else{
-
-            ajoutOrientation += this.getResources().getString(R.string.paysage);
-
-        }
-
-        message += ajoutOrientation + ")";
-
-        Log.d("Atelier02", message);
-    }
 }

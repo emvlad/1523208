@@ -1,16 +1,10 @@
 package ca.cours5b5.vladimirchrisphonte.vues;
 
+
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-
-import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
-import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
-
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
-import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
-
+import android.util.Log;
 
 public abstract class Vue extends ConstraintLayout {
     public Vue(Context context) {
@@ -29,40 +23,6 @@ public abstract class Vue extends ConstraintLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-         ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
-            @Override
-            public void reagirChangementAuModele(Modele modele) {
-
-                afficherParametres((MParametres) modele);
-            }
-
-        });
-
-
-        ControleurObservation.observerModele(MParametresPartie.class.getSimpleName(), new ListenerObservateur() {
-            @Override
-            public void reagirNouveauModele(Modele modele) {
-
-                afficherParametres((MParametresPartie) modele);
-            }
-
-            @Override
-            public void reagirChangementAuModele(Modele modele) {
-
-                afficherParametres((MParametresPartie) modele);
-
-            }
-
-        });
-
-
-    }
-
-    private void afficherParametres(MParametres modele) {
-
-    }
-
-    private void afficherParametres(MParametresPartie modele) {
-
+        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onFinishInflate");
     }
 }

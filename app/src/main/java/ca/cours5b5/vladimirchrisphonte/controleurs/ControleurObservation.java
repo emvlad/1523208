@@ -1,5 +1,4 @@
 package ca.cours5b5.vladimirchrisphonte.controleurs;
-
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
@@ -27,53 +26,32 @@ public class ControleurObservation {
     //reçoit 2 paramètres
     public static void observerModele(String nomModele, final ListenerObservateur listenerObservateur){
 
-		//1- Enregistrer le listener dans le Map observations
-
-
-
-
-		//2- Appeler le listener une première fois - MParametres.instance ou Controleur.partie
-
-
-
-
-
-        //3- Bonus: pourquoi le modèle est identifié par son nom?
-		//et(pas son objet comme dans le Map)
-
-
-
-
+		/*Enregistrer le listener dans le Map observations
+		*Appeler le listener une première fois
+		 - MParametres.instance ou Controleur.partie
+		Bonus: pourquoi le modèle est identifié par son nom?
+		et(pas son objet comme dans le Map)
 		*/
-		if(nomModele.equals("MParametres")){
-		   observations.put(MParametres.instance, listenerObservateur){
-		       lancerObservation(MParametres.instance);
+        if(nomModele.equals("MParametres")){
+            observations.put(MParametres.instance, listenerObservateur){
+                lancerObservation(MParametres.instance);
 
-		       if(nomModele.equals("MPartie")){
-		           partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
+                if(nomModele.equals("MPartie")){
+                    partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
 
-		           observations.put(ControleurObservation.partie,listenerObservateur);
-		           lancerObservation(ControleurObservation.partie);
-               }
+                    observations.put(ControleurObservation.partie,listenerObservateur);
+                    lancerObservation(ControleurObservation.partie);
+                }
             }
 
         }
 
-
     }
 
-
     public  static void lancerObservation(Modele modele){
-       //1- Vérifier si le listener existe pour ce modele
-
-
-        if(true ){
-
-
-            //2- Appeler le listener
-
-        }
-
+        /*
+         *Vérifier si le listener existe pour ce modele
+         * Appeler le listener
          */
 
 

@@ -1,5 +1,6 @@
 package ca.cours5b5.vladimirchrisphonte.controleurs;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class ControleurAction {
          */
     }
 
-    public static Action demanderAction(GCommande commande) {
+    public static Action demaderAction(GCommande commande) {
 
         /*
          *Retourner l'action au demandeur
@@ -37,7 +38,7 @@ public class ControleurAction {
 
         /*
          *Enregistrer le fournisseur
-         * Appeler la méthode qui exécute chaque action de la file d'attente(bonus:pourquoi)
+         * Appeler la méthode qui exécute chaque actin de la file d'attente(bonus:pourquoi)
          *
          */
     }
@@ -55,11 +56,11 @@ public class ControleurAction {
     public static void executerActionsExecutables() {
 
         /*
-         *Itérer la file d'attente
+         *Itérer ls file d'attente
          * Si l'action est exécutable:
          *
          *  Avant d'exécuter l'action:
-         *  -l'enlever de la file d'attente
+         *  -l'emlever de la file d'attente
          *
          *  Appeler la méthode pour exécuter l'action maintenant
          *
@@ -75,11 +76,9 @@ public class ControleurAction {
         /*
          *Une action est exécutable si:
          *
-
-        if (listenerFournisseur != null)
-
-          excutable = true;
-     */
+         * if (listenerFournisseur != null)
+         * excutable = true;
+         */
 
         return executable;
     }
@@ -88,43 +87,29 @@ public class ControleurAction {
         /*
          *appeler le listenerFournisseur de l'action
          * bonus: à qui sert synchronized = controler la séquence des actions.
-
          */
-
-        new ListenerFournisseur() {
-            @Override
-            public void executer(Object... args) {
-
-            }
-        };
     }
 
     public static void lancerObservationSiApplicable(Action action) {
         /*
          *appeler le contrôleur pour lancer l'observation
          * du fournisseur (seulement si le fournisseur est un modèle)
-
          */
-       // if(si le fournisseur est un modèle)
-        new ControleurObservation();
     }
 
     public static void enregistrerFournisseur(Fournisseur fournisseur, GCommande commande, ListenerFournisseur listenerFournisseur) {
         /*
          *enregistrer le fournisseur et le listenerFournisseur dans l'action
-
          */
     }
 
     public static void ajouterActionEnFileDAttente(Action action){
 
         /*
-        *créer un clone de l'action et ajouter le clone à la file dattente
-        *
-        * bonus: pourquoi un clone = crééer une image identique en attendant son exécution
+         *créer un clone de l'action et ajouter le clone à la file dattente
+         *
+         * bonus: pourquoi un clone = crééer une image identique en attendant son exécution
          */
-
-
 
     }
 
