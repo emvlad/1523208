@@ -4,6 +4,7 @@ import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
@@ -45,6 +46,23 @@ public class ControleurObservation {
 
 
 
+<<<<<<< HEAD
+=======
+		*/
+		if(nomModele.equals("MParametres")){
+		   observations.put(MParametres.instance, listenerObservateur){
+		       lancerObservation(MParametres.instance);
+
+		       if(nomModele.equals("MPartie")){
+		           partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
+
+		           observations.put(ControleurObservation.partie,listenerObservateur);
+		           lancerObservation(ControleurObservation.partie);
+               }
+            }
+
+        }
+>>>>>>> devDroAway
 
     }
 
@@ -66,6 +84,12 @@ public class ControleurObservation {
 
 
 
+<<<<<<< HEAD
+=======
+         */
+
+
+>>>>>>> devDroAway
     }
 
 }

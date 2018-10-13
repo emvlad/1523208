@@ -17,7 +17,10 @@
 
         </activity>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> devDroAway
         <activity android:name=".activites.AMenuPrincipal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

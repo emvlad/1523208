@@ -28,10 +28,15 @@ public class VEntete extends AppCompatButton {
 
 		// afficher le numéro de la colonne!
 
+<<<<<<< HEAD
 		for(int i = 0; i < colonne; i++)
 		    Toast.makeText(getContext(), i, Toast.LENGTH_SHORT).show();
 
 
+=======
+		this.colonne=colonne;
+		setText(colonne+"\n\n");
+>>>>>>> devDroAway
 	}
 	
 	

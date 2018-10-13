@@ -13,6 +13,8 @@ import java.util.List;
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
 public class VGrille extends GridLayout {
+
+
 	
 	private int nombreRangees;
 	private List<Colonne> colonnesDeCases  ;
@@ -45,10 +47,16 @@ public class VGrille extends GridLayout {
 
 
 	
+<<<<<<< HEAD
 	private class Colonne extends ArrayList<VCase> {
 
 
     }
+=======
+	public class Colonne extends ArrayList<VCase> {
+		
+	}
+>>>>>>> devDroAway
 
 
 	@Override
@@ -57,6 +65,7 @@ public class VGrille extends GridLayout {
 		super.onFinishInflate();
 
 
+<<<<<<< HEAD
 
 	}
 
@@ -89,20 +98,33 @@ public class VGrille extends GridLayout {
 	
 	private void ajouterEntetes(int largeur){
 
+=======
+	}
+	public void creerGrille(int hauteur, int largeur){
+
 		
 	}
-	private LayoutParams getMiseEnPageEntete(int colonne){
+	
+	public void initialiserColonnes(int largeur){
+		
+	}
+	
+	public void ajouterEntetes(int largeur){
+>>>>>>> devDroAway
+		
+	}
+	public LayoutParams getMiseEnPageEntete(int colonne){
 
 
 
 
 		return null;
 	}
-	private void ajouterCases(int hauteur, int largeur){
+	public void ajouterCases(int hauteur, int largeur){
 		
 	}
 	
-	private LayoutParams getMiseEnPageCase(int rangee, int colonne){
+	public LayoutParams getMiseEnPageCase(int rangee, int colonne){
 
 
 		return null;
