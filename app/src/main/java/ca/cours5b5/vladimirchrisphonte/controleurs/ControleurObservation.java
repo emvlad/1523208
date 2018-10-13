@@ -36,16 +36,15 @@ public class ControleurObservation {
 
 		*/
 		if(nomModele.equals("MParametres")){
-		   observations.put(MParametres.instance, listenerObservateur){
-		       lancerObservation(MParametres.instance);
+		   observations.put(MParametres.instance, listenerObservateur);
+            lancerObservation(MParametres.instance);
 
-		       if(nomModele.equals("MPartie")){
-		           partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
+            if(nomModele.equals("MPartie")){
+                partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
 
-		           observations.put(ControleurObservation.partie,listenerObservateur);
-		           lancerObservation(ControleurObservation.partie);
-               }
-            }
+                observations.put(ControleurObservation.partie,listenerObservateur);
+                lancerObservation(ControleurObservation.partie);
+}
 
         }
 

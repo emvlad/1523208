@@ -21,6 +21,8 @@ public class GConstantes {
     public static final int POUR_GAGNER_MAX = 5;
     public static final int POUR_GAGNER_PAR_DEFAUT = 4;
 
-    public static final String SEPARATEUR_DE_CHEMIN="/";
+    //public static final String SEPARATEUR_DE_CHEMIN="/";
+
+    public static final String cle = "MParametres";
 
 }

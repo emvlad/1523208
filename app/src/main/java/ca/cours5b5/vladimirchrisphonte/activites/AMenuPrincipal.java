@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import ca.cours5b5.vladimirchrisphonte.R;
+import ca.cours5b5.vladimirchrisphonte.vues.VParametres;
 
 public class AMenuPrincipal extends Activite {
 
@@ -49,12 +50,12 @@ public class AMenuPrincipal extends Activite {
 
     private void transitionAPartie(){
         Intent intentionJouer = new Intent(this, APartie.class);
-        startActivity(intentionJouer);
+        this.startActivity(intentionJouer);
     }
 
     private void transitionParametres(){
         Intent intentionParametres = new Intent(this, AParametres.class);
-        startActivity(intentionParametres);
+        this.startActivity(intentionParametres);
     }
 
 }
