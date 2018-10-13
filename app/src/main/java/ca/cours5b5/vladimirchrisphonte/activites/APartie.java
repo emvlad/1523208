@@ -21,6 +21,8 @@ public class APartie extends Activite {
     @Override
     protected void onResume() {
         super.onResume();
+
+
     }
 
     private void restaurerPartie(Bundle savedInstanceState){
@@ -46,3 +48,7 @@ public class APartie extends Activite {
     }
 
 }
+
+
+//I tried master checkoutHome - I have been working on devDroAway at home!
+//Now I work with master at home.
