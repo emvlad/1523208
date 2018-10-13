@@ -44,10 +44,6 @@ public class ControleurObservation {
 
 
 
-
-
-<<<<<<< HEAD
-=======
 		*/
 		if(nomModele.equals("MParametres")){
 		   observations.put(MParametres.instance, listenerObservateur){
@@ -62,7 +58,7 @@ public class ControleurObservation {
             }
 
         }
->>>>>>> devDroAway
+
 
     }
 
@@ -78,18 +74,9 @@ public class ControleurObservation {
 
         }
 
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
          */
 
 
->>>>>>> devDroAway
     }
 
 }
