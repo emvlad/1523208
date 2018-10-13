@@ -18,7 +18,7 @@ import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
-<<<<<<< HEAD
+
 import static ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation.observerModele;
 
 
@@ -28,11 +28,11 @@ public class VPartie extends Vue{
 
     private MPartie partie;
     private ListenerObservateur listenerObservateur;
-=======
+
 public class VPartie extends Vue {
 
     public VGrille grille = findViewById(R.id.vgrille);
->>>>>>> devDroAway
+
 
 
     //constructeurs
@@ -51,7 +51,7 @@ public class VPartie extends Vue {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-<<<<<<< HEAD
+
 
        initialiserGrille(grille);
 
@@ -60,7 +60,7 @@ public class VPartie extends Vue {
 
     }
 
-=======
+
         ControleurObservation.observerModele(MPartie.class.getSimpleName(), new ListenerObservateur() {
             @Override
             public void reagirChangementAuModele(Modele modele) {
@@ -99,7 +99,7 @@ public class VPartie extends Vue {
 
     }
 
->>>>>>> devDroAway
+
 
     //méthodes
     private void observerPartie() {
@@ -121,7 +121,7 @@ public class VPartie extends Vue {
         return (MPartie) modele;
     }
 
-<<<<<<< HEAD
+
     private  void initialiserGrille(MPartie partie){
         ArrayAdapter<Integer> grillAdapter = new ArrayAdapter<>(getContext(), R.layout.activity_apartie);
 
@@ -129,9 +129,9 @@ public class VPartie extends Vue {
 
         //grille.setAdapter(grillAdapter);
 
-=======
+
     private void initialiserGrille(MPartie partie) {
->>>>>>> devDroAway
+
 
     }
 

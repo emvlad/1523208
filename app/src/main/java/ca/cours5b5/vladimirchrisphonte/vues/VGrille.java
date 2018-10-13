@@ -56,7 +56,7 @@ public class VGrille extends GridLayout {
 	public class Colonne extends ArrayList<VCase> {
 		
 	}
->>>>>>> devDroAway
+
 
 
 	@Override
@@ -65,7 +65,7 @@ public class VGrille extends GridLayout {
 		super.onFinishInflate();
 
 
-<<<<<<< HEAD
+
 
 	}
 
@@ -98,7 +98,7 @@ public class VGrille extends GridLayout {
 	
 	private void ajouterEntetes(int largeur){
 
-=======
+
 	}
 	public void creerGrille(int hauteur, int largeur){
 
@@ -110,7 +110,7 @@ public class VGrille extends GridLayout {
 	}
 	
 	public void ajouterEntetes(int largeur){
->>>>>>> devDroAway
+
 		
 	}
 	public LayoutParams getMiseEnPageEntete(int colonne){
