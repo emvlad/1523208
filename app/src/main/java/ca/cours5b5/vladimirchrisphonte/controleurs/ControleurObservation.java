@@ -1,5 +1,4 @@
-package ca.cours5b5.vladimirchrisphonte.controleurs;
-import java.util.Map;
+package ca.cours5b5.vladimirchrisphonte.controleurs;import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
