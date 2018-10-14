@@ -35,17 +35,18 @@ public class ControleurObservation {
 		Bonus: pourquoi le modèle est identifié par son nom?
 		et(pas son objet comme dans le Map)
 		*/
-        if(nomModele.equals("MParametres")){
+
+		//condition1
             observations.put(MParametres.instance, listenerObservateur);
             lancerObservation(MParametres.instance);
 
-            if(nomModele.equals("MPartie")){
+          //condition2?
+        /*
                 partie= new MPartie(MParametres.instance.getParametresPartie().cloner());
                 observations.put(ControleurObservation.partie,listenerObservateur);
                 lancerObservation(ControleurObservation.partie);
-            }
 
-        }
+*/
 
     }
 

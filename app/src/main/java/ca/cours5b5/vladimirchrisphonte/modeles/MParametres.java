@@ -137,23 +137,15 @@ public class MParametres extends Modele {
             switch (entry.getKey()){
 
                 case __hauteur:
-
                     hauteur = Integer.valueOf(chaineValeur);
                     break;
-
                 case __largeur:
-
                     largeur = Integer.valueOf(chaineValeur);
                     break;
-
-
                 case __pourGagner:
-
                     largeur = Integer.valueOf(chaineValeur);
                     break;
-
                 default:
-
                     throw new ErreurSerialisation("Attribut inconnu: " + entry.getKey());
             }
         }

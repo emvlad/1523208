@@ -31,6 +31,9 @@ public class VCase  extends AppCompatButton {
 		*changer la couleur de fond si désiré
 		*/
 
+
+		setText(colonne +", " + rangee);
+/*
         for (int i=0; i<rangee; i++){
 
             Toast.makeText(getContext(), i, Toast.LENGTH_SHORT).show();
@@ -42,6 +45,7 @@ public class VCase  extends AppCompatButton {
             }
 
         }
+        */
 
 
     }

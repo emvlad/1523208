@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 
 public abstract class Vue extends ConstraintLayout {
     public Vue(Context context) {
@@ -25,4 +27,7 @@ public abstract class Vue extends ConstraintLayout {
 
         Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onFinishInflate");
     }
+    public abstract void onItemSelected(AdapterView<?> parent, View view, int position, long id);
+
+    public abstract void onNothingSelected(AdapterView<?> parent);
 }

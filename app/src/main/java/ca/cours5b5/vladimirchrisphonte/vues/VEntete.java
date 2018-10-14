@@ -27,7 +27,7 @@ public class VEntete extends AppCompatButton {
 		// afficher le numéro de la colonne!
 
 		this.colonne=colonne;
-		setText(colonne+"\n\n");
+		setText(colonne+"\n↓\n↓");
 	}
 
 

@@ -15,7 +15,7 @@ import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 
 
-public class VParametres extends Vue {
+public class VParametres extends Vue{
 
     static{
 
@@ -45,6 +45,16 @@ public class VParametres extends Vue {
 
         initialiser();
         afficherLesChoix();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     private void initialiser(){

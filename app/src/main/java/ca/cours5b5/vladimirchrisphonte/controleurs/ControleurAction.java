@@ -56,22 +56,15 @@ public class ControleurAction {
         actionHauteur.setArguments(MParametres.instance.getChoixHauteur());
         actionHauteur.executerDesQuePossible();
 
-
         Action actionLargeur = ControleurAction.demanderAction(GCommande.JOUER_COUP_LARGEUR);
         //après le coup joué
         actionLargeur.setArguments(MParametres.instance.getChoixLargeur());
         actionLargeur.executerDesQuePossible();
 
-
         Action actionPourGagner = ControleurAction.demanderAction(GCommande.JOUER_COUP_POURGAGNER);
         //après le coup joué
         actionPourGagner.setArguments(MParametres.instance.getChoixPourGagner());
         actionPourGagner.executerDesQuePossible();
-
-
-
-
-
     }
 
     public static void executerActionsExecutables() {

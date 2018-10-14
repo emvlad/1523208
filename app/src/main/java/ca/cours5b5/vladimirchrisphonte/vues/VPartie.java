@@ -3,6 +3,7 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 
 import ca.cours5b5.vladimirchrisphonte.R;
@@ -15,7 +16,6 @@ import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 public class VPartie extends Vue {
 
     public VGrille grille = findViewById(R.id.vgrille);
-
 
     //constructeurs
     public VPartie(Context context) {
@@ -44,8 +44,6 @@ public class VPartie extends Vue {
                 int largeur = parametresPartie.getLargeur();
 
                 grille.creerGrille(hauteur, largeur);
-
-
             }
 
             @Override
@@ -58,10 +56,11 @@ public class VPartie extends Vue {
 
     }
 
-        @Override
-        public AdapterView.OnItemSelectedListener(AdapterView<?>parent, View view, int position, long id){
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent){
@@ -92,9 +91,4 @@ public class VPartie extends Vue {
     }
 
 }
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> e42fdc14bbcb1e3fe8588c060510245db4ad5fc2

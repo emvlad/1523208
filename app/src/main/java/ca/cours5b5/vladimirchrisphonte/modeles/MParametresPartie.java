@@ -8,11 +8,7 @@ import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
 
-
-
 public class MParametresPartie extends Modele {
-
-
     private static MParametres instanceParam = new MParametres();
     @AttributSerialisable
     private Integer hauteur;
@@ -36,28 +32,28 @@ public class MParametresPartie extends Modele {
         this.pourGagner = pourGagner;
     }
 
-    private Integer getHauteur() {
+    public Integer getHauteur() {
         return hauteur;
     }
 
-    private Integer getLargeur() {
+    public Integer getLargeur() {
         return largeur;
     }
 
-    private Integer getPourGagner() {
+    public Integer getPourGagner() {
         return pourGagner;
     }
 
 
-    private void setPourGagner(int pourGagner) {
+    public void setPourGagner(int pourGagner) {
         this.pourGagner = pourGagner;
     }
 
-    private void setLargeur(int largeur) {
+    public void setLargeur(int largeur) {
         this.largeur = largeur;
     }
 
-    private void setHauteur(int hauteur) {this.hauteur = hauteur;
+    public void setHauteur(int hauteur) {this.hauteur = hauteur;
 
     }
 
