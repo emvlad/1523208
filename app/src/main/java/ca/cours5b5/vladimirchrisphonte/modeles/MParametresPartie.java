@@ -13,19 +13,19 @@ import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
 public class MParametresPartie extends Modele {
 
 
-    public static MParametres instanceParam;
+    private static MParametres instanceParam = new MParametres();
     @AttributSerialisable
-    public Integer hauteur;
-    protected final String __hauteur = "hauteur";
+    private Integer hauteur;
+    private final String __hauteur = "hauteur";
 
 
     @AttributSerialisable
-    public Integer largeur;
-    protected final String __largeur = "largeur";
+    private Integer largeur;
+    private final String __largeur = "largeur";
 
     @AttributSerialisable
-    public Integer pourGagner;
-    protected final String __pourGagner = "pourGagner";
+    private Integer pourGagner;
+    private final String __pourGagner = "pourGagner";
 
  
 
@@ -36,28 +36,28 @@ public class MParametresPartie extends Modele {
         this.pourGagner = pourGagner;
     }
 
-    public Integer getHauteur() {
+    private Integer getHauteur() {
         return hauteur;
     }
 
-    public Integer getLargeur() {
+    private Integer getLargeur() {
         return largeur;
     }
 
-    public Integer getPourGagner() {
+    private Integer getPourGagner() {
         return pourGagner;
     }
 
 
-    public void setPourGagner(int pourGagner) {
+    private void setPourGagner(int pourGagner) {
         this.pourGagner = pourGagner;
     }
 
-    public void setLargeur(int largeur) {
+    private void setLargeur(int largeur) {
         this.largeur = largeur;
     }
 
-    public void setHauteur(int hauteur) {this.hauteur = hauteur;
+    private void setHauteur(int hauteur) {this.hauteur = hauteur;
 
     }
 
