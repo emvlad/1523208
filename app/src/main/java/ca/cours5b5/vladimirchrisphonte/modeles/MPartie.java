@@ -15,11 +15,12 @@ public class MPartie extends Modele{
 
 
 	public MPartie(MParametresPartie parametres){
+		this.parametres = parametres;
 
 	}
 
 	public MParametresPartie getParametres(){
-		return null;
+		return parametres;
 	}
 
 	@Override
@@ -31,7 +32,10 @@ public class MPartie extends Modele{
 	}
 
 	@Override
-	public Map<String, Object> enObjetJson() throws ErreurSerialisation {
+	public Map<String, Object> enObjetJson() {
+
+
+
 		return null;
 	}
 }

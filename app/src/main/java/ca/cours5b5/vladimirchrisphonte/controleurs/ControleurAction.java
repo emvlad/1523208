@@ -7,6 +7,7 @@ import java.util.Map;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.vladimirchrisphonte.global.GCommande;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 
 public class ControleurAction {
 
@@ -26,7 +27,7 @@ public class ControleurAction {
          */
     }
 
-    public static Action demaderAction(GCommande commande) {
+    public static Action demanderAction(GCommande commande) {
 
         /*
          *Retourner l'action au demandeur
@@ -47,10 +48,30 @@ public class ControleurAction {
 
         /*
          *Mettre l'action en file d'attente
-         * Appeler la méthode qui exécute chaque action
-         * de la file d'attente
+         * Appeler la méthode qui exécute chaque action de la file d'attente
          *
          */
+        Action actionHauteur = ControleurAction.demanderAction(GCommande.JOUER_COUP_HAUTEUR);
+        //après le coup joué
+        actionHauteur.setArguments(MParametres.instance.getChoixHauteur());
+        actionHauteur.executerDesQuePossible();
+
+
+        Action actionLargeur = ControleurAction.demanderAction(GCommande.JOUER_COUP_LARGEUR);
+        //après le coup joué
+        actionLargeur.setArguments(MParametres.instance.getChoixLargeur());
+        actionLargeur.executerDesQuePossible();
+
+
+        Action actionPourGagner = ControleurAction.demanderAction(GCommande.JOUER_COUP_POURGAGNER);
+        //après le coup joué
+        actionPourGagner.setArguments(MParametres.instance.getChoixPourGagner());
+        actionPourGagner.executerDesQuePossible();
+
+
+
+
+
     }
 
     public static void executerActionsExecutables() {
@@ -60,7 +81,7 @@ public class ControleurAction {
          * Si l'action est exécutable:
          *
          *  Avant d'exécuter l'action:
-         *  -l'emlever de la file d'attente
+         *  -l'enlever de la file d'attente
          *
          *  Appeler la méthode pour exécuter l'action maintenant
          *
@@ -108,7 +129,7 @@ public class ControleurAction {
         /*
          *créer un clone de l'action et ajouter le clone à la file dattente
          *
-         * bonus: pourquoi un clone = crééer une image identique en attendant son exécution
+         * bonus: pourquoi un clone = créer une image identique en attendant son exécution
          */
 
     }

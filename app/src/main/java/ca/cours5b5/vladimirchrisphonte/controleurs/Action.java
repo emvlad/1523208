@@ -22,7 +22,8 @@ public class Action {
          */
 
 
-      //  Action cloner(){
+       //Action
+       // cloner();
             /*
             *Ne pas oublier de cloner le tableau!
             * (à moins qu'il soit null)
@@ -30,6 +31,8 @@ public class Action {
             *
              */
         }
-    }
+
+   
+}
 
 

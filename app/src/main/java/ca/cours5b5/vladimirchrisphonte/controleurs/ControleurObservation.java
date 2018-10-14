@@ -1,6 +1,7 @@
 package ca.cours5b5.vladimirchrisphonte.controleurs;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
@@ -14,9 +15,9 @@ public class ControleurObservation {
 //FIXME: cest temporaire, on va écrire un contrôleur de modèles a l'atelier09
 
     //instance
-    private static Map<Modele, ListenerObservateur> observations;
+    private static Map<Modele, ListenerObservateur> observations = new HashMap<>();
 
-    private static MPartie partie;
+    private static MPartie partie = new MPartie(new MParametresPartie());
     /*
      * l'attribut est private: la vue doit obtenir le modèle par l'observation
      *
@@ -39,8 +40,7 @@ public class ControleurObservation {
             lancerObservation(MParametres.instance);
 
             if(nomModele.equals("MPartie")){
-                partie= new MPartie(MParametresPartie.aPartirMParametres(MParametres.instance));
-
+                partie= new MPartie(MParametres.instance.getParametresPartie().cloner());
                 observations.put(ControleurObservation.partie,listenerObservateur);
                 lancerObservation(ControleurObservation.partie);
             }
@@ -48,6 +48,12 @@ public class ControleurObservation {
         }
 
     }
+
+
+
+
+
+
 
     public  static void lancerObservation(Modele modele){
         /*
