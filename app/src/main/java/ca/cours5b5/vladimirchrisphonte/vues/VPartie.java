@@ -2,7 +2,7 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -48,6 +48,9 @@ public class VPartie extends Vue {
 
             @Override
             public void reagirNouveauModele(Modele modele) {
+
+
+
 
             }
 
