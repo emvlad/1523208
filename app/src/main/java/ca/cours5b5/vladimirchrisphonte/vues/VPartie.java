@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 
+
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
@@ -14,6 +15,7 @@ import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
 public class VPartie extends Vue {
+
 
     public VGrille grille = findViewById(R.id.vgrille);
 

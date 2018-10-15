@@ -88,4 +88,4 @@ public abstract class Activite extends AppCompatActivity {
 
         Log.d("Atelier02", message);
     }
-}}
+}
