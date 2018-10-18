@@ -120,7 +120,7 @@ public class ControleurAction {
     public static void ajouterActionEnFileDAttente(Action action){
 
         /*
-         *créer un clone de l'action et ajouter le clone à la file dattente
+         *créer un clone de l'action et ajouter le clone à la file d'attente
          *
          * bonus: pourquoi un clone = créer une image identique en attendant son exécution
          */

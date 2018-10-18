@@ -17,7 +17,7 @@ public class ControleurObservation {
     //instance
     private static Map<Modele, ListenerObservateur> observations = new HashMap<>();
 
-    private static MPartie partie = new MPartie(new MParametresPartie());
+    public static MPartie partie = new MPartie(new MParametresPartie());
     /*
      * l'attribut est private: la vue doit obtenir le modèle par l'observation
      *
@@ -29,40 +29,53 @@ public class ControleurObservation {
     //reçoit 2 paramètres
     public static void observerModele(String nomModele, final ListenerObservateur listenerObservateur){
 
-		/*Enregistrer le listener dans le Map observations
+		/*
 		*Appeler le listener une première fois
 		 - MParametres.instance ou Controleur.partie
 		Bonus: pourquoi le modèle est identifié par son nom?
 		et(pas son objet comme dans le Map)
 		*/
 
-		//condition1
+		//condition1 sans model
+
+        //Enregistrer le listener dans le Map observations
+
+
+     //   if (nomModele.equals(MParametres.class.getSimpleName())) {
+
             observations.put(MParametres.instance, listenerObservateur);
             lancerObservation(MParametres.instance);
 
-          //condition2?
-        /*
-                partie= new MPartie(MParametres.instance.getParametresPartie().cloner());
-                observations.put(ControleurObservation.partie,listenerObservateur);
-                lancerObservation(ControleurObservation.partie);
+/*
+        } else if (nomModele.equals(MPartie.class.getSimpleName())) {
 
-*/
+            partie = new MPartie(MParametres.instance.getParametresPartie().cloner());
+
+            //Enregistrer le listener dans le Map observations
+            observations.put(ControleurObservation.partie,listenerObservateur);
+            lancerObservation(ControleurObservation.partie);
+
+
+        }
+        */
+
 
     }
 
 
-
-
-
-
-
     public  static void lancerObservation(Modele modele){
-        /*
-         *Vérifier si le listener existe pour ce modele
-         * Appeler le listener
-         */
 
+        /*if (modele != null) {
 
+            observations.get(modele).reagirNouveauModele(modele);
+
+        }
+        if (modele != null) {
+
+            observations.get(modele).reagirChangementAuModele(modele);
+
+        }
+*/
     }
 
 }

@@ -10,9 +10,12 @@ import android.widget.AdapterView;
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
+
+import static ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation.partie;
 
 public class VPartie extends Vue {
 
@@ -39,7 +42,11 @@ public class VPartie extends Vue {
         ControleurObservation.observerModele(MPartie.class.getSimpleName(), new ListenerObservateur() {
             @Override
             public void reagirChangementAuModele(Modele modele) {
+
+             // initialiserGrille(getPartie(modele));
+
                 MPartie partie = (MPartie) modele;
+
                 MParametresPartie parametresPartie = partie.getParametres();
 
                 int hauteur = parametresPartie.getHauteur();
@@ -50,14 +57,24 @@ public class VPartie extends Vue {
 
             @Override
             public void reagirNouveauModele(Modele modele) {
-
-
-
+           // afficherParametres((MParametres) modele);
 
             }
 
 
         });
+
+    }
+
+    private void afficherParametres(MParametres modele) {
+
+        MParametresPartie parametresPartie = partie.getParametres();
+
+        int hauteur = parametresPartie.getHauteur();
+        int largeur = parametresPartie.getLargeur();
+
+        grille.creerGrille(hauteur, largeur);
+
 
     }
 
@@ -69,10 +86,6 @@ public class VPartie extends Vue {
 
     @Override
     public void onNothingSelected(AdapterView<?> parent){
-
-    }
-
-    private void initialiser(){
 
     }
 
@@ -93,7 +106,8 @@ public class VPartie extends Vue {
 
     private void initialiserGrille(MPartie partie) {
 
+
+
     }
 
 }
-
