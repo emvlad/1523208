@@ -9,6 +9,8 @@ import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 
 public class Jsonification {
 
+    private Jsonification(){}
+
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static Map<String, Object> aPartirChaineJson(String json) throws ErreurSerialisation {

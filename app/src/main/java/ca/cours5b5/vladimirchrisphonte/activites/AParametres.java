@@ -3,31 +3,37 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 
 
 import android.os.Bundle;
-import android.util.Log;
 
-import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.R;
-import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurModeles;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
-import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
 
-public class AParametres extends Activite {
 
-    static{
-        Log.d("Atelier04", AParametres.class.getSimpleName() + "::static");
-    }
+public class AParametres extends Activite implements Fournisseur {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState != null){
-            restaurerParametres(savedInstanceState);
-        }
         setContentView(R.layout.activity_parametres);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        ControleurModeles.sauvegarderModele(MParametres.class.getSimpleName());
+
+    }
+
+    /*
+    static{
+        Log.d("Atelier04", AParametres.class.getSimpleName() + "::static");
+    }
+*/
+    /*
     private void restaurerParametres(Bundle savedInstanceState){
 
         String json = savedInstanceState.getString(GConstantes.cle);
@@ -62,5 +68,5 @@ public class AParametres extends Activite {
 
     }
 
-
+*/
 }

@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.AdapterView;
 
 public abstract class Vue extends ConstraintLayout {
+
     public Vue(Context context) {
+
         super(context);
     }
 
     public Vue(Context context, AttributeSet attrs) {
+
         super(context, attrs);
     }
 
@@ -21,6 +24,9 @@ public abstract class Vue extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
     }
 
+
+
+/*
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -30,4 +36,6 @@ public abstract class Vue extends ConstraintLayout {
     public abstract void onItemSelected(AdapterView<?> parent, View view, int position, long id);
 
     public abstract void onNothingSelected(AdapterView<?> parent);
+
+    */
 }

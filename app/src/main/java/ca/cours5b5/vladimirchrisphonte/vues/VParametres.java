@@ -12,7 +12,14 @@ import android.widget.Spinner;
 import java.util.List;
 
 import ca.cours5b5.vladimirchrisphonte.R;
+import ca.cours5b5.vladimirchrisphonte.controleurs.Action;
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
+import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurObservation;
+import ca.cours5b5.vladimirchrisphonte.global.GCommande;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
 
 public class VParametres extends Vue{
@@ -26,6 +33,10 @@ public class VParametres extends Vue{
     private Spinner spinnerHauteur;
     private Spinner spinnerLargeur;
     private Spinner spinnerPourGagner;
+
+    private Action actionHauteur;
+    private Action actionLargeur;
+    private Action actionPourGagner;
 
     public VParametres(Context context) {
         super(context);
@@ -44,18 +55,14 @@ public class VParametres extends Vue{
         super.onFinishInflate();
 
         initialiser();
-        afficherLesChoix();
+        demanderActions();
+
+        installerListeners();
+
+        installerObservateur();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     private void initialiser(){
         spinnerHauteur = this.findViewById(R.id.spinner_hauteur);
@@ -68,7 +75,13 @@ public class VParametres extends Vue{
 
         installerListeners();
     }
+    private void demanderActions() {
 
+        actionHauteur = ControleurAction.demanderAction(GCommande.CHOISIR_HAUTEUR);
+        actionLargeur = ControleurAction.demanderAction(GCommande.CHOISIR_LARGEUR);
+        actionPourGagner = ControleurAction.demanderAction(GCommande.CHOISIR_POUR_GAGNER);
+
+    }
     private void initialiserSpinner(Spinner spinner){
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -86,7 +99,8 @@ public class VParametres extends Vue{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int leChoix = (int) parent.getAdapter().getItem(position);
 
-                MParametres.instance.setHauteur(leChoix);
+                actionHauteur.setArguments(leChoix);
+                actionHauteur.executerDesQuePossible();
 
             }
 
@@ -103,7 +117,8 @@ public class VParametres extends Vue{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int leChoix = (int) parent.getAdapter().getItem(position);
 
-                MParametres.instance.setLargeur(leChoix);
+                actionLargeur.setArguments(leChoix);
+                actionLargeur.executerDesQuePossible();
 
             }
 
@@ -120,7 +135,8 @@ public class VParametres extends Vue{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int leChoix = (int) parent.getAdapter().getItem(position);
 
-                MParametres.instance.setPourGagner(leChoix);
+                actionPourGagner.setArguments(leChoix);
+                actionPourGagner.executerDesQuePossible();
 
             }
 
@@ -130,41 +146,88 @@ public class VParametres extends Vue{
             }
         });
     }
+    private void installerObservateur() {
 
-    private void afficherLesChoix(){
-        afficherChoixHauteur();
-        afficherChoixLargeur();
-        afficherChoixPourGagner();
+        ControleurObservation.observerModele(MParametres.class.getSimpleName(),
+                new ListenerObservateur() {
+
+                    @Override
+                    public void reagirChangementAuModele(Modele modele) {
+                        observerParametres(modele);
+                    }
+                });
+
+    }
+    private void observerParametres(Modele modele){
+        try{
+
+            MParametres mParametres = (MParametres) modele;
+
+            afficherLesChoix(mParametres);
+
+        }catch (ClassCastException e){
+
+            throw new ErreurObservation(e);
+
+        }
+    }
+    private void afficherLesChoix(MParametres mParametres){
+
+        afficherChoixHauteur(mParametres);
+        afficherChoixLargeur(mParametres);
+        afficherChoixPourGagner(mParametres);
+
     }
 
-    private void afficherChoixHauteur(){
+    private void afficherChoixHauteur(MParametres mParametres){
+
         mettreAJourSpinner(spinnerHauteur,
-                MParametres.instance.getChoixHauteur(),
-                MParametres.instance.getHauteur());
+                mParametres.getChoixHauteur(),
+                mParametres.getParametresPartie().getHauteur());
+
     }
 
-    private void afficherChoixLargeur(){
+    private void afficherChoixLargeur(MParametres mParametres){
+
         mettreAJourSpinner(spinnerLargeur,
-                MParametres.instance.getChoixLargeur(),
-                MParametres.instance.getLargeur());
+                mParametres.getChoixLargeur(),
+                mParametres.getParametresPartie().getLargeur());
+
     }
 
-    private void afficherChoixPourGagner(){
+    private void afficherChoixPourGagner(MParametres mParametres){
+
         mettreAJourSpinner(spinnerPourGagner,
-                MParametres.instance.getChoixPourGagner(),
-                MParametres.instance.getPourGagner());
+                mParametres.getChoixPourGagner(),
+                mParametres.getParametresPartie().getPourGagner());
+
     }
 
     private void mettreAJourSpinner(Spinner spinner, List<Integer> choix, int selectionCourante){
+
         ArrayAdapter<Integer> adapter = (ArrayAdapter<Integer>) spinner.getAdapter();
+
         adapter.clear();
 
+        mettreAJourAdapter(spinner, choix, selectionCourante, adapter);
+
+    }
+
+    private void mettreAJourAdapter(
+            Spinner spinner,
+            List<Integer> choix,
+            int selectionCourante,
+            ArrayAdapter<Integer> adapter) {
+
         for(int i=0; i < choix.size(); i++){
+
             int leChoix = choix.get(i);
             adapter.add(leChoix);
 
             if(leChoix == selectionCourante){
+
                 spinner.setSelection(i);
+
             }
         }
     }

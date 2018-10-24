@@ -1,44 +1,53 @@
 package ca.cours5b5.vladimirchrisphonte.activites;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
+
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import java.util.Map;
-import ca.cours5b5.vladimirchrisphonte.R;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
-import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurModeles;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+
+import donnees.Disque;
+import donnees.SauvegardeTemporaire;
 
 public abstract class Activite extends AppCompatActivity {
 
-    MParametres mParametres = new MParametres();
-    static{
-        Log.d("Atelier04", Activite.class.getSimpleName() + "::static");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onCreate");
 
-        affichageAtelier02();
+        initialiserControleurModeles(savedInstanceState);
+        initialiserApplication();
+        //  affichageAtelier02();
     }
+    protected void initialiserControleurModeles(Bundle savedInstanceState) {
+        ControleurModeles.setSequenceDeChargement(
+                new SauvegardeTemporaire(savedInstanceState),
+                Disque.getInstance());
 
+    }
+    protected void initialiserApplication(){
+
+        Disque.getInstance().setRepertoireRacine(getFilesDir());
+
+    }
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.activity_parametres);
-        //Log.d("Atelier06",this.getClass().getSimpleName()+"::onCreate");
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onSaveInstanceState");
+        ControleurModeles.sauvegarderModeleDansCetteSource(MParametres.class.getSimpleName(),
+                new SauvegardeTemporaire(outState));
 
-        if(savedInstanceState != null){
-            String json = savedInstanceState.getString("MaCle");
-            Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
-            mParametres.aPartirObjetJson(objetJson);
-        }
 
     }
 
+/*
+
+ static{
+        Log.d("Atelier04", Activite.class.getSimpleName() + "::static");
+    }
 
     @Override
     protected void onPause() {
@@ -58,14 +67,10 @@ public abstract class Activite extends AppCompatActivity {
         Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onDestroy");
 
     }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d("Atelier04", this.getClass().getSimpleName() + "::" +  "onSaveInstanceState");
-    }
+*/
 
 
+/*
     private void affichageAtelier02(){
 
         String message = this.getResources().getString(R.string.bonjour);
@@ -88,4 +93,5 @@ public abstract class Activite extends AppCompatActivity {
 
         Log.d("Atelier02", message);
     }
+    */
 }

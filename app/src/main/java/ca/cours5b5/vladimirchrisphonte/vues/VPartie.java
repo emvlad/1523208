@@ -6,21 +6,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 
-
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurObservation;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
-import static ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation.partie;
-
 public class VPartie extends Vue {
 
-
-    public VGrille grille = findViewById(R.id.vgrille);
+    public VGrille grille;
 
     //constructeurs
     public VPartie(Context context) {
@@ -39,75 +35,70 @@ public class VPartie extends Vue {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ControleurObservation.observerModele(MPartie.class.getSimpleName(), new ListenerObservateur() {
-            @Override
-            public void reagirChangementAuModele(Modele modele) {
 
-             // initialiserGrille(getPartie(modele));
+        initialiser();
 
-                MPartie partie = (MPartie) modele;
-
-                MParametresPartie parametresPartie = partie.getParametres();
-
-                int hauteur = parametresPartie.getHauteur();
-                int largeur = parametresPartie.getLargeur();
-
-                grille.creerGrille(hauteur, largeur);
-            }
-
-            @Override
-            public void reagirNouveauModele(Modele modele) {
-           // afficherParametres((MParametres) modele);
-
-            }
-
-
-        });
+        observerPartie();
 
     }
+    private void initialiser() {
 
-    private void afficherParametres(MParametres modele) {
+        grille = findViewById(R.id.vgrille);
+
+    }
+    private void observerPartie() {
+
+        ControleurObservation.observerModele(MPartie.class.getSimpleName(),
+                new ListenerObservateur() {
+                    @Override
+                    public void reagirNouveauModele(Modele modele) {
+
+                        MPartie partie = getPartie(modele);
+
+                        preparerAffichage(partie);
+
+                        miseAJourGrille(partie);
+
+                    }
+
+                    @Override
+                    public void reagirChangementAuModele(Modele modele) {
+
+                        MPartie partie = getPartie(modele);
+
+                        miseAJourGrille(partie);
+
+                    }
+                });
+    }
+
+    private void preparerAffichage(MPartie partie) {
 
         MParametresPartie parametresPartie = partie.getParametres();
 
-        int hauteur = parametresPartie.getHauteur();
-        int largeur = parametresPartie.getLargeur();
-
-        grille.creerGrille(hauteur, largeur);
-
+        grille.creerGrille(parametresPartie.getHauteur(), parametresPartie.getLargeur());
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    private MPartie getPartie(Modele modele){
+
+        try{
+
+            return (MPartie) modele;
+
+        }catch(ClassCastException e){
+
+            throw new ErreurObservation(e);
+
+        }
+
+    }
+    private void miseAJourGrille(MPartie partie){
+
+        grille.afficherJetons(partie.getGrille());
 
     }
 
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent){
-
-    }
-
-
-    //méthodes
-    private void observerPartie() {
-        /*
-         *Appeler observer pour obtenir le modèle
-         * Une fois le modèle obtenu, créer la grille d'affichage
-         */
-
-
-    }
-
-    private MPartie getPartie(Modele modele) {
-        return null;
-    }
-
-    private void initialiserGrille(MPartie partie) {
-
-
-
-    }
 
 }
+

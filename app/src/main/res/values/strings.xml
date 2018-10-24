@@ -17,4 +17,6 @@
     <string name="joueur2">Joueur 2</string>
     <string name="joueur1">Joueur 1</string>
 
+    <string name="entete">Entête</string>
+
 </resources>

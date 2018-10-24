@@ -2,9 +2,14 @@ package ca.cours5b5.vladimirchrisphonte.global;
 
 public enum GCommande {
 
-    JOUER_COUP_HAUTEUR,
-    JOUER_COUP_LARGEUR,
-    JOUER_COUP_POURGAGNER,
+    CHOISIR_HAUTEUR,
+    CHOISIR_LARGEUR,
+    CHOISIR_POUR_GAGNER,
 
-    OUVRIR_MENU_PARAMETRES
+    OUVRIR_MENU_PARAMETRES,
+    DEMARRER_PARTIE,
+
+    JOUER_COUP_ICI
+
+
 }

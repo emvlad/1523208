@@ -1,35 +1,47 @@
 package ca.cours5b5.vladimirchrisphonte.modeles;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
-public class MColonne extends Modele{
+public class MColonne extends Modele {
 
     private List<GCouleur> jetons;
 
-
-    //constructeur
     public MColonne() {
 
+        jetons = new ArrayList<>();
+
     }
-    public  void placerJeton(GCouleur couleur){
+
+    public List<GCouleur> getJetons() {
+        return jetons;
+    }
+
+    public void placerJeton(GCouleur couleur) {
+
+        jetons.add(couleur);
 
     }
 
     @Override
     public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation {
 
-        /*
-        * not used
-         */
+        throw new UnsupportedOperationException();
 
     }
 
     @Override
     public Map<String, Object> enObjetJson() throws ErreurSerialisation {
-        return null;
+
+        throw new UnsupportedOperationException();
+
+    }
+
+    public int nombreDeJetons() {
+        return jetons.size();
     }
 }

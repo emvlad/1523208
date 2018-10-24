@@ -2,22 +2,67 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.vladimirchrisphonte.global.GCommande;
 import ca.cours5b5.vladimirchrisphonte.R;
-import ca.cours5b5.vladimirchrisphonte.vues.VParametres;
 
-public class AMenuPrincipal extends Activite {
 
-    static{
-        Log.d("Atelier04", AMenuPrincipal.class.getSimpleName() + "::static");
-    }
+public class AMenuPrincipal extends Activite implements Fournisseur {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        fournirActions();
+    }
+    private void fournirActions() {
+
+        fournirActionOuvrirMenuParametres();
+
+        fournirActionDemarrerPartie();
+    }
+    private void fournirActionOuvrirMenuParametres() {
+
+        ControleurAction.fournirAction(this,
+                GCommande.OUVRIR_MENU_PARAMETRES,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+
+                        transitionAParametres();
+
+                    }
+                });
+    }
+    private void fournirActionDemarrerPartie() {
+
+        ControleurAction.fournirAction(this, GCommande.DEMARRER_PARTIE,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+                        transitionAPartie();
+
+                    }
+                });
+    }
+    private void transitionAPartie(){
+        Intent intentionJouer = new Intent(this, APartie.class);
+        this.startActivity(intentionJouer);
+    }
+
+    private void transitionAParametres(){
+        Intent intentionParametres = new Intent(this, AParametres.class);
+        this.startActivity(intentionParametres);
+    }
+
+/*
+
+  static{
+        Log.d("Atelier04", AMenuPrincipal.class.getSimpleName() + "::static");
     }
 
     @Override
@@ -46,15 +91,6 @@ public class AMenuPrincipal extends Activite {
         // Log.d("Atelier06", AMenuPrincipal.class.getSimpleName() + "::APartie");
 
     }
-
-    private void transitionAPartie(){
-        Intent intentionJouer = new Intent(this, APartie.class);
-        this.startActivity(intentionJouer);
-    }
-
-    private void transitionParametres(){
-        Intent intentionParametres = new Intent(this, AParametres.class);
-        this.startActivity(intentionParametres);
-    }
+*/
 
 }

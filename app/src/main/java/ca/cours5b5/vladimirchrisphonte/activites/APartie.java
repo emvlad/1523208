@@ -4,12 +4,11 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 
 import android.os.Bundle;
 
-import java.util.Map;
-
 import ca.cours5b5.vladimirchrisphonte.R;
-import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
-import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurModeles;
+
+import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
+
 
 public class APartie extends Activite {
 
@@ -18,9 +17,7 @@ public class APartie extends Activite {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apartie);
-        if(savedInstanceState != null){
-            restaurerPartie(savedInstanceState);
-        }
+
     }
 
     @Override
@@ -31,9 +28,11 @@ public class APartie extends Activite {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        sauvegarderPartie(outState);
+
+        ControleurModeles.sauvegarderModele(MPartie.class.getSimpleName());
 
     }
+    /*
     @Override
     protected void onResume() {
         super.onResume();
@@ -47,7 +46,9 @@ public class APartie extends Activite {
         mParametres.aPartirObjetJson(objetJson);
 
     }
+    */
 
+   /*
     private void restaurerPartie(Bundle savedInstanceState){
 
         String json = savedInstanceState.getString(GConstantes.cle);
@@ -60,7 +61,8 @@ public class APartie extends Activite {
         //         +MPartie.class.getSimpleName());
 
     }
-
+*/
+   /*
     private void sauvegarderPartie(Bundle outState) {
         //  Log.d("Atelier06", APartie.class.getSimpleName() + "::sauvegarderPartie, clé: "
         //        +MPartie.class.getSimpleName());
@@ -71,5 +73,5 @@ public class APartie extends Activite {
 
         outState.putString(GConstantes.cle, json);
     }
-
+*/
 }

@@ -8,31 +8,44 @@ public class Action {
     ListenerFournisseur listenerFournisseur;
     Object[] args;
 
-    public void setArguments(Object... args){
-
+    public void setArguments(Object... args) {
+        this.args = args;
     }
 
     //méthode
-    public void executerDesQuePossible(){
+    public void executerDesQuePossible() {
 
         /*
-        *Appeler le contrôleur.
-        * Il va gérer l'action (mettre en file d'attente,
-        * exécuter si possible)
+         *Appeler le contrôleur.
+         * Il va gérer l'action (mettre en file d'attente,
+         * exécuter si possible)
          */
 
+        //Action
+        // cloner();
+        /*
+         *Ne pas oublier de cloner le tableau!
+         * (à moins qu'il soit null)
+         *
+         *
+         */
 
-       //Action
-       // cloner();
-            /*
-            *Ne pas oublier de cloner le tableau!
-            * (à moins qu'il soit null)
-            *
-            *
-             */
-        }
+        ControleurAction.executerDesQuePossible(this);
+    }
 
-   
+    Action cloner() {
+
+        Action clone = new Action();
+
+        clone.fournisseur = fournisseur;
+        clone.listenerFournisseur = listenerFournisseur;
+
+        clone.args = (args == null) ? null : args.clone();
+
+        return clone;
+    }
+
+
 }
 
 

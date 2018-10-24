@@ -4,32 +4,33 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import ca.cours5b5.vladimirchrisphonte.R;
 
 public class VEntete extends AppCompatButton {
 
-
-	private int colonne;
-
-	public VEntete(Context context){
+	public VEntete(Context context) {
 		super(context);
 	}
-	public VEntete(Context context, AttributeSet attrs)	{
+
+	public VEntete(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public VEntete(Context context, AttributeSet attrs, int defStyleAttr )	{
+	public VEntete(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 	}
 
-	public VEntete(Context context, int colonne){
+	private int colonne;
+
+	public VEntete(Context context, int colonne) {
 		super(context);
 
-		// afficher le numéro de la colonne!
+		setText(colonne + "\n" + getResources().getString(R.string.entete));
 
-		this.colonne=colonne;
-		setText(colonne+"\n↓\n↓");
+		this.colonne = colonne;
 	}
 
-
-
+	public int getColonne() {
+		return colonne;
+	}
 }
