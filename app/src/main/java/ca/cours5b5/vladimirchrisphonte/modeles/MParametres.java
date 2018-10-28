@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
@@ -201,4 +202,5 @@ public class MParametres extends Modele implements Fournisseur {
         return objetJson;
 
     }
+
 }

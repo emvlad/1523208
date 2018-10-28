@@ -1,10 +1,10 @@
 <resources>
+
     <string name="app_name" translatable="false">VladimirChrisphonte</string>
 
     <string name="bonjour">Bonjour!</string>
 
     <string name="paysage">paysage</string>
-
     <string name="portrait" translatable="false">portrait</string>
 
     <string name="hauteur">Hauteur: </string>
@@ -13,10 +13,11 @@
 
     <string name="parametres">Parametres</string>
 
-    <string name="jouer">JOUER</string>
-    <string name="joueur2">Joueur 2</string>
-    <string name="joueur1">Joueur 1</string>
+    <string name="jouer">Jouer</string>
 
-    <string name="entete">Entête</string>
+    <string name="entete">↓\n↓</string>
+
+    <string name="joueur1">joueur1</string>
+    <string name="joueur2">joueur2</string>
 
 </resources>

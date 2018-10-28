@@ -1,5 +1,7 @@
 package ca.cours5b5.vladimirchrisphonte.global;
 
+
+
 public enum GCommande {
 
     CHOISIR_HAUTEUR,
@@ -9,7 +11,6 @@ public enum GCommande {
     OUVRIR_MENU_PARAMETRES,
     DEMARRER_PARTIE,
 
-    JOUER_COUP_ICI
-
+    JOUER_COUP_ICI,
 
 }

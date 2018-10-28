@@ -1,5 +1,8 @@
 package ca.cours5b5.vladimirchrisphonte.exceptions;
 
+
+import java.util.Map;
+
 public class ErreurObservation extends RuntimeException {
 
     public ErreurObservation(Exception e){

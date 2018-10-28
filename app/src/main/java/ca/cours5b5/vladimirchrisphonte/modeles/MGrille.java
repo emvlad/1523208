@@ -7,6 +7,7 @@ import java.util.Map;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
+
 public class MGrille extends Modele  {
 
     private List<MColonne> colonnes;
@@ -53,4 +54,5 @@ public class MGrille extends Modele  {
         throw new UnsupportedOperationException();
 
     }
+
 }

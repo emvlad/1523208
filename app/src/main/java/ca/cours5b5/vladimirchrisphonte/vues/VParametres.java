@@ -1,12 +1,12 @@
 package ca.cours5b5.vladimirchrisphonte.vues;
 
 import android.content.Context;
-import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.List;
@@ -22,13 +22,7 @@ import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
 
-public class VParametres extends Vue{
-
-    static{
-
-        Log.d("Atelier04", VParametres.class.getSimpleName() + "::static");
-
-    }
+public class VParametres extends Vue {
 
     private Spinner spinnerHauteur;
     private Spinner spinnerLargeur;
@@ -55,26 +49,27 @@ public class VParametres extends Vue{
         super.onFinishInflate();
 
         initialiser();
+
         demanderActions();
 
         installerListeners();
 
         installerObservateur();
+
     }
 
-
-
     private void initialiser(){
-        spinnerHauteur = this.findViewById(R.id.spinner_hauteur);
-        spinnerLargeur = this.findViewById(R.id.spinner_largeur);
-        spinnerPourGagner = this.findViewById(R.id.spinner_pour_gagner);
+
+        spinnerHauteur = findViewById(R.id.spinner_hauteur);
+        spinnerLargeur = findViewById(R.id.spinner_largeur);
+        spinnerPourGagner = findViewById(R.id.spinner_pour_gagner);
 
         initialiserSpinner(spinnerHauteur);
         initialiserSpinner(spinnerLargeur);
         initialiserSpinner(spinnerPourGagner);
 
-        installerListeners();
     }
+
     private void demanderActions() {
 
         actionHauteur = ControleurAction.demanderAction(GCommande.CHOISIR_HAUTEUR);
@@ -82,18 +77,25 @@ public class VParametres extends Vue{
         actionPourGagner = ControleurAction.demanderAction(GCommande.CHOISIR_POUR_GAGNER);
 
     }
+
+
     private void initialiserSpinner(Spinner spinner){
+
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
     }
 
     private void installerListeners() {
+
         installerListenerHauteur();
         installerListenerLargeur();
         installerListenerPourGagner();
+
     }
 
     private void installerListenerHauteur(){
+
         spinnerHauteur.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,7 +103,6 @@ public class VParametres extends Vue{
 
                 actionHauteur.setArguments(leChoix);
                 actionHauteur.executerDesQuePossible();
-
             }
 
             @Override
@@ -112,6 +113,7 @@ public class VParametres extends Vue{
     }
 
     private void installerListenerLargeur(){
+
         spinnerLargeur.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -130,6 +132,7 @@ public class VParametres extends Vue{
     }
 
     private void installerListenerPourGagner(){
+
         spinnerPourGagner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -146,6 +149,7 @@ public class VParametres extends Vue{
             }
         });
     }
+
     private void installerObservateur() {
 
         ControleurObservation.observerModele(MParametres.class.getSimpleName(),
@@ -158,6 +162,7 @@ public class VParametres extends Vue{
                 });
 
     }
+
     private void observerParametres(Modele modele){
         try{
 
@@ -171,6 +176,7 @@ public class VParametres extends Vue{
 
         }
     }
+
     private void afficherLesChoix(MParametres mParametres){
 
         afficherChoixHauteur(mParametres);
@@ -231,4 +237,5 @@ public class VParametres extends Vue{
             }
         }
     }
+
 }

@@ -3,13 +3,13 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import ca.cours5b5.vladimirchrisphonte.R;
 
+import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
-public class VCase  extends AppCompatButton {
 
-    //constructeurs
+public class VCase extends AppCompatButton {
+
     public VCase(Context context) {
         super(context);
         initialiser();
@@ -62,4 +62,5 @@ public class VCase  extends AppCompatButton {
                 break;
         }
     }
+
 }

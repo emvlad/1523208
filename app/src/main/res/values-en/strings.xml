@@ -2,7 +2,6 @@
 <resources>
 
 
-
     <string name="bonjour">Hello!</string>
     <string name="paysage">landscape</string>
 
@@ -12,13 +11,9 @@
 
     <string name="parametres">Parameters</string>
 
-    <string name="jouer">PLAY</string>
-    <string name="joueur1">PLAYER 1</string>
-    <string name="joueur2">PLAYER 2</string>
+    <string name="jouer">Play</string>
 
-    <string name="entete">Head</string>
-
-
-
+    <string name="joueur1">player1</string>
+    <string name="joueur2">player2</string>
 
 </resources>

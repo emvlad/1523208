@@ -6,14 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.vladimirchrisphonte.donnees.SourceDeDonnees;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
+import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
-import donnees.Disque;
-import donnees.SourceDeDonnees;
+import ca.cours5b5.vladimirchrisphonte.donnees.Disque;
 
-public class ControleurModeles {
+public final class ControleurModeles {
 
     private ControleurModeles(){}
 
@@ -63,6 +64,8 @@ public class ControleurModeles {
 
         return modele;
     }
+
+
     private static Modele chargerViaSequenceDeChargement(final String nomModele){
 
         Modele modele = creerModeleSelonNom(nomModele);
@@ -94,6 +97,8 @@ public class ControleurModeles {
         }
 
     }
+
+
     private static Modele creerModeleSelonNom(String nomModele) throws ErreurModele {
 
         if(nomModele.equals(MParametres.class.getSimpleName())){
@@ -130,6 +135,5 @@ public class ControleurModeles {
             }
         }
     }
-
 
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ca.cours5b5.vladimirchrisphonte.vues.VParametres
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ca.cours5b5.vladimirchrisphonte.vues.VParametres xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
     tools:context=".activites.AParametres"
     tools:layout_editor_absoluteY="81dp">
 
@@ -91,4 +89,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spinner_largeur"
         app:layout_constraintTop_toTopOf="@+id/texte_pour_gagner" />
+
 </ca.cours5b5.vladimirchrisphonte.vues.VParametres>

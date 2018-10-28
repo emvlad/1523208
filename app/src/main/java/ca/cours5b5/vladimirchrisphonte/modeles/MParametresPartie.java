@@ -1,6 +1,5 @@
 package ca.cours5b5.vladimirchrisphonte.modeles;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +8,7 @@ import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.AttributSerialisable;
 
 public class MParametresPartie extends Modele {
+
     @AttributSerialisable
     public Integer hauteur;
     protected final String __hauteur = "hauteur";
@@ -109,4 +109,3 @@ public class MParametresPartie extends Modele {
     }
 
 }
-

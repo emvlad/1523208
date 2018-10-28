@@ -11,7 +11,7 @@ public class MColonne extends Modele {
 
     private List<GCouleur> jetons;
 
-    public MColonne() {
+    public MColonne(){
 
         jetons = new ArrayList<>();
 
@@ -44,4 +44,5 @@ public class MColonne extends Modele {
     public int nombreDeJetons() {
         return jetons.size();
     }
+
 }

@@ -2,9 +2,7 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
-import android.view.View;
-import android.widget.AdapterView;
+import android.util.Log;
 
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
@@ -14,11 +12,11 @@ import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
+
 public class VPartie extends Vue {
 
-    public VGrille grille;
+    private VGrille grille;
 
-    //constructeurs
     public VPartie(Context context) {
         super(context);
     }
@@ -31,7 +29,6 @@ public class VPartie extends Vue {
         super(context, attrs, defStyleAttr);
     }
 
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -41,11 +38,13 @@ public class VPartie extends Vue {
         observerPartie();
 
     }
+
     private void initialiser() {
 
-        grille = findViewById(R.id.vgrille);
+        grille = findViewById(R.id.grille);
 
     }
+
     private void observerPartie() {
 
         ControleurObservation.observerModele(MPartie.class.getSimpleName(),
@@ -93,12 +92,11 @@ public class VPartie extends Vue {
         }
 
     }
+
     private void miseAJourGrille(MPartie partie){
 
         grille.afficherJetons(partie.getGrille());
 
     }
 
-
 }
-

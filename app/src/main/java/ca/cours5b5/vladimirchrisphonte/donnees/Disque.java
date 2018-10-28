@@ -1,4 +1,4 @@
-package donnees;
+package ca.cours5b5.vladimirchrisphonte.donnees;
 
 import android.util.Log;
 
@@ -13,7 +13,7 @@ import java.util.Map;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
-public class Disque  extends SourceDeDonnees {
+public final class Disque extends SourceDeDonnees {
 
     private static final Disque instance = new Disque();
 
@@ -21,11 +21,9 @@ public class Disque  extends SourceDeDonnees {
         return instance;
     }
 
-
     private File repertoireRacine;
 
-    private Disque() {
-    }
+    private Disque() {}
 
     public void setRepertoireRacine(File repertoireRacine) {
 
@@ -33,9 +31,9 @@ public class Disque  extends SourceDeDonnees {
 
     }
 
-
     @Override
     public Map<String, Object> chargerModele(String cheminSauvegarde) {
+
         File fichier = getFichier(cheminSauvegarde);
 
         try {
@@ -81,6 +79,7 @@ public class Disque  extends SourceDeDonnees {
         }
     }
 
+
     private File getFichier(String nomModele) {
 
         String nomFichier = getNomFichier(nomModele);
@@ -94,6 +93,5 @@ public class Disque  extends SourceDeDonnees {
         return nomModele + GConstantes.EXTENSION_PAR_DEFAUT;
 
     }
-
 
 }

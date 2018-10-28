@@ -4,6 +4,7 @@ import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 
+
 public abstract class Modele {
 
     public abstract void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation;

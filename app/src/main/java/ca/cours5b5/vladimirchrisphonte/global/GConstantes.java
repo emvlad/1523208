@@ -1,13 +1,8 @@
 package ca.cours5b5.vladimirchrisphonte.global;
 
+public final class GConstantes {
 
-import android.util.Log;
-
-public class GConstantes {
-
-    static{
-        Log.d("Atelier04", GConstantes.class.getSimpleName() + "::static");
-    }
+    private GConstantes(){}
 
     public static final int LARGEUR_MIN = 4;
     public static final int LARGEUR_MAX = 10;
@@ -18,10 +13,8 @@ public class GConstantes {
     public static final int HAUTEUR_PAR_DEFAUT = 6;
 
     public static final int POUR_GAGNER_MIN = 3;
-    public static final int POUR_GAGNER_MAX = 5;
     public static final int POUR_GAGNER_PAR_DEFAUT = 4;
 
     public static final String EXTENSION_PAR_DEFAUT=".json";
-    public static final String cle = "MParametres";
 
 }
