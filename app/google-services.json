@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "857816866972",
+    "firebase_url": "https://vlad-c402d.firebaseio.com",
+    "project_id": "vlad-c402d",
+    "storage_bucket": "vlad-c402d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857816866972:android:1bcd602319e07893",
+        "android_client_info": {
+          "package_name": "ca.cours5b5.vladimirchrisphonte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857816866972-53iqldljojn5qlrje7qoudfe7vtgumho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.cours5b5.vladimirchrisphonte",
+            "certificate_hash": "8b7b62a26b0f6818f258fb84826264a9afa51137"
+          }
+        },
+        {
+          "client_id": "857816866972-pnebdo7be0a7f6m61hav0gppd1h25g9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-aPVnJym5f2gCvTyClzun1910Zv_IA_4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857816866972-pnebdo7be0a7f6m61hav0gppd1h25g9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
