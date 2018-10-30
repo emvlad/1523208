@@ -31,6 +31,8 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         fournirActionOuvrirMenuParametres();
 
         fournirActionDemarrerPartie();
+
+        fournirConnexion();
     }
 
     private void fournirActionOuvrirMenuParametres() {
@@ -60,6 +62,18 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                 });
     }
 
+    private void fournirConnexion(){
+
+        ControleurAction.fournirAction(this,
+                GCommande.CONNEXION,
+                new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                transitionConnexion();
+            }
+        });
+    }
+
 
 
     private void transitionParametres(){
@@ -76,7 +90,39 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
     }
 
+    private void transitionConnexion(){
+        List<AuthUI.IdpConfig> fournisseursDeConnexion = new ArrayList<>();
+
+        fournisseursDeConnexion.add(new AuthUI.IdpConfig.GoogleBuilder().build());
+        fournisseursDeConnexion.add(new AuthUI.IdpConfig.EmailBuilder().build());
+        fournisseursDeConnexion.add(new AuthUI.IdpConfig.PhoneBuilder().build());
+
+        Intent intentionConnexion = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(fournisseursDeConnexion)
+                .build();
+
+        this.startActivityForResult(intentionConnexion,  123);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 123 ) {
+
+            if (resultCode == RESULT_OK) {
+
+                // Connexion réussie
 
 
+            } else {
 
+                // connexion échouée
+            }
+        }
+    }
+
+    private void transitionDeConnexion(){
+
+    }
 }

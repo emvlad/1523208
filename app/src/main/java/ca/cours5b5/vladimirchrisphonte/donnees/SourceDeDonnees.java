@@ -2,6 +2,8 @@ package ca.cours5b5.vladimirchrisphonte.donnees;
 
 import java.util.Map;
 
+import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
+
 
 public abstract class SourceDeDonnees {
 
@@ -11,10 +13,17 @@ public abstract class SourceDeDonnees {
 
 
 
+    public String getNomModele(String cheminSauvegarde){
+
+
+        return cheminSauvegarde.split(GConstantes.EXTENSION_PAR_DEFAUT)[0];
+
+    }
+
+
+
 
     public abstract void detruireSauvegarde(String cheminSauvegarde);
-
-    public abstract String getNomModele(String cheminSauvegarde);
 
 
 

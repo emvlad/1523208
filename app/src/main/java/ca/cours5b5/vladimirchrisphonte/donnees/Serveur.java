@@ -1,5 +1,8 @@
 package ca.cours5b5.vladimirchrisphonte.donnees;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Map;
 
 
@@ -20,12 +23,9 @@ public final class Serveur extends SourceDeDonnees {
 
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
-        /*
-         * Sauvegarder sur le serveur
-         *
-         * Utiliser FirebaseDatabase et DatabaseReference
-         *
-         */
+
+        DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+        noeud.setValue(objetJson);
     }
 
     @Override
@@ -36,18 +36,7 @@ public final class Serveur extends SourceDeDonnees {
         return null;
     }
 
-    @Override
-    public String getNomModele(String cheminSauvegarde) {
 
-        String nomModele= null;
-        String nom = cheminSauvegarde.getClass().getSimpleName();
-
-        if (nom != null) {
-            nomModele =nom;
-        }
-
-        return nomModele;
-    }
 
     @Override
     public void detruireSauvegarde(String cheminSauvegarde){
@@ -58,12 +47,3 @@ public final class Serveur extends SourceDeDonnees {
 
     }
 }
-
-/*Tickets:
--Serveur
--Usager courant
--Connexion
--Déconnexion
--Écrire - Effacer dans la BD.
-
- */

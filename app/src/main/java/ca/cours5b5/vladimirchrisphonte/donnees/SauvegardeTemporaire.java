@@ -18,7 +18,7 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
     @Override
     public Map<String, Object> chargerModele(String cheminSauvegarde) {
 
-        if(bundle != null && bundle.containsKey(cheminSauvegarde)){
+        if(bundle != null && bundle.containsKey(getCle(cheminSauvegarde))){
 
             String json = bundle.getString(cheminSauvegarde);
 
@@ -51,19 +51,7 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
     }
 
-    @Override
-    public String getNomModele(String cheminSauvegarde) {
 
-        String nomModele= null;
-        String nom = cheminSauvegarde.getClass().getSimpleName();
-
-        if (nom != null) {
-             nomModele =nom;
-        }
-
-        return nomModele;
-
-    }
 
     @Override
     public void detruireSauvegarde(String cheminSauvegarde) {

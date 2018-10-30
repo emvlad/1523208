@@ -19,6 +19,9 @@ public class VMenuPrincipal extends Vue {
     private Button boutonPartie;
     private Action actionPartie;
 
+    private Button boutonConnexion;
+    private Action actionConnexion;
+
     public VMenuPrincipal(Context context) {
         super(context);
     }
@@ -50,6 +53,8 @@ public class VMenuPrincipal extends Vue {
 
         boutonPartie = findViewById(R.id.bouton_partie);
 
+        boutonConnexion = findViewById(R.id.button_connexion);
+
     }
 
     private void demanderActions() {
@@ -58,14 +63,21 @@ public class VMenuPrincipal extends Vue {
 
         actionPartie = ControleurAction.demanderAction(GCommande.DEMARRER_PARTIE);
 
+        actionConnexion =  ControleurAction.demanderAction(GCommande.CONNEXION);
+
     }
 
+
+
+    //listeners
 
     private void installerListeners() {
 
         installerListenerParametres();
 
         installerListenerPartie();
+
+        installerListenerConnexion();
 
     }
 
@@ -91,4 +103,47 @@ public class VMenuPrincipal extends Vue {
 
     }
 
+    private void installerListenerConnexion() {
+
+        boutonConnexion.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionConnexion.executerDesQuePossible();
+            }
+        });
+
+    }
+
 }
+
+
+   /*Code pour réagir à la fin de la connexion (à ajouter à une activité):
+
+
+
+/*Code pour la déconnexion
+
+AuthUI.getInstance()
+        .signOut(this)
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onComplete(@NonNull Task<Void> task) {
+
+                // Déconnexion terminée
+            }
+        });
+
+
+ */
+/*
+    Firebase: écrire dans la base de données
+
+    *L'usager doit être authentifié pour accéder à la base de données
+
+  * Votre base de données est un arbre Json
+  * 1-Pour écrire il faut un chemin vers un noeud et une valeur
+  * 2-Pour détruire la valeur il faut le chemin vers le noeud
+              * Ensuite, on demande de détruire ce noeud:
+             * * ATTENTION: tout les sous-noeuds sont aussi détruits
+                noeud.removeValue();
+
+*/

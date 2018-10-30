@@ -79,38 +79,30 @@ public final class Disque extends SourceDeDonnees {
         }
     }
 
-    @Override
-    public void detruireSauvegarde(String cheminSauvegarde) {
 
-    }
+      private File getFichier(String cheminSauvegarde) {
 
-    @Override
-    public String getNomModele(String cheminSauvegarde) {
-        return null;
-    }
-
-
-    private File getFichier(String nomModele) {
-
-        String nomFichier = getNomFichier(nomModele);
+        String nomFichier = getNomModele(cheminSauvegarde);
 
         return new File(repertoireRacine, nomFichier);
 
     }
 
+/*
     private String getNomFichier(String nomModele) {
 
         return nomModele + GConstantes.EXTENSION_PAR_DEFAUT;
 
     }
 
-  /*  private File getFichier(String cheminSauvegarde) {
-
-        String nomModele = getNomModele(cheminSauvegarde);
-
-        return new File(repertoireRacine, nomModele);
+*/
+    @Override
+    public void detruireSauvegarde(String cheminSauvegarde) {
 
     }
-    */
+
+
+
+
 
 }
