@@ -24,6 +24,9 @@ public final class ControleurModeles {
 
     private static List<SourceDeDonnees> listeDeSauvegardes;
 
+    private static String cheminSauvegarde = null;
+    private static String idUsager = null;
+
     static {
 
         modelesEnMemoire = new HashMap<>();
@@ -134,6 +137,17 @@ public final class ControleurModeles {
 
             }
         }
+    }
+
+
+
+    private static String getCheminSauvegarde(String nomModele){
+
+       // idUsager = getID?;
+
+        cheminSauvegarde = nomModele +"/"+ idUsager;
+
+        return cheminSauvegarde;
     }
 
 }

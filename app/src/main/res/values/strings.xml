@@ -15,9 +15,10 @@
 
     <string name="jouer">Jouer</string>
 
-    <string name="entete">↓\n↓</string>
+    <string name="entete" translatable="false">↓\n↓</string>
 
     <string name="joueur1">joueur1</string>
     <string name="joueur2">joueur2</string>
+    <string name="connexion">Connexion</string>
 
 </resources>

@@ -3,11 +3,17 @@ package ca.cours5b5.vladimirchrisphonte.activites;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.firebase.ui.auth.AuthUI;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.vladimirchrisphonte.global.GCommande;
+import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 
 public class AMenuPrincipal extends Activite implements Fournisseur {
 
@@ -30,8 +36,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
     private void fournirActionOuvrirMenuParametres() {
 
         ControleurAction.fournirAction(this,
-                GCommande.OUVRIR_MENU_PARAMETRES,
-                new ListenerFournisseur() {
+                GCommande.OUVRIR_MENU_PARAMETRES, new ListenerFournisseur() {
                     @Override
                     public void executer(Object... args) {
 
@@ -55,6 +60,8 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                 });
     }
 
+
+
     private void transitionParametres(){
 
         Intent intentionParametres = new Intent(this, AParametres.class);
@@ -68,5 +75,8 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         startActivity(intentionParametres);
 
     }
+
+
+
 
 }

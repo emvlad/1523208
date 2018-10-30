@@ -11,6 +11,8 @@ public enum GCommande {
     OUVRIR_MENU_PARAMETRES,
     DEMARRER_PARTIE,
 
+
+
     JOUER_COUP_ICI,
 
 }

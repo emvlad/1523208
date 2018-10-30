@@ -38,9 +38,41 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         if(bundle != null){
 
             String json = Jsonification.enChaineJson(objetJson);
-            bundle.putString(cheminSauvegarde, json);
+            bundle.putString(getCle(cheminSauvegarde), json);
 
         }
     }
+
+    private String getCle(String cheminSauvegarde){
+
+        String cleSauvegarde = getNomModele(cheminSauvegarde);
+
+        return  cleSauvegarde;
+
+    }
+
+    @Override
+    public String getNomModele(String cheminSauvegarde) {
+
+        String nomModele= null;
+        String nom = cheminSauvegarde.getClass().getSimpleName();
+
+        if (nom != null) {
+             nomModele =nom;
+        }
+
+        return nomModele;
+
+    }
+
+    @Override
+    public void detruireSauvegarde(String cheminSauvegarde) {
+
+    }
+
+
+
+
+
 
 }

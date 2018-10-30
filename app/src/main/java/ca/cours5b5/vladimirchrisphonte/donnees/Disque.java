@@ -79,6 +79,16 @@ public final class Disque extends SourceDeDonnees {
         }
     }
 
+    @Override
+    public void detruireSauvegarde(String cheminSauvegarde) {
+
+    }
+
+    @Override
+    public String getNomModele(String cheminSauvegarde) {
+        return null;
+    }
+
 
     private File getFichier(String nomModele) {
 
@@ -93,5 +103,14 @@ public final class Disque extends SourceDeDonnees {
         return nomModele + GConstantes.EXTENSION_PAR_DEFAUT;
 
     }
+
+  /*  private File getFichier(String cheminSauvegarde) {
+
+        String nomModele = getNomModele(cheminSauvegarde);
+
+        return new File(repertoireRacine, nomModele);
+
+    }
+    */
 
 }
