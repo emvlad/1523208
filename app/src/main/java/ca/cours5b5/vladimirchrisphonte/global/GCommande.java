@@ -10,8 +10,11 @@ public enum GCommande {
 
     OUVRIR_MENU_PARAMETRES,
     DEMARRER_PARTIE,
-    CONNEXION,
 
-    JOUER_COUP_ICI,
+    CONNEXION,
+    DECONNEXION,
+
+    JOUER_COUP_ICI;
+
 
 }
