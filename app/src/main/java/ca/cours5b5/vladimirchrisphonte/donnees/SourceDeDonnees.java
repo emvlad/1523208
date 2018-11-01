@@ -20,29 +20,9 @@ public abstract class SourceDeDonnees {
 
     }
 
-
-
-
     public abstract void detruireSauvegarde(String cheminSauvegarde);
-
-
-
-
 }
 
 
 
 
-/*
-    Firebase: écrire dans la base de données
-
-    *L'usager doit être authentifié pour accéder à la base de données
-
-  * Votre base de données est un arbre Json
-  * 1-Pour écrire il faut un chemin vers un noeud et une valeur
-  * 2-Pour détruire la valeur il faut le chemin vers le noeud
-              * Ensuite, on demande de détruire ce noeud:
-             * * ATTENTION: tout les sous-noeuds sont aussi détruits
-                noeud.removeValue();
-
-*/

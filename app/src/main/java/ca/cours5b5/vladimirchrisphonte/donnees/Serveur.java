@@ -44,6 +44,10 @@ public final class Serveur extends SourceDeDonnees {
         /*
          * BONUS
          */
+        DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+        noeud.removeValue();
+
+
 
     }
 }

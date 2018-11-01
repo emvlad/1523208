@@ -162,6 +162,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                 disconnect.setVisibility(View.INVISIBLE);
                 connect.setVisibility(View.VISIBLE);
 
+
             }
         }
     }
