@@ -15,8 +15,10 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         this.bundle = bundle;
     }
 
+
+    //update ajout listener
     @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde) {
+    public Map<String, Object> chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
 
         if(bundle != null && bundle.containsKey(getCle(cheminSauvegarde))){
 
@@ -32,6 +34,7 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
         }
     }
+
 
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
@@ -50,8 +53,6 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         return  cleSauvegarde;
 
     }
-
-
 
     @Override
     public void detruireSauvegarde(String cheminSauvegarde) {

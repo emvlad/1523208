@@ -28,8 +28,10 @@ public final class Serveur extends SourceDeDonnees {
         noeud.setValue(objetJson);
     }
 
+
+
     @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde) {
+    public Map<String, Object> chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
         /*
          * BONUS: est-ce possible d'implanter cette méthode avec cette signature?
          */

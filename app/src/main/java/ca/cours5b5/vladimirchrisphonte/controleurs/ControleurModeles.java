@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerGetModele;
 import ca.cours5b5.vladimirchrisphonte.donnees.Serveur;
 import ca.cours5b5.vladimirchrisphonte.donnees.SourceDeDonnees;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
@@ -24,8 +25,6 @@ public final class ControleurModeles {
     private static SourceDeDonnees[] sequenceDeChargement;
 
     private static List<SourceDeDonnees> listeDeSauvegardes;
-
-
 
     static {
 
@@ -56,7 +55,7 @@ public final class ControleurModeles {
         }
     }
 
-    static Modele getModele(final String nomModele){
+    static Modele getModele(final String nomModele, ListenerGetModele listenerGetModele){
 
         Modele modele = modelesEnMemoire.get(nomModele);
 
@@ -85,6 +84,7 @@ public final class ControleurModeles {
                 modele.aPartirObjetJson(objetJson);
                 break;
 
+
             }
 
         }
@@ -103,7 +103,7 @@ public final class ControleurModeles {
     }
 
 
-    private static Modele creerModeleSelonNom(String nomModele) throws ErreurModele {
+    private static Modele creerModeleSelonNom(String nomModele, final ListenerGetModele listenerGetModele) throws ErreurModele {
 
         if(nomModele.equals(MParametres.class.getSimpleName())){
 
@@ -122,6 +122,7 @@ public final class ControleurModeles {
         }
     }
 
+
     public static void detruireModele(String nomModele) {
 
         Modele modele = modelesEnMemoire.get(nomModele);
@@ -139,6 +140,47 @@ public final class ControleurModeles {
             }
         }
     }
+    private static void creerModeleEtChargerDonnees(final String nomModele,
+                                                    final ListenerGetModele listenerGetModele) {
+        /*
+         * Aussi: mémoriser le modèle dans modelesEnMemoire
+         */
+    }
+
+        private static void chargerDonnees(Modele modele,String nomModele,
+                ListenerGetModele listenerGetModele){
+
+        }
+
+            private static void chargementViaSequence(Modele modele,
+                    String cheminDeSauvegarde,
+                    ListenerGetModele listenerGetModele,int indiceSourceCourante){
+
+
+            }
+
+                private static void chargementViaSourceCouranteOuSuivante(final Modele modele,
+                final String cheminDeSauvegarde,
+                final ListenerGetModele listenerGetModele,final int indiceSourceCourante) {
+
+                }
+
+                    private static void terminerChargementAvecDonnees(Map<String, Object> objetJson,
+                            Modele modele,
+                            ListenerGetModele listenerGetModele) {
+
+                    }
+
+                        private static void terminerChargement(Modele modele,
+                                ListenerGetModele listenerGetModele) {
+
+                        }
+
+                            private static void chargementViaSourceSuivante(Modele modele,
+                                    String cheminDeSauvegarde,
+                                    ListenerGetModele listenerGetModele,int indiceSourceCourante) {
+
+                            }
 
 
 

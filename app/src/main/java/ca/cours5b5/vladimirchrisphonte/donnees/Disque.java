@@ -10,7 +10,6 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Map;
 
-import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
 public final class Disque extends SourceDeDonnees {
@@ -31,8 +30,17 @@ public final class Disque extends SourceDeDonnees {
 
     }
 
+    //update parameters from superClass
     @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde) {
+    public Map<String, Object> chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+
+
+        return null;
+    }
+
+/*
+    @Override
+    public Map<String, Object> chargerModele(String cheminSauvegarde ) {
 
         File fichier = getFichier(cheminSauvegarde);
 
@@ -54,6 +62,7 @@ public final class Disque extends SourceDeDonnees {
 
         }
     }
+    */
 
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
@@ -70,17 +79,18 @@ public final class Disque extends SourceDeDonnees {
 
         } catch (FileNotFoundException e) {
 
-            Log.d("Atelier07", "File not found: " + cheminSauvegarde);
+            Log.d("Atelier12", "File not found: " + cheminSauvegarde);
 
         } catch (IOException e) {
 
-            Log.d("Atelier07", "IOException: " + cheminSauvegarde);
+            Log.d("Atelier12", "IOException: " + cheminSauvegarde);
 
         }
     }
 
 
-      private File getFichier(String cheminSauvegarde) {
+
+    private File getFichier(String cheminSauvegarde) {
 
         String nomFichier = getNomModele(cheminSauvegarde);
 
