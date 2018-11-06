@@ -9,7 +9,7 @@ public abstract class SourceDeDonnees {
 
   //  public abstract Map<String, Object> chargerModele(final String cheminSauvegarde);
  //update signature: 3 params
-  public abstract Map<String, Object> chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement);
+  public abstract void chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement);
 
 
     public abstract void sauvegarderModele(final String cheminSauvegarde, final Map<String, Object> objetJson);
@@ -18,8 +18,6 @@ public abstract class SourceDeDonnees {
         return cheminSauvegarde.split(GConstantes.EXTENSION_PAR_DEFAUT)[0];
 
     }
-
-
 
     public abstract void detruireSauvegarde(String cheminSauvegarde);
 }

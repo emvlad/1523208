@@ -11,7 +11,7 @@ import ca.cours5b5.vladimirchrisphonte.donnees.Serveur;
 import ca.cours5b5.vladimirchrisphonte.donnees.SourceDeDonnees;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
+
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 import ca.cours5b5.vladimirchrisphonte.donnees.Disque;
@@ -55,25 +55,41 @@ public final class ControleurModeles {
         }
     }
 
-    static Modele getModele(final String nomModele, ListenerGetModele listenerGetModele){
+    static void getModele(final String nomModele, final ListenerGetModele listenerGetModele){
 
         Modele modele = modelesEnMemoire.get(nomModele);
 
         if(modele == null){
 
-            modele =  chargerViaSequenceDeChargement(nomModele);
+            creerModeleEtChargerDonnees(nomModele, new ListenerGetModele() {
+                @Override
+                public void reagirAuModele(Modele modele) {
+
+                    listenerGetModele.reagirAuModele(modele);
+
+                }
+            });
+
+        } else {
+
+            listenerGetModele.reagirAuModele(modele);
 
         }
 
-        return modele;
     }
 
-
+/*
     private static Modele chargerViaSequenceDeChargement(final String nomModele){
 
-        Modele modele = creerModeleSelonNom(nomModele);
+        creerModeleSelonNom(nomModele, new ListenerGetModele() {
+            @Override
+            public void reagirAuModele(Modele modele) {
 
-        modelesEnMemoire.put(nomModele, modele);
+                modelesEnMemoire.put(nomModele, modele);
+
+
+            }
+        });
 
         for(SourceDeDonnees sourceDeDonnees : sequenceDeChargement){
 
@@ -90,7 +106,10 @@ public final class ControleurModeles {
         }
 
         return modele;
+
+
     }
+       */
 
     public static void sauvegarderModele(String nomModele) throws ErreurModele {
 
@@ -103,17 +122,29 @@ public final class ControleurModeles {
     }
 
 
-    private static Modele creerModeleSelonNom(String nomModele, final ListenerGetModele listenerGetModele) throws ErreurModele {
+    private static void creerModeleSelonNom(String nomModele, final ListenerGetModele listenerGetModele) throws ErreurModele {
 
         if(nomModele.equals(MParametres.class.getSimpleName())){
 
-            return new MParametres();
+            MParametres mParametres =  new MParametres();
+            listenerGetModele.reagirAuModele(mParametres);
 
         }else if(nomModele.equals(MPartie.class.getSimpleName())){
 
-            MParametres mParametres = (MParametres) getModele(MParametres.class.getSimpleName());
+             getModele(MParametres.class.getSimpleName(), new ListenerGetModele() {
+                 @Override
+                 public void reagirAuModele(Modele modele) {
 
-            return new MPartie(mParametres.getParametresPartie().cloner());
+                     MParametres mParametres = (MParametres) modele;
+
+                     MPartie mPartie = new MPartie(mParametres.getParametresPartie().cloner());
+                     listenerGetModele.reagirAuModele(mPartie);
+
+
+                 }
+             });
+
+
 
         }else{
 
@@ -145,10 +176,25 @@ public final class ControleurModeles {
         /*
          * Aussi: mémoriser le modèle dans modelesEnMemoire
          */
+
+        creerModeleSelonNom(nomModele, new ListenerGetModele() {
+            @Override
+            public void reagirAuModele(Modele modele) {
+
+                modelesEnMemoire.put(nomModele,modele);
+
+                listenerGetModele.reagirAuModele(modele);
+
+            }
+        });
+
+
     }
 
         private static void chargerDonnees(Modele modele,String nomModele,
                 ListenerGetModele listenerGetModele){
+
+
 
         }
 
@@ -182,7 +228,5 @@ public final class ControleurModeles {
 
                             }
 
-
-
-
 }
+
