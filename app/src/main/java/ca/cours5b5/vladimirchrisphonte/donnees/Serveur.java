@@ -34,7 +34,7 @@ public final class Serveur extends SourceDeDonnees {
 
 
     @Override
-    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+    public void chargerModele(String cheminSauvegarde, final ListenerChargement listenerChargement) {
         /*
          * BONUS: est-ce possible d'implanter cette méthode avec cette signature?
          */
@@ -49,6 +49,8 @@ public final class Serveur extends SourceDeDonnees {
                     Map<String, Object> objetJson = (Map<String, Object>) dataSnapshot.getValue();
 
                     // Données lues
+                    listenerChargement.reagirSucces(objetJson);
+
 
                 }else{
 
@@ -72,9 +74,6 @@ public final class Serveur extends SourceDeDonnees {
     @Override
     public void detruireSauvegarde(String cheminSauvegarde){
 
-        /*
-         * BONUS
-         */
         DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
         noeud.removeValue();
 

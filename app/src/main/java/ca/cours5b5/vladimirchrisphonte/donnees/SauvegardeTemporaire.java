@@ -2,6 +2,10 @@ package ca.cours5b5.vladimirchrisphonte.donnees;
 
 import android.os.Bundle;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 
@@ -18,21 +22,30 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
     //update ajout listener
     @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement)   {
 
-        if(bundle != null && bundle.containsKey(getCle(cheminSauvegarde))){
 
-            String json = bundle.getString(cheminSauvegarde);
+       try {
+                if(bundle != null && bundle.containsKey(getCle(cheminSauvegarde))){
 
-            Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
+                    String json = bundle.getString(cheminSauvegarde);
 
-            return objetJson;
+                    Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
 
-        }else{
+                    listenerChargement.reagirSucces(objetJson);}
 
-            return null;
+                    else{
+
+                }
+
+      }
+       catch (Exception e) {
+
+           listenerChargement.reagirErreur(e);
+
 
         }
+
     }
 
 
@@ -56,6 +69,8 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
     @Override
     public void detruireSauvegarde(String cheminSauvegarde) {
+        DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+        noeud.removeValue();
 
     }
 
