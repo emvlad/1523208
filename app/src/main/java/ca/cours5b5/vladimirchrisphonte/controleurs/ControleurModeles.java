@@ -69,10 +69,6 @@ public final class ControleurModeles {
                 }
             });
 
-
-
-
-
         } else {
 
             //modele n'est pas null
@@ -121,7 +117,7 @@ public final class ControleurModeles {
         }
         else{
 
-
+            terminerChargement(modele,listenerGetModele);
         }
 
     }
@@ -198,22 +194,24 @@ public final class ControleurModeles {
             @Override
             public void reagirSucces(Map<String, Object> objetJson) {
 
-                //terminerChargementAvecDonnees( objetJson, modele, listenerGetModele);
+                terminerChargementAvecDonnees( objetJson, modele, listenerGetModele);
 
             }
 
             @Override
             public void reagirErreur(Exception e) {
 
+                chargementViaSourceSuivante( modele,cheminDeSauvegarde,
+                       listenerGetModele,indiceSourceCourante);
+
             }
         });
-
-
-
-
     }
+
     private static void terminerChargementAvecDonnees(Map<String, Object> objetJson,
                             Modele modele, ListenerGetModele listenerGetModele) {
+
+        terminerChargement(modele,listenerGetModele);
 
     }
 
@@ -228,15 +226,11 @@ public final class ControleurModeles {
                                     String cheminDeSauvegarde,
                                     ListenerGetModele listenerGetModele,int indiceSourceCourante) {
 
-
-
+        chargementViaSequence(modele,cheminDeSauvegarde,listenerGetModele,indiceSourceCourante);
 
     }
 
-
-
-
-/*
+    /*
     private static Modele chargerViaSequenceDeChargement(final String nomModele){
 
         creerModeleSelonNom(nomModele, new ListenerGetModele() {
@@ -251,7 +245,7 @@ public final class ControleurModeles {
 
         for(SourceDeDonnees sourceDeDonnees : sequenceDeChargement){
 
-            Map<String, Object> objetJson = sourceDeDonnees.chargerModele(nomModele);
+            Map<String, Object> objetJson = sourceDeDonnees.chargerModele();
 
             if(objetJson != null){
 
@@ -267,7 +261,7 @@ public final class ControleurModeles {
 
 
     }
-       */
+*/
 
 }
 
