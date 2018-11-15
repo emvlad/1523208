@@ -56,45 +56,31 @@ public class VPartie extends Vue {
     }
     private void observerPartie() {
 
-        /*
-         * Appeler getNomModele() pour installer l'observation
-         *
-         */
-        ControleurObservation.observerModele(getNomModele(),new ListenerObservateur(){
+         ControleurObservation.observerModele(getNomModele(),new ListenerObservateur(){
+
+            @Override
+            public void reagirNouveauModele(Modele modele) {
+
+                MPartie partie = getPartie(modele);
+
+                preparerAffichage(partie);
+
+                miseAJourGrille(partie);
+
+            }
 
             @Override
             public void reagirChangementAuModele(Modele modele) {
 
                 MPartie partie = getPartie(modele);
 
+                miseAJourGrille(partie);
+
             }
         });
     }
-/*just removed from observerPartie:
-        ControleurObservation.observerModele(MPartie.class.getSimpleName(),
-                new ListenerObservateur() {
-                    @Override
-                    public void reagirNouveauModele(Modele modele) {
 
-                        MPartie partie = getPartie(modele);
 
-                        preparerAffichage(partie);
-
-                        miseAJourGrille(partie);
-
-                    }
-
-                    @Override
-                    public void reagirChangementAuModele(Modele modele) {
-
-                        MPartie partie = getPartie(modele);
-
-                        miseAJourGrille(partie);
-
-                    }
-                });
-    }
-*/
     private void preparerAffichage(MPartie partie) {
 
         MParametresPartie parametresPartie = partie.getParametres();

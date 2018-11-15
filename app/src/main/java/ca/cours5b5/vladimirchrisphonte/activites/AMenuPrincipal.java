@@ -148,16 +148,10 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
             if (resultCode == RESULT_OK) {
 
-                // Connexion réussie
-                // affiche le bouton de déconnexion
-
                 disconnect.setVisibility(View.VISIBLE);
                 connect.setVisibility(View.INVISIBLE);
 
             } else {
-
-                // connexion échouée
-                //affiche le bouton de connexion
 
                 disconnect.setVisibility(View.INVISIBLE);
                 connect.setVisibility(View.VISIBLE);
@@ -168,6 +162,10 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
     }
 
     private void fournirActionJoindreOuCreerPartieReseau() {
+
+
+
+
     }
 
 

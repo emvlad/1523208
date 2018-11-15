@@ -19,10 +19,7 @@ public class MPartieReseau extends MPartie implements Fournisseur, Identifiable 
     @Override
     public String getId() {
 
-        /*
-         * utiliser l'id du joueur hôte
-         */
-        return idJoueurHote;
+       return idJoueurHote;
     }
 
     public MPartieReseau(MParametresPartie parametres) {
@@ -32,37 +29,41 @@ public class MPartieReseau extends MPartie implements Fournisseur, Identifiable 
     }
 
     private void fournirActionRecevoirCoup() {
-        @Override
-        protected void fournirActionPlacerJeton () {
-            /*
-             * En plus de jouer le coup, le transmettre via
-             * le ControleurPartieReseau
-             *
-             * ATTENTION au @Override. Le code qui fournit l'action
-             * PLACER_JETON dans la classe parent MPartie
-             * ne doit **pas** s'exécuter
-             */
 
-        }
 
     }
+    @Override
+    protected void fournirActionPlacerJeton () {
+        /*
+         * En plus de jouer le coup, le transmettre via
+         * le ControleurPartieReseau
+         *
+         * ATTENTION au @Override. Le code qui fournit l'action
+         * PLACER_JETON dans la classe parent MPartie
+         * ne doit **pas** s'exécuter
+         */
 
+    }
+    @Override
+    public void aPartirObjetJson (Map < String, Object > objetJson) throws ErreurSerialisation {
+        /*
+         * charger les champs
+         * appeler aussi super
+         */
+    }
+
+    @Override
+    public Map<String, Object> enObjetJson () throws ErreurSerialisation {
+        /*
+         * sauvegarder les champs
+         * appeler aussi super
+         */
+        return null;
+    }
     private void recevoirCoupReseau(int colonne) {
-        @Override
-        public void aPartirObjetJson (Map < String, Object > objetJson) throws ErreurSerialisation {
-            /*
-             * charger les champs
-             * appeler aussi super
-             */
+
 
         }
-            @Override
-            public Map<String, Object> enObjetJson () throws ErreurSerialisation {
-                /*
-                 * sauvegarder les champs
-                 * appeler aussi super
-                 */
-            }
+
         }
-    }
 

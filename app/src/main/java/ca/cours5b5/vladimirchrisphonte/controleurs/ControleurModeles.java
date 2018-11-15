@@ -11,11 +11,14 @@ import ca.cours5b5.vladimirchrisphonte.donnees.ListenerChargement;
 import ca.cours5b5.vladimirchrisphonte.donnees.Serveur;
 import ca.cours5b5.vladimirchrisphonte.donnees.SourceDeDonnees;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
+import ca.cours5b5.vladimirchrisphonte.modeles.Identifiable;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 import ca.cours5b5.vladimirchrisphonte.donnees.Disque;
+
+import ca.cours5b5.vladimirchrisphonte.usagers.UsagerCourant;
 
 public final class ControleurModeles {
 
@@ -79,9 +82,6 @@ public final class ControleurModeles {
     }
     private static void creerModeleEtChargerDonnees(final String nomModele,
                                                     final ListenerGetModele listenerGetModele) {
-        /*
-         * Aussi: mémoriser le modèle dans modelesEnMemoire
-         */
 
         creerModeleSelonNom(nomModele, new ListenerGetModele() {
             @Override
@@ -93,7 +93,6 @@ public final class ControleurModeles {
 
             }
         });
-
 
 
     }
@@ -122,7 +121,6 @@ public final class ControleurModeles {
 
     }
 
-
     public static void sauvegarderModele(String nomModele) throws ErreurModele {
 
         for(SourceDeDonnees source : listeDeSauvegardes){
@@ -132,7 +130,6 @@ public final class ControleurModeles {
         }
 
     }
-
 
     private static void creerModeleSelonNom(String nomModele, final ListenerGetModele listenerGetModele) throws ErreurModele {
 
@@ -230,6 +227,27 @@ public final class ControleurModeles {
 
     }
 
+    static String getCheminSauvegarde(String nomModele) {
+
+        String cheminSauvegarde = null;
+
+         Modele modele =modelesEnMemoire.get(nomModele);
+
+        if (modele !=null  && modele instanceof Identifiable){
+
+            cheminSauvegarde = nomModele+ "/" + ((Identifiable) modele).getId();
+
+        } else{
+            cheminSauvegarde = nomModele+ "/" + UsagerCourant.getId();
+        }
+
+        return cheminSauvegarde;
+    }
+
+}
+
+
+//extra
     /*
     private static Modele chargerViaSequenceDeChargement(final String nomModele){
 
@@ -259,28 +277,5 @@ public final class ControleurModeles {
 
         return modele;
 
-
     }
 */
-
-    static String getCheminSauvegarde(String nomModele) {
-        /*
-         * si le modèle est Identifiable, alors le chemin est nomModele/idModele
-         * sinon, le chemin est nomModele/idUsager
-         *
-         */
-
-        String cheminSauvegarde =null;
-
-        if (nomModele.getId !=null){
-
-            cheminSauvegarde = nomModele/idModele;
-        } else{
-            cheminSauvegarde = nomModele/idUsager;
-        }
-
-        return cheminSauvegarde;
-    }
-
-}
-

@@ -17,7 +17,6 @@ public class UsagerCourant {
             usagerConnected = true;
         }
 
-
         return usagerConnected;
     }
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ca.cours5b5.vladimirchrisphonte.activites.APartie">
+    tools:context="ca.cours5b5.vladimirchrisphonte.activites.APartie"
+    tools:ignore="MissingDefaultResource">
 
     <ca.cours5b5.vladimirchrisphonte.vues.VGrille
         android:id="@+id/grille"
