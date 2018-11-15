@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Map;
 
+import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
 public final class Disque extends SourceDeDonnees {
@@ -52,7 +53,6 @@ public final class Disque extends SourceDeDonnees {
 
 
         } catch (IOException e) {
-
             listenerChargement.reagirErreur(e);
 
         }
@@ -94,14 +94,14 @@ public final class Disque extends SourceDeDonnees {
 
     }
 
-/*
+
     private String getNomFichier(String nomModele) {
 
         return nomModele + GConstantes.EXTENSION_PAR_DEFAUT;
 
     }
 
-*/
+
     @Override
     public void detruireSauvegarde(String cheminSauvegarde) {
         DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);

@@ -167,6 +167,16 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         }
     }
 
+    private void fournirActionJoindreOuCreerPartieReseau() {
+    }
 
 
-}
+        private void transitionPartieReseau () {
+            /*
+             * Ajouter le FIXME_JSON_PARTIE_RESEAU dans les Extras de l'intention
+             *
+             */
+
+
+        }
+    }

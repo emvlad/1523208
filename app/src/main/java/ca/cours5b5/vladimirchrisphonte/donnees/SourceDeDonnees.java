@@ -13,6 +13,7 @@ public abstract class SourceDeDonnees {
 
 
     public abstract void sauvegarderModele(final String cheminSauvegarde, final Map<String, Object> objetJson);
+
     public String getNomModele(String cheminSauvegarde){
 
         return cheminSauvegarde.split(GConstantes.EXTENSION_PAR_DEFAUT)[0];

@@ -15,6 +15,8 @@ import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
 public class VPartie extends Vue {
 
+
+
     private VGrille grille;
 
     public VPartie(Context context) {
@@ -45,8 +47,30 @@ public class VPartie extends Vue {
 
     }
 
+
+    protected String getNomModele(){
+
+       String nomModele = MPartie.class.getSimpleName();
+
+        return nomModele;
+    }
     private void observerPartie() {
 
+        /*
+         * Appeler getNomModele() pour installer l'observation
+         *
+         */
+        ControleurObservation.observerModele(getNomModele(),new ListenerObservateur(){
+
+            @Override
+            public void reagirChangementAuModele(Modele modele) {
+
+                MPartie partie = getPartie(modele);
+
+            }
+        });
+    }
+/*just removed from observerPartie:
         ControleurObservation.observerModele(MPartie.class.getSimpleName(),
                 new ListenerObservateur() {
                     @Override
@@ -70,7 +94,7 @@ public class VPartie extends Vue {
                     }
                 });
     }
-
+*/
     private void preparerAffichage(MPartie partie) {
 
         MParametresPartie parametresPartie = partie.getParametres();

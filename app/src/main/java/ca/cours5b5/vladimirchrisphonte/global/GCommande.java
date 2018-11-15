@@ -14,6 +14,9 @@ public enum GCommande {
     CONNEXION,
     DECONNEXION,
 
+    JOINDRE_OU_CREER_PARTIE_RESEAU,
+    RECEVOIR_COUP_RESEAU,
+
     JOUER_COUP_ICI;
 
 

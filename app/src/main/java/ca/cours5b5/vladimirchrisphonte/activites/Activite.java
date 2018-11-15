@@ -29,7 +29,11 @@ public abstract class Activite extends AppCompatActivity {
                 Serveur.getInstance();
 
 
-
+        /*
+         * ajouter Transition dans la séquence de chargement
+         * utiliser les extras de l'intention pour initialiser Transition
+         *
+         */
 
         
     }

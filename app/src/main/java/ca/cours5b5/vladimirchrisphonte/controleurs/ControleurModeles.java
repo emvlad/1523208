@@ -263,5 +263,24 @@ public final class ControleurModeles {
     }
 */
 
+    static String getCheminSauvegarde(String nomModele) {
+        /*
+         * si le modèle est Identifiable, alors le chemin est nomModele/idModele
+         * sinon, le chemin est nomModele/idUsager
+         *
+         */
+
+        String cheminSauvegarde =null;
+
+        if (nomModele.getId !=null){
+
+            cheminSauvegarde = nomModele/idModele;
+        } else{
+            cheminSauvegarde = nomModele/idUsager;
+        }
+
+        return cheminSauvegarde;
+    }
+
 }
 
