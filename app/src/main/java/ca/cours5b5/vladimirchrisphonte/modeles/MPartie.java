@@ -26,6 +26,8 @@ public class MPartie extends Modele implements Fournisseur {
 
     private MGrille grille;
     private GCouleur couleurCourante;
+    private int joueurCourant;
+    private int nombreJoueur;
 
     public MPartie(MParametresPartie parametres){
 
@@ -36,6 +38,7 @@ public class MPartie extends Modele implements Fournisseur {
         initialiserCouleurCourante();
 
         initialiserGrille();
+        initialiserJoueurs();
 
         fournirActionPlacerJeton();
 
@@ -46,7 +49,7 @@ public class MPartie extends Modele implements Fournisseur {
     }
 
     private void initialiserCouleurCourante() {
-        couleurCourante = GCouleur.ROUGE;
+        prochaineCouleurCourante();
     }
 
 
@@ -179,6 +182,8 @@ public class MPartie extends Modele implements Fournisseur {
 
     }
 
+
+
     private  List<String> listeCoupsEnObjetJson(List<Integer> listeCoups) {
 
         List<String> listeCoupsObjetJson = new ArrayList<>();
@@ -192,5 +197,33 @@ public class MPartie extends Modele implements Fournisseur {
         return listeCoupsObjetJson;
 
     }
+    public int getJoueurCourant() {
+        return joueurCourant;
+    }
+    private void prochainJoueurCourant(){
+        joueurCourant++;
+        if (joueurCourant == nombreJoueur) {
+            joueurCourant = 0;
+        }
+    }
+    public void recommencerPartie() {
+
+        initialiser();
+
+        initialiserJoueurs();
+
+        initialiserCouleurCourante();
+
+        initialiserGrille();
+
+    }
+    private void initialiserJoueurs() {
+
+        nombreJoueur = 2;
+
+        joueurCourant = 0;
+
+    }
+
 
 }

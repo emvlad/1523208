@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 
 
+import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
 public class SauvegardeTemporaire extends SourceDeDonnees {
@@ -19,11 +20,8 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         this.bundle = bundle;
     }
 
-
-    //update ajout listener
     @Override
     public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement)   {
-
 
        try {
                 if(bundle != null && bundle.containsKey(getCle(cheminSauvegarde))){
@@ -35,6 +33,7 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
                     listenerChargement.reagirSucces(objetJson);}
 
                     else{
+                    listenerChargement.reagirErreur(new ErreurSerialisation("Erreur: chargement impossible"));
 
                 }
 
@@ -48,7 +47,6 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
     }
 
-
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
         if(bundle != null){
@@ -59,11 +57,18 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         }
     }
 
+    @Override
+    public void detruireModele(String cheminSauvegarde) {
+        if(bundle != null){
+
+            bundle.remove(getCle(cheminSauvegarde));
+
+        }
+    }
+
     private String getCle(String cheminSauvegarde){
 
-        String cleSauvegarde = getNomModele(cheminSauvegarde);
-
-        return  cleSauvegarde;
+      return   getNomModele(cheminSauvegarde);
 
     }
 
@@ -73,10 +78,5 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         noeud.removeValue();
 
     }
-
-
-
-
-
 
 }

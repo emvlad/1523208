@@ -28,6 +28,7 @@ public class VEntete extends AppCompatButton {
         setText(colonne + "\n" + getResources().getString(R.string.entete));
 
         this.colonne = colonne;
+
     }
 
     public int getColonne() {

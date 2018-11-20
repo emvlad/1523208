@@ -19,6 +19,7 @@ import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.vladimirchrisphonte.global.GCommande;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
+import ca.cours5b5.vladimirchrisphonte.modeles.MPartieReseau;
 
 import static ca.cours5b5.vladimirchrisphonte.global.GConstantes.CODE_CONNEXION_FB;
 
@@ -38,6 +39,8 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         fournirActionOuvrirMenuParametres();
 
         fournirActionDemarrerPartie();
+
+        fournirActionJoindreOuCreerPartieReseau();
 
         fournirConnexion();
         fournirDeConnexion();
@@ -163,7 +166,14 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
     private void fournirActionJoindreOuCreerPartieReseau() {
 
-
+        ControleurAction.fournirAction(this,
+                GCommande.JOINDRE_OU_CREER_PARTIE_RESEAU,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+                        transitionPartieReseau();
+                    }
+                });
 
 
     }
@@ -175,6 +185,9 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
              *
              */
 
+            Intent intentionPartieReseau = new Intent(this, APartieReseau.class);
+            intentionPartieReseau.putExtra(MPartieReseau.class.getSimpleName(), GConstantes.FIXME_JSON_PARTIE_RESEAU);
+            startActivity(intentionPartieReseau);
 
         }
     }

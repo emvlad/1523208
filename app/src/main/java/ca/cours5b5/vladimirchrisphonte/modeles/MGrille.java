@@ -6,13 +6,39 @@ import java.util.Map;
 
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
+import ca.cours5b5.vladimirchrisphonte.global.GDirection;
 
 
-public class MGrille extends Modele  {
+public class MGrille extends Modele {
 
     private List<MColonne> colonnes;
 
-    public MGrille(int largeur){
+    public boolean siCouleurGagne(GCouleur couleur, int pourGagner) {
+        return true;
+    }
+
+    private boolean siCouleurGagneCetteColonne(GCouleur couleur, int idColonne, int pourGagner) {
+        return true;
+    }
+
+    private boolean siCouleurGagneCetteCase(GCouleur couleur, int idColonne, int idRangee, int pourGagner) {
+        return true;
+    }
+
+
+
+    private boolean siCouleurGagneDansCetteDirection(GCouleur couleur, int idColonne, int idRangee, GDirection direc){
+      return  true;
+    }
+
+    private boolean siMemeCouleurCetteCase(GCouleur couleur, int idColonne, int idRangee) {
+        return true;
+    }
+
+
+
+
+    public MGrille(int largeur) {
 
         colonnes = new ArrayList<>();
 
@@ -22,7 +48,7 @@ public class MGrille extends Modele  {
 
     private void initialiserColonnes(int largeur) {
 
-        for(int i=0; i<largeur; i++){
+        for (int i = 0; i < largeur; i++) {
 
             colonnes.add(new MColonne());
 

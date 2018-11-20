@@ -26,4 +26,5 @@ public class VPartieReseau extends VPartie {
         return nomModele;
     }
 
+
 }

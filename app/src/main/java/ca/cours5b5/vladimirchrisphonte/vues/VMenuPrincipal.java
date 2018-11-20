@@ -9,6 +9,7 @@ import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.Action;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
 import ca.cours5b5.vladimirchrisphonte.global.GCommande;
+import ca.cours5b5.vladimirchrisphonte.usagers.UsagerCourant;
 
 
 public class VMenuPrincipal extends Vue {
@@ -24,6 +25,9 @@ public class VMenuPrincipal extends Vue {
 
     private Button boutonDeConnexion;
     private Action actionDeConnexion;
+
+    private Button boutonPartieReseau;
+    private Action actionPartieReseau;
 
     public VMenuPrincipal(Context context) {
         super(context);
@@ -46,6 +50,7 @@ public class VMenuPrincipal extends Vue {
         demanderActions();
 
         installerListeners();
+        initialiserConnexionInputs();
 
     }
 
@@ -58,6 +63,8 @@ public class VMenuPrincipal extends Vue {
         boutonConnexion = findViewById(R.id.button_connexion);
         boutonDeConnexion = findViewById(R.id.button_deconnexion);
 
+        boutonPartieReseau = findViewById(R.id.button_partieReseau);
+
     }
 
     private void demanderActions() {
@@ -67,12 +74,9 @@ public class VMenuPrincipal extends Vue {
 
         actionConnexion =  ControleurAction.demanderAction(GCommande.CONNEXION);
         actionDeConnexion =  ControleurAction.demanderAction(GCommande.DECONNEXION);
+        actionPartieReseau = ControleurAction.demanderAction(GCommande.JOINDRE_OU_CREER_PARTIE_RESEAU);
 
     }
-
-
-
-    //listeners
 
     private void installerListeners() {
 
@@ -80,7 +84,8 @@ public class VMenuPrincipal extends Vue {
         installerListenerPartie();
 
         installerListenerConnexion();
-        installerListenerDeConnexion();
+        installerListenerDeconnexion();
+        installerListenerPartieReseau();
 
     }
 
@@ -116,7 +121,7 @@ public class VMenuPrincipal extends Vue {
         });
 
     }
-    private void installerListenerDeConnexion() {
+    private void installerListenerDeconnexion() {
 
         boutonDeConnexion.setOnClickListener(new OnClickListener() {
             @Override
@@ -124,6 +129,31 @@ public class VMenuPrincipal extends Vue {
                 actionDeConnexion.executerDesQuePossible();
             }
         });
+
+    }
+
+    private void installerListenerPartieReseau() {
+
+        boutonPartieReseau.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionPartieReseau.executerDesQuePossible();
+            }
+        });
+
+    }
+
+    public void initialiserConnexionInputs() {
+
+        boutonConnexion.setOnClickListener(null);
+
+        if (UsagerCourant.siUsagerConnecte()) {
+            installerListenerDeconnexion();
+            boutonConnexion.setText(R.string.deconnexion);
+        } else {
+            installerListenerConnexion();
+            boutonConnexion.setText(R.string.connexion);
+        }
 
     }
 

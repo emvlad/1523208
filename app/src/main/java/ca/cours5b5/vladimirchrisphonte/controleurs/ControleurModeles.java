@@ -1,16 +1,17 @@
 package ca.cours5b5.vladimirchrisphonte.controleurs;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerGetModele;
 import ca.cours5b5.vladimirchrisphonte.donnees.ListenerChargement;
 import ca.cours5b5.vladimirchrisphonte.donnees.Serveur;
 import ca.cours5b5.vladimirchrisphonte.donnees.SourceDeDonnees;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
+
 import ca.cours5b5.vladimirchrisphonte.modeles.Identifiable;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 
@@ -54,6 +55,11 @@ public final class ControleurModeles {
 
             sourceDeDonnees.sauvegarderModele(nomModele, objetJson);
 
+
+
+
+            sourceDeDonnees.sauvegarderModele(getCheminSauvegarde(nomModele), objetJson);
+
         }
     }
 
@@ -74,30 +80,40 @@ public final class ControleurModeles {
 
         } else {
 
-            //modele n'est pas null
             listenerGetModele.reagirAuModele(modele);
 
         }
 
     }
     private static void creerModeleEtChargerDonnees(final String nomModele,
-                                                    final ListenerGetModele listenerGetModele) {
+                                                    final ListenerGetModele listenerGetModele)  {
 
         creerModeleSelonNom(nomModele, new ListenerGetModele() {
             @Override
             public void reagirAuModele(Modele modele) {
 
-                modelesEnMemoire.put(nomModele,modele);
+                modelesEnMemoire.put(nomModele, modele);
 
-                chargerDonnees(modele, nomModele, listenerGetModele);
+                chargerDonnees(modele, nomModele, new ListenerGetModele() {
+
+                    @Override
+                    public void reagirAuModele(Modele modele) {
+
+                        listenerGetModele.reagirAuModele(modele);
+
+                    }
+
+                });
 
             }
+
         });
 
 
     }
     private static void chargerDonnees(Modele modele,String nomModele,
                                        ListenerGetModele listenerGetModele){
+
 
         chargementViaSequence( modele, nomModele,listenerGetModele,0);
 
@@ -109,19 +125,22 @@ public final class ControleurModeles {
                                               String cheminDeSauvegarde,
                                               ListenerGetModele listenerGetModele,int indiceSourceCourante){
 
-        if(indiceSourceCourante < sequenceDeChargement.length){
 
-            chargementViaSourceCouranteOuSuivante(modele,cheminDeSauvegarde,listenerGetModele,indiceSourceCourante);
+        if (indiceSourceCourante == sequenceDeChargement.length) {
 
-        }
-        else{
+            terminerChargement(modele, listenerGetModele);
 
-            terminerChargement(modele,listenerGetModele);
+        } else {
+
+            chargementViaSourceCouranteOuSuivante(modele, cheminDeSauvegarde, listenerGetModele, indiceSourceCourante);
+
         }
 
     }
 
     public static void sauvegarderModele(String nomModele) throws ErreurModele {
+
+
 
         for(SourceDeDonnees source : listeDeSauvegardes){
 
@@ -165,20 +184,21 @@ public final class ControleurModeles {
 
     public static void detruireModele(String nomModele) {
 
-        Modele modele = modelesEnMemoire.get(nomModele);
+        ControleurObservation.detruireObservation(modelesEnMemoire.get(nomModele));
 
-        if(modele != null){
 
-            modelesEnMemoire.remove(nomModele);
+        modelesEnMemoire.remove(nomModele);
 
-            ControleurObservation.detruireObservation(modele);
+        for(SourceDeDonnees source : listeDeSauvegardes){
 
-            if(modele instanceof Fournisseur){
+            detruireModeleDansCetteSource(nomModele, source);
 
-                ControleurAction.oublierFournisseur((Fournisseur) modele);
-
-            }
         }
+    }
+    public static void detruireModeleDansCetteSource(String nomModele, SourceDeDonnees sourceDeDonnees) {
+
+        sourceDeDonnees.detruireModele(getCheminSauvegarde(nomModele));
+
     }
 
 
@@ -193,6 +213,8 @@ public final class ControleurModeles {
 
                 terminerChargementAvecDonnees( objetJson, modele, listenerGetModele);
 
+
+
             }
 
             @Override
@@ -201,6 +223,9 @@ public final class ControleurModeles {
                 chargementViaSourceSuivante( modele,cheminDeSauvegarde,
                        listenerGetModele,indiceSourceCourante);
 
+
+
+
             }
         });
     }
@@ -208,6 +233,7 @@ public final class ControleurModeles {
     private static void terminerChargementAvecDonnees(Map<String, Object> objetJson,
                             Modele modele, ListenerGetModele listenerGetModele) {
 
+        modele.aPartirObjetJson(objetJson);
         terminerChargement(modele,listenerGetModele);
 
     }
@@ -229,16 +255,16 @@ public final class ControleurModeles {
 
     static String getCheminSauvegarde(String nomModele) {
 
-        String cheminSauvegarde = null;
+        String cheminSauvegarde = nomModele;
 
          Modele modele =modelesEnMemoire.get(nomModele);
 
         if (modele !=null  && modele instanceof Identifiable){
 
-            cheminSauvegarde = nomModele+ "/" + ((Identifiable) modele).getId();
+            cheminSauvegarde += nomModele+ File.separator + ((Identifiable) modele).getId();
 
         } else{
-            cheminSauvegarde = nomModele+ "/" + UsagerCourant.getId();
+            cheminSauvegarde += nomModele+ File.separator + UsagerCourant.getId();
         }
 
         return cheminSauvegarde;

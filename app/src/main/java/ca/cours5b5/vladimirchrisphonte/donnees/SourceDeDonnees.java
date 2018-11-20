@@ -19,8 +19,11 @@ public abstract class SourceDeDonnees {
         return cheminSauvegarde.split(GConstantes.EXTENSION_PAR_DEFAUT)[0];
 
     }
+  public abstract void detruireModele(final String cheminSauvegarde);
 
     public abstract void detruireSauvegarde(String cheminSauvegarde);
+
+    //carefull
 }
 
 

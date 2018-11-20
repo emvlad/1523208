@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Map;
 
+import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
@@ -88,7 +89,7 @@ public final class Disque extends SourceDeDonnees {
 
     private File getFichier(String cheminSauvegarde) {
 
-        String nomFichier = getNomModele(cheminSauvegarde);
+       String nomFichier = getNomModele(cheminSauvegarde);
 
         return new File(repertoireRacine, nomFichier);
 
@@ -103,6 +104,22 @@ public final class Disque extends SourceDeDonnees {
 
 
     @Override
+    public void detruireModele(String cheminSauvegarde) {
+
+        File fichier = getFichier(cheminSauvegarde);
+
+        try {
+
+            fichier.delete();
+
+        } catch (Exception e) {
+            throw new ErreurModele(e);
+        }
+
+
+    }
+
+    @Override
     public void detruireSauvegarde(String cheminSauvegarde) {
         DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
         noeud.removeValue();
@@ -110,6 +127,4 @@ public final class Disque extends SourceDeDonnees {
 
 
 
-
-
-}
+    }

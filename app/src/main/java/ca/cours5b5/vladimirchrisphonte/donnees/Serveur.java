@@ -8,6 +8,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 
+import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurSerialisation;
+import ca.cours5b5.vladimirchrisphonte.usagers.UsagerCourant;
 
 
 public final class Serveur extends SourceDeDonnees {
@@ -31,54 +33,62 @@ public final class Serveur extends SourceDeDonnees {
         noeud.setValue(objetJson);
     }
 
-
-
     @Override
-    public void chargerModele(String cheminSauvegarde, final ListenerChargement listenerChargement) {
-        /*
-         * BONUS: est-ce possible d'implanter cette méthode avec cette signature?
-         */
+    public void detruireModele(String cheminSauvegarde) {
 
         DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
-        noeud.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists()){
-
-                    Map<String, Object> objetJson = (Map<String, Object>) dataSnapshot.getValue();
-
-                    // Données lues
-                    listenerChargement.reagirSucces(objetJson);
-
-
-                }else{
-
-                    // Pas de données dans ce noeud
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-                // Erreur de lecture
-
-
-            }
-        });
-
-    }
-
-
-
-    @Override
-    public void detruireSauvegarde(String cheminSauvegarde){
-
-        DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
         noeud.removeValue();
 
+    }
 
+    @Override
+    public void detruireSauvegarde(String cheminSauvegarde) {
+        //protect server for now
+    }
+
+    @Override
+    public void chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement) {
+
+        if (UsagerCourant.siUsagerConnecte()) {
+            DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+
+            noeud.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    if(dataSnapshot.exists()){
+
+                        Map<String, Object> objetJson = (Map<String, Object>) dataSnapshot.getValue();
+
+                        listenerChargement.reagirSucces(objetJson);
+
+                    }else{
+
+                        listenerChargement.reagirErreur(new ErreurSerialisation("Erreur: Chargement impossible"));
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                    listenerChargement.reagirErreur(databaseError.toException());
+
+                }
+            });
+        } else {
+
+            listenerChargement.reagirErreur(new ErreurSerialisation("Erreur de chargement"));
+
+        }
 
     }
+
+
+
+
+
+
+
 }
