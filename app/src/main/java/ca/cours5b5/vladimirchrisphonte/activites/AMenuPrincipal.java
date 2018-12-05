@@ -1,26 +1,28 @@
 package ca.cours5b5.vladimirchrisphonte.activites;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
-import ca.cours5b5.vladimirchrisphonte.modeles.MPartieReseau;
-import ca.cours5b5.vladimirchrisphonte.usagers.JoueursEnAttente;
-import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurModeles;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.vladimirchrisphonte.global.GCommande;
-import ca.cours5b5.vladimirchrisphonte.modeles.MParametres;
 
 import static ca.cours5b5.vladimirchrisphonte.global.GConstantes.CODE_CONNEXION_FIREBASE;
 
@@ -29,7 +31,14 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loadLocale();
+
+
         setContentView(R.layout.activity_menu_principal);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getResources().getString(R.string.app_name));
 
         fournirActions();
 
@@ -48,6 +57,69 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
         fournirActionJoindreOuCreerPartieReseau();
 
+        fournirActionChangLanguge();
+
+    }
+
+    private void fournirActionChangLanguge() {
+
+        ControleurAction.fournirAction(this,
+                GCommande.CHANGE_LANGUE,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+
+                        changerLangueDialog();
+
+                    }
+                });
+    }
+
+    private void changerLangueDialog() {
+        final String[] listItems = {"English", "Deutschland", "Español"};
+
+        AlertDialog.Builder elBuilder = new AlertDialog.Builder(AMenuPrincipal.this);
+        elBuilder.setTitle("@string/choisirLang");
+        elBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) {
+                    setLocale("en");
+                    recreate();
+                } else if (i == 1) {
+                    setLocale("de");
+                    recreate();
+                } else if (i == 2) {
+                    setLocale("es");
+                    recreate();
+                }
+
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog leDialog = elBuilder.create();
+        leDialog.show();
+
+    }
+
+    private void setLocale(String langue) {
+
+        Locale locale = new Locale(langue);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor =getSharedPreferences("Settings",MODE_PRIVATE).edit();
+        editor.putString("my_lang",langue);
+        editor.apply();
+
+    }
+
+    public void loadLocale(){
+        SharedPreferences pref =getSharedPreferences("Settings",Activity.MODE_PRIVATE);
+        String langage = pref.getString("my_lang"," ");
+        setLocale(langage);
     }
 
 
@@ -59,7 +131,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                     @Override
                     public void executer(Object... args) {
 
-                            transitionAttendreAdversaire();
+                        transitionAttendreAdversaire();
                     }
                 });
     }

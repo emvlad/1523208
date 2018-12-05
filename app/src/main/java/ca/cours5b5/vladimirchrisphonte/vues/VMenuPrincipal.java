@@ -42,6 +42,10 @@ public class VMenuPrincipal extends Vue {
     private Action actionDeconnexion;
 
 
+    private Button boutonChangLangue;
+    private Action actionChangLangue;
+
+
     @Override
     protected void onFinishInflate(){
         super.onFinishInflate();
@@ -67,6 +71,10 @@ public class VMenuPrincipal extends Vue {
 
         boutonConnexion = findViewById(R.id.bouton_connexion);
 
+        boutonChangLangue = findViewById(R.id.bouton_chang_langue);
+
+
+
     }
 
     private void demanderActions() {
@@ -81,6 +89,7 @@ public class VMenuPrincipal extends Vue {
 
         actionDeconnexion = ControleurAction.demanderAction(GCommande.DECONNEXION);
 
+        actionChangLangue = ControleurAction.demanderAction(GCommande.CHANGE_LANGUE);
 
     }
 
@@ -105,6 +114,14 @@ public class VMenuPrincipal extends Vue {
             @Override
             public void onClick(View v) {
                 actionPartieReseau.executerDesQuePossible();
+            }
+        });
+
+        boutonChangLangue.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actionChangLangue.executerDesQuePossible();
+
             }
         });
 

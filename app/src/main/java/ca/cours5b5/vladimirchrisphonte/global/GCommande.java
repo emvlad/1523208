@@ -32,6 +32,9 @@ public enum GCommande {
     RECEVOIR_JOUEUR_INVITE,
 
 
+    CHANGE_LANGUE,
+
+
 
 
 }

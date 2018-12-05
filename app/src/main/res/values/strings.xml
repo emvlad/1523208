@@ -35,5 +35,12 @@
     <string name="ROUGE">rouge</string>
     <string name="JAUNE">jaune</string>
 
+    <string name="VERT">vert</string>
+    <string name="BLANC">blanc</string>
+    <string name="changeLang">Change Langue</string>
+    <string name="choisirLang">Choisir Langue</string>
+    <string name="my_lang">Ma langue</string>
+
+
 
 </resources>

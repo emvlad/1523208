@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">VladimirChrisphonte</string>
 
 
     <string name="bonjour">Hello!</string>
@@ -33,10 +34,7 @@
     <string name="VERT">green</string>
     <string name="BLANC">white</string>
     <string name="changeLang">Change Language</string>
-    <string name="choisirLang">Choose Language</string>
+    <string name="choisirLang">Choisir Langue</string>
     <string name="my_lang">My language</string>
-
-
-
 
 </resources>
