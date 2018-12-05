@@ -1,39 +1,31 @@
 package ca.cours5b5.vladimirchrisphonte.controleurs;
 
+
+import android.util.Log;
+
+import ca.cours5b5.vladimirchrisphonte.global.GCommande;
 import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
 
-public class ControleurPartie {
+public final class ControleurPartie {
+
+    private ControleurPartie(){}
+
+    private static final ControleurPartie instance = new ControleurPartie();
+    public static ControleurPartie getInstance(){return instance;}
+
+    public void gagnerPartie(GCouleur couleurGagnante){
+
+        Action actionTerminerPartie = ControleurAction.demanderAction(GCommande.TERMINER_PARTIE);
+
+        Action actionAfficherMessage = ControleurAction.demanderAction(GCommande.AFFICHER_MESSAGE_GAGNANT);
 
 
-    private static final ControleurPartie instance = null;
+        actionAfficherMessage.setArguments(couleurGagnante,
+                actionTerminerPartie);
 
-    private ControleurPartie() {
+        actionAfficherMessage.executerDesQuePossible();
 
     }
 
-    public static ControleurPartie getInstance() {
-        return instance;
-    }
 
-
-    public void gagnerPartie(GCouleur couleurGagnante) {
-        /*
-         * Utiliser une action pour afficher le message au gagnant:
-         *
-         * String message = //
-            View maVue = //
-            Snackbar fenetreMessage = Snackbar.make(maVue, message, Snackbar.LENGTH_SHORT);
-            fenetreMessage.show();
-
-            ======================
-                   On peut aussi ajouter un listener pour réagir à la fenêtre qui disparaît
-                    Snackbar fenetreMessage = Snackbar.make(maVue, message, Snackbar.LENGTH_SHORT);
-                    fenetreMessage.addCallback(new Snackbar.Callback() {
-                    @Override
-                    public void onDismissed(Snackbar snackbar, int event) {
-                    // Le message n'est plus affiché
-                    });
-                    fenetreMessage.show();
-         */
-    }
 }

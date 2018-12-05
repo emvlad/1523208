@@ -1,72 +1,111 @@
 package ca.cours5b5.vladimirchrisphonte.usagers;
 
+
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurPartieReseau;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.vladimirchrisphonte.global.GCommande;
 import ca.cours5b5.vladimirchrisphonte.proxy.ProxyListe;
 
+
 public final class JoueursEnAttente implements Fournisseur {
+    
+    private static final JoueursEnAttente instance = new JoueursEnAttente();
+    public static JoueursEnAttente getInstance(){return instance;}
 
-    private static final JoueursEnAttente instance = null;
     private ProxyListe proxyJoueursEnAttente;
-    private String __joueursEnAttente;
+    private String __joueursEnAttente = "JoueursEnAttentes";
 
-    private JoueursEnAttente() {
-        /*
-         * Créer et initialiser le proxy
-         * Fournir les actions
-         */
+    private JoueursEnAttente(){
+
+        proxyJoueursEnAttente = new ProxyListe(__joueursEnAttente);
+
+        proxyJoueursEnAttente.setActionNouvelItem(GCommande.RECEVOIR_JOUEUR_EN_ATTENTE);
+
+        fournirActions();
+
     }
 
-    public static JoueursEnAttente getInstance() {
-        return instance;
-    }
 
     private void fournirActions() {
-        /*
-         * Fournir l'action RECEVOIR_JOUEUR_EN_ATTENTE
-         */
+
+        fournirActionAjouterJoueurEnAttente();
+
     }
+
 
     private void fournirActionAjouterJoueurEnAttente() {
-        /*
-         * Si le joueur en attente n'est pas l'usager courant
-         * Basculer en mode invitation
-         */
-    }
 
-    public void inscrireJoueurEnAttente() {
-        /* Ajouter l'id de l'usager courant à la liste de joueurs en attente
-         * (utiliser le proxyJoueursEnAttente)
-         */
+        ControleurAction.fournirAction(this,
+                GCommande.RECEVOIR_JOUEUR_EN_ATTENTE,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+
+                        String idJoueurEnAttente = (String) args[0];
+
+                        if(!UsagerCourant.estCeUsagerCourant(idJoueurEnAttente)){
+
+                            deconnecterDuServeur();
+
+                            basculerEnModeInvitation(idJoueurEnAttente);
+
+                        }
+                    }
+                });
     }
 
 
     private void basculerEnModeInvitation(String idJoueurEnAttente) {
-        /*
-         * Basculer en mode hôte ou en mode invite
-         * à vous de choisir un test qui fonctionne pour chaque IdUsager
-         *
-         */
+
+        if(UsagerCourant.getId().compareTo(idJoueurEnAttente) > 0 ){
+
+            String idJoueurHote = UsagerCourant.getId();
+
+            basculerEnModeHote(idJoueurHote, idJoueurEnAttente);
+
+
+        }else{
+
+            String idJoueurInvite = UsagerCourant.getId();
+
+            basculerEnModeInvite(idJoueurEnAttente, idJoueurInvite);
+
+        }
     }
 
+
     private void basculerEnModeHote(String idJoueurHote, String idJoueurInvite) {
-        /*
-         * Créer et démarrer la partie à l'aide du ControleurPartieReseau
-         *
-         */
+
+        ControleurPartieReseau.getInstance().creerEtDemarrerPartie(idJoueurHote, idJoueurInvite);
+
     }
 
     private void basculerEnModeInvite(String idJoueurHote, String idJoueurInvite) {
-        /*
-         * ajouter les id usager à JoueurInvite
-         * connecter JoueurInvite au serveur
-         *
-         * (autrement dit, on attent d'être invité à la partie)
-         */
+
+        JoueurInvite.getInstance().setIdJoueurs(idJoueurHote, idJoueurInvite);
+        JoueurInvite.getInstance().connecterAuServeur();
+
     }
 
-    public void connecterAuServeur() {
+
+    public void connecterAuServeur(){
+
+        proxyJoueursEnAttente.connecterAuServeur();
+
     }
 
     public void deconnecterDuServeur() {
+
+        proxyJoueursEnAttente.detruireValeurs();
+        proxyJoueursEnAttente.deconnecterDuServeur();
+
+    }
+
+    public void inscrireJoueurEnAttente() {
+
+        proxyJoueursEnAttente.ajouterValeur(UsagerCourant.getId());
+
     }
 }

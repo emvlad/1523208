@@ -1,41 +1,33 @@
 package ca.cours5b5.vladimirchrisphonte.usagers;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class UsagerCourant {
+import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 
+public final class UsagerCourant {
+
+    private UsagerCourant(){}
 
     public static boolean siUsagerConnecte(){
-
-       boolean usagerConnected = false;
-
-        FirebaseUser usagerFirebase = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(usagerFirebase != null){
-
-            usagerConnected = true;
-        }
-
-        return usagerConnected;
+        return FirebaseAuth.getInstance().getUid() != null;
     }
-
 
     public static String getId(){
 
-      String   idUsagerCourant = "default" ;
-
         if(siUsagerConnecte()){
 
-            idUsagerCourant = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            return FirebaseAuth.getInstance().getUid();
+
+        }else{
+
+            return GConstantes.ID_PAR_DEFAUT;
+
         }
-
-    return idUsagerCourant;
-
     }
 
-
-
+    public static boolean estCeUsagerCourant(String idJoueur) {
+        return getId().equals(idJoueur);
+    }
 
 
 }

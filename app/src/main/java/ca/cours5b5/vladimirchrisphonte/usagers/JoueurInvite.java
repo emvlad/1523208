@@ -1,67 +1,140 @@
 package ca.cours5b5.vladimirchrisphonte.usagers;
 
+import java.util.Map;
+
+import ca.cours5b5.vladimirchrisphonte.controleurs.Action;
+import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurAction;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerFournisseur;
+import ca.cours5b5.vladimirchrisphonte.donnees.ListenerChargement;
+import ca.cours5b5.vladimirchrisphonte.donnees.Serveur;
+import ca.cours5b5.vladimirchrisphonte.global.GCommande;
+import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
+import ca.cours5b5.vladimirchrisphonte.modeles.MPartieReseau;
 import ca.cours5b5.vladimirchrisphonte.proxy.ProxyValeur;
 
+
 public final class JoueurInvite implements Fournisseur {
-    private JoueurInvite() {
+
+    private JoueurInvite(){}
+
+    private static final JoueurInvite instance = new JoueurInvite();
+
+    public static JoueurInvite getInstance(){return instance;}
+
+    private String idJoueurInvite;
+    private String idJoueurHote;
+
+    private ProxyValeur proxyInviterJoueur;
+
+    void setIdJoueurs(String idJoueurHote, String idJoueurInvite) {
+
+        this.idJoueurHote = idJoueurHote;
+        this.idJoueurInvite = idJoueurInvite;
+
+        initialiser();
+
     }
 
-    private static final JoueurInvite instance =null;
 
-    public static JoueurInvite getInstance(){
+    private void initialiser() {
 
-        return  instance;
+        String cheminInviterJoueur = getCheminInviterJoueur();
+
+        proxyInviterJoueur = new ProxyValeur(cheminInviterJoueur);
+
+        proxyInviterJoueur.setActionNouvelleValeur(GCommande.RECEVOIR_JOUEUR_INVITE);
+
+        fournirActionRecevoirInvite();
+
     }
 
-    protected String idJoueurInvite;
-    protected String idJoueurHote;
-    protected ProxyValeur proxyInviterJoueur;
 
-    public void setIdJoueurs(String idJoueurHote, String idJoueurInvite) {
-        /*
-         * Initialiser après avoir sauvegarder les données
-         */
+    void connecterAuServeur() {
+
+        proxyInviterJoueur.connecterAuServeur();
+
     }
 
-    protected void initialiser() {
-        /*
-         * Créer et initialiser le proxy
-         * Fournir l'action RECEVOIR_JOUEUR_INVITE
-         */
+
+    private void deconnecterDuServeur() {
+
+        proxyInviterJoueur.deconnecterDuServeur();
+
     }
 
-    public void connecterAuServeur() {
+
+    private String getCheminPartie(){
+
+        String chemin = MPartieReseau.class.getSimpleName();
+
+        chemin += GConstantes.SEPARATEUR_DE_CHEMIN;
+
+        chemin += idJoueurHote;
+
+        return chemin;
+
     }
 
-    public void deconnecterDuServeur() {
+
+    private String getCheminInviterJoueur(){
+
+        String chemin = getCheminPartie();
+
+        chemin += GConstantes.SEPARATEUR_DE_CHEMIN;
+
+        chemin += GConstantes.CLE_ID_JOUEUR_INVITE;
+
+        return chemin;
+
     }
 
-    private String getCheminPartie() {
 
-      String  cheminPartie= null;
+    private void demarrerPartie(){
 
-    return  cheminPartie;
-    }
+        deconnecterDuServeur();
 
-    protected String getCheminInviterJoueur() {
+        String cheminPartie = getCheminPartie();
 
-        String  CheminInviterJoueur= null;
+        Serveur.getInstance().chargerModele(cheminPartie, new ListenerChargement() {
+            @Override
+            public void reagirSucces(Map<String, Object> objetJson) {
 
-        return  CheminInviterJoueur;
+                Action actionDemarrerPartieReseau = ControleurAction.demanderAction(GCommande.DEMARRER_PARTIE_RESEAU);
+                actionDemarrerPartieReseau.setArguments(objetJson);
+                actionDemarrerPartieReseau.executerDesQuePossible();
+
+            }
+
+            @Override
+            public void reagirErreur(Exception e) {
+
+            }
+        });
+
     }
 
     private void fournirActionRecevoirInvite() {
-        /*
-         * Si le joueur courant est le joueur invité:
-         * demarrerPartie
-         */
+
+        ControleurAction.fournirAction(this,
+                GCommande.RECEVOIR_JOUEUR_INVITE,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+
+                        String idJoueurInvite = (String) args[0];
+
+                        if(UsagerCourant.estCeUsagerCourant(idJoueurInvite)){
+
+                            proxyInviterJoueur.detruireValeurs();
+
+                            demarrerPartie();
+
+                        }
+                    }
+                });
 
     }
-    protected void demarrerPartie() {
-        /*
-         * Charger la partie du serveur
-         * Démarrer la partie
-         */
-    }
+
+
 }

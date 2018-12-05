@@ -2,30 +2,25 @@ package ca.cours5b5.vladimirchrisphonte.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
-
-
-import java.util.ArrayList;
-import java.util.List;
+import android.util.Log;
+import android.widget.TextView;
 
 import ca.cours5b5.vladimirchrisphonte.R;
 import ca.cours5b5.vladimirchrisphonte.controleurs.ControleurObservation;
 import ca.cours5b5.vladimirchrisphonte.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurObservation;
-import ca.cours5b5.vladimirchrisphonte.global.GCouleur;
-import ca.cours5b5.vladimirchrisphonte.modeles.MGrille;
 import ca.cours5b5.vladimirchrisphonte.modeles.MParametresPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.MPartie;
 import ca.cours5b5.vladimirchrisphonte.modeles.Modele;
 
 
-public abstract class VPartie extends Vue {
-
+public class VPartie extends Vue {
 
 
     private VGrille grille;
-    private List<VJoueur> joueurs;
-    private VJoueur joueur1, joueur2;
+
+    private TextView texteJoueurUn;
+    private TextView texteJoueurDeux;
 
 
     public VPartie(Context context) {
@@ -45,70 +40,122 @@ public abstract class VPartie extends Vue {
         super.onFinishInflate();
 
         initialiser();
-        initialiserJoueurs();
+
+        adapterTexteNomJoueurSiPaysage();
+
         observerPartie();
 
     }
 
+
     private void initialiser() {
 
         grille = findViewById(R.id.grille);
-        joueurs = new ArrayList<>();
 
-    }
-    private void initialiserJoueurs() {
-        joueurs.add(joueur1);
-        joueurs.add(joueur2);
+        texteJoueurUn = findViewById(R.id.texte_joueur_un);
+        texteJoueurDeux = findViewById(R.id.texte_joueur_deux);
 
-
-    }
-
-
-    protected String getNomModele(){
-
-        return MPartie.class.getSimpleName();
 
 
     }
+
+
+    private void adapterTexteNomJoueurSiPaysage() {
+
+        if(!getResources().getBoolean(R.bool.si_portrait)){
+
+            adapterTexteNomJoueurSiPaysage(texteJoueurUn);
+            adapterTexteNomJoueurSiPaysage(texteJoueurDeux);
+        }
+
+    }
+
+    private void adapterTexteNomJoueurSiPaysage(TextView texteJoueur) {
+
+        CharSequence nomJoueur = texteJoueur.getText();
+
+        String nomJoueurPaysage = texteEnPaysage(nomJoueur);
+
+        texteJoueur.setText(nomJoueurPaysage);
+
+    }
+
+    private String texteEnPaysage(CharSequence texte){
+        String textePaysage = "";
+
+        for(int i=0; i<texte.length(); i++){
+            char c = texte.charAt(i);
+
+            textePaysage += c;
+
+            if(i < texte.length()){
+                textePaysage += "\n";
+            }
+
+        }
+
+        return textePaysage;
+    }
+
+
+
+
     private void observerPartie() {
 
-         ControleurObservation.observerModele(getNomModele(),new ListenerObservateur(){
+        ControleurObservation.observerModele(getNomModele(),
+                new ListenerObservateur() {
+                    @Override
+                    public void reagirNouveauModele(Modele modele) {
 
-            @Override
-            public void reagirNouveauModele(Modele modele) {
+                        MPartie partie = getPartie(modele);
+                        MParametresPartie parametresPartie = partie.getParametres();
 
-                MPartie partie = getPartie(modele);
+                        grille.creerGrille(parametresPartie.getHauteur(), parametresPartie.getLargeur());
 
-                preparerAffichage(partie);
+                        miseAJourGrille(partie);
 
-                miseAJourGrille(partie);
-                reagirChangementAuModele(modele);
+                        miseAJourNomJoueur(partie);
+                    }
 
-            }
+                    @Override
+                    public void reagirChangementAuModele(Modele modele) {
 
-            @Override
-            public void reagirChangementAuModele(Modele modele) {
+                        MPartie partie = getPartie(modele);
 
-                MPartie partie = getPartie(modele);
+                        miseAJourNomJoueur(partie);
 
-                miseAJourGrille(partie);
-                miseAJourCouleurJoueurs(partie);
+                        miseAJourGrille(partie);
 
-            }
-        });
+
+                    }
+                });
+
     }
 
+    protected String getNomModele(){
+        return MPartie.class.getSimpleName();
+    }
 
-    private void preparerAffichage(MPartie partie) {
+    private void miseAJourNomJoueur(MPartie partie) {
 
-        MParametresPartie parametresPartie = partie.getParametres();
+        switch(partie.getCouleurCourante()){
 
-        grille.creerGrille(parametresPartie.getHauteur(), parametresPartie.getLargeur());
+            case ROUGE:
 
+                texteJoueurDeux.setVisibility(INVISIBLE);
+                texteJoueurUn.setVisibility(VISIBLE);
+                break;
+
+            case JAUNE:
+
+                texteJoueurUn.setVisibility(INVISIBLE);
+                texteJoueurDeux.setVisibility(VISIBLE);
+                break;
+
+        }
     }
 
     private MPartie getPartie(Modele modele){
-
         try{
 
             return (MPartie) modele;
@@ -118,86 +165,12 @@ public abstract class VPartie extends Vue {
             throw new ErreurObservation(e);
 
         }
-
     }
 
     private void miseAJourGrille(MPartie partie){
 
-
         grille.afficherJetons(partie.getGrille());
 
-
     }
 
-    private void reinitialiserAffichage(MPartie partie) {
-
-        MParametresPartie parametresPartie = partie.getParametres();
-
-
-
-    }
-
-    public void verifierPartieFini(MPartie mPartie) {
-
-        MGrille mGrille = mPartie.getGrille();
-
-        int colonnesJouables = mGrille.getColonnes().size();
-
-        for (int i = 0; i < mGrille.getColonnes().size(); i++) {
-
-
-        }
-
-        if (colonnesJouables == 0) {
-            reagirPartieFini(mPartie);
-        }
-
-    }
-
-    public void reagirPartieFini(MPartie mPartie) {
-
-        mPartie.recommencerPartie();
-
-        reinitialiserAffichage(mPartie);
-
-        miseAJourGrille(mPartie);
-
-        miseAJourCouleurJoueurs(mPartie);
-
-    }
-
-    private void miseAJourCouleurJoueurs(MPartie partie){
-
-
-    }
-
-    private void changerCouleurJoueur(int joueur, GCouleur gCouleur) {
-
-
-
-}
-
-
-    private int gCouleurACouleur(GCouleur gCouleur) {
-        int couleur;
-        switch (gCouleur){
-
-            case ROUGE:
-
-                couleur = R.color.ROUGE;
-                break;
-
-            case JAUNE:
-
-                couleur = R.color.JAUNE;
-                break;
-
-            default:
-
-                couleur = R.color.colorPrimary;
-                break;
-        }
-
-        return couleur;
-    }
 }

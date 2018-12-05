@@ -2,9 +2,6 @@ package ca.cours5b5.vladimirchrisphonte.donnees;
 
 import android.util.Log;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,11 +10,12 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Map;
 
-import ca.cours5b5.vladimirchrisphonte.exceptions.ErreurModele;
 import ca.cours5b5.vladimirchrisphonte.global.GConstantes;
 import ca.cours5b5.vladimirchrisphonte.serialisation.Jsonification;
 
 public final class Disque extends SourceDeDonnees {
+
+    private Disque(){}
 
     private static final Disque instance = new Disque();
 
@@ -27,16 +25,15 @@ public final class Disque extends SourceDeDonnees {
 
     private File repertoireRacine;
 
-    private Disque() {}
 
     public void setRepertoireRacine(File repertoireRacine) {
-
         this.repertoireRacine = repertoireRacine;
-
     }
+
 
     @Override
     public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+
         File fichier = getFichier(cheminSauvegarde);
 
         try {
@@ -47,18 +44,12 @@ public final class Disque extends SourceDeDonnees {
 
             listenerChargement.reagirSucces(objetJson);
 
-
-        } catch (FileNotFoundException e) {
-
-            listenerChargement.reagirErreur(e);
-
-
         } catch (IOException e) {
+
             listenerChargement.reagirErreur(e);
 
         }
     }
-
 
 
     @Override
@@ -74,22 +65,35 @@ public final class Disque extends SourceDeDonnees {
 
             outputStream.write(json.getBytes());
 
+            outputStream.close();
+
         } catch (FileNotFoundException e) {
 
-            Log.d("Atelier12", "File not found: " + cheminSauvegarde);
+            Log.d("Atelier07", "File not found: " + cheminSauvegarde);
 
         } catch (IOException e) {
 
-            Log.d("Atelier12", "IOException: " + cheminSauvegarde);
+
+            Log.d("Atelier07", "IOException: " + cheminSauvegarde);
 
         }
     }
 
 
+    @Override
+    public void detruireSauvegarde(String cheminSauvegarde) {
+
+        File fichier = getFichier(cheminSauvegarde);
+        fichier.delete();
+
+    }
+
 
     private File getFichier(String cheminSauvegarde) {
 
-       String nomFichier = getNomModele(cheminSauvegarde);
+        String nomModele = getNomModele(cheminSauvegarde);
+
+        String nomFichier = getNomFichier(nomModele);
 
         return new File(repertoireRacine, nomFichier);
 
@@ -103,28 +107,4 @@ public final class Disque extends SourceDeDonnees {
     }
 
 
-    @Override
-    public void detruireModele(String cheminSauvegarde) {
-
-        File fichier = getFichier(cheminSauvegarde);
-
-        try {
-
-            fichier.delete();
-
-        } catch (Exception e) {
-            throw new ErreurModele(e);
-        }
-
-
-    }
-
-    @Override
-    public void detruireSauvegarde(String cheminSauvegarde) {
-        DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
-        noeud.removeValue();
-    }
-
-
-
-    }
+}
