@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +77,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
     }
 
     private void changerLangueDialog() {
-        final String[] listItems = {"English", "Deutschland", "Español"};
+        final String[] listItems = {"English", "Deutsch", "Español","Français"};
 
         AlertDialog.Builder elBuilder = new AlertDialog.Builder(AMenuPrincipal.this);
         elBuilder.setTitle("Choisir une langue");
@@ -91,6 +92,11 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                     recreate();
                 } else if (i == 2) {
                     setLocale("es");
+                    recreate();
+                }
+
+                else if (i == 3) {
+                    setLocale("fr");
                     recreate();
                 }
 
@@ -118,7 +124,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
     public void loadLocale(){
         SharedPreferences pref =getSharedPreferences("Settings",Activity.MODE_PRIVATE);
-        String langage = pref.getString("my_lang"," ");
+        String langage = pref.getString("my_lang","fr");
         setLocale(langage);
     }
 
@@ -258,6 +264,9 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
             //IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
+
+
+                FirebaseDatabase.getInstance().getReference("MParametres/YvcwhwdXpbN856LGyQ7eY9uflkD3/parametresPartie/hauteur").setValue(-1);
 
                 // Connexion réussie
 
