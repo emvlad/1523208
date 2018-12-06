@@ -57,11 +57,11 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
         fournirActionJoindreOuCreerPartieReseau();
 
-        fournirActionChangLanguge();
+        fournirActionChangLangage();
 
     }
 
-    private void fournirActionChangLanguge() {
+    private void fournirActionChangLangage() {
 
         ControleurAction.fournirAction(this,
                 GCommande.CHANGE_LANGUE,

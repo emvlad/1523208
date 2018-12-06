@@ -7,7 +7,7 @@
     <string name="paysage">landscape</string>
 
     <string name="hauteur">Höhe: </string>
-    <string name="largeur">Width: </string>
+    <string name="largeur">Breite: </string>
     <string name="pour_gagner">um zu gewinnen: </string>
 
     <string name="parametres">Parameter</string>
@@ -19,8 +19,8 @@
     <string name="joueur1">Spieler1</string>
     <string name="joueur2">Spieler2</string>
 
-    <string name="connexion">login</string>
-    <string name="deconnexion">logout</string>
+    <string name="connexion">Anmeldung</string>
+    <string name="deconnexion">Ausloggen</string>
 
     <string name="effacer_partie_courante">Delete current game</string>
 

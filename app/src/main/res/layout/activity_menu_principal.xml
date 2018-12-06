@@ -49,10 +49,16 @@
         app:layout_constraintVertical_bias="0.17000002"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
-    <Button
+    <com.spark.submitbutton.SubmitButton
         android:id="@+id/bouton_connexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:textColor="@color/gray"
+        app:sub_btn_background="@color/white"
+        app:sub_btn_duration="3000"
+        app:sub_btn_line_color="@color/VERT"
+        app:sub_btn_ripple_color="@color/VERT"
+        app:sub_btn_tick_color="@color/white"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -62,9 +68,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"/>
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
 
-    <com.spark.submitbutton.SubmitButton
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--app:sub_btn_background="@color/ROUGE"-->
+        <!--app:sub_btn_duration  ="3000"-->
+        <!--app:sub_btn_line_color ="@color/JAUNE_FOND"-->
+        <!--app:sub_btn_ripple_color ="@color/VERT"-->
+        <!--app:sub_btn_tick_color ="@color/BLANC"-->
+
+
+    <Button
         android:id="@+id/bouton_partie_reseau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,12 +91,7 @@
         android:text="@string/jouer_enligne"
 
 
-        android:textColor="@color/colorPrimaryDark"
-        app:sub_btn_backgroung ="@color/ROUGE"
-        app:sub_btn_duration  ="3000"
-        app:sub_btn_line_color ="@color/JAUNE_FOND"
-        app:sub_btn_ripple_color ="@color/VERT"
-        app:sub_btn_tick_color ="@color/BLANC"
+
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/bouton_partie"

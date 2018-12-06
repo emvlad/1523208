@@ -37,7 +37,7 @@ public class VMenuPrincipal extends Vue {
     private Button boutonPartieReseau;
     private Action actionPartieReseau;
 
-    private Button boutonConnexion;
+    private com.spark.submitbutton.SubmitButton boutonConnexion;
     private Action actionConnexion;
     private Action actionDeconnexion;
 
