@@ -79,7 +79,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         final String[] listItems = {"English", "Deutschland", "Español"};
 
         AlertDialog.Builder elBuilder = new AlertDialog.Builder(AMenuPrincipal.this);
-        elBuilder.setTitle("@string/choisirLang");
+        elBuilder.setTitle("Choisir une langue");
         elBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

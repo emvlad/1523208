@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="BLANC">Weiß</string>
+    <string name="JAUNE">Gelb</string>
+    <string name="ROUGE">rotes</string>
+    <string name="VERT">grünes</string>
+    <string name="app_name">VladimirChrisphonte</string>
+    <string name="bonjour">Gute Morgenlandschaft</string>
+    <string name="changeLang">grüne weiße Änderungssprache</string>
+    <string name="choisirLang">Wählen Sie Sprache</string>
+    <string name="connexion">Anmeldung</string>
+    <string name="deconnexion">Ausloggen</string>
+    <string name="effacer_partie_courante">Delete current game</string>
+    <string name="en_attente_adversaire">Das Warten auf einen Gegner...</string>
+    <string name="hauteur">Höhe: </string>
+    <string name="jouer">spielen</string>
+    <string name="jouer_enligne">spielen Sie on-line</string>
+    <string name="joueur1">Spieler1</string>
+    <string name="joueur2">Spieler2</string>
+    <string name="largeur">Breite: </string>
+    <string name="message_au_gagnant">@ @ gewann!</string>
+    <string name="my_lang">Meine Sprache</string>
+    <string name="parametres">Parameter</string>
+    <string name="paysage">landscape</string>
+    <string name="pour_gagner">um zu gewinnen: </string>
+</resources>
