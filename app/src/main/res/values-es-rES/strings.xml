@@ -2,38 +2,38 @@
 <resources>
     <string name="app_name">VladimirChrisphonte</string>
 
-    <string name="bonjour">Hello!</string>
-    <string name="paysage">landscape</string>
+    <string name="bonjour">Buenos días!</string>
+    <string name="paysage">Paisaje</string>
 
-    <string name="hauteur">Height: </string>
-    <string name="largeur">Width: </string>
-    <string name="pour_gagner">To win: </string>
+    <string name="hauteur">La altura: </string>
+    <string name="largeur">Ancho: </string>
+    <string name="pour_gagner">Ganar: </string>
 
-    <string name="parametres">Parameters</string>
+    <string name="parametres">Parámetros</string>
 
-    <string name="jouer">Play</string>
-    <string name="jouer_enligne">Play on-line</string>
+    <string name="jouer">Juegue</string>
+    <string name="jouer_enligne">Juegue en línea directa</string>
 
 
-    <string name="joueur1">player1</string>
-    <string name="joueur2">player2</string>
+    <string name="joueur1">Jugador1</string>
+    <string name="joueur2">Jugador2</string>
 
-    <string name="connexion">login</string>
-    <string name="deconnexion">logout</string>
+    <string name="connexion">registro de entrada</string>
+    <string name="deconnexion">deconnexion</string>
 
-    <string name="effacer_partie_courante">Delete current game</string>
+    <string name="effacer_partie_courante">Eliminar partido en curso</string>
 
-    <string name="en_attente_adversaire">Waiting for an opponent…</string>
+    <string name="en_attente_adversaire">Esperar un adversario…</string>
 
-    <string name="message_au_gagnant">@@ won!</string>
+    <string name="message_au_gagnant">¡@@ ganó!</string>
 
-    <string name="ROUGE">red</string>
-    <string name="JAUNE">yellow</string>
+    <string name="ROUGE">rojo</string>
+    <string name="JAUNE">Amarillo</string>
 
-    <string name="VERT">green</string>
-    <string name="BLANC">white</string>
-    <string name="changeLang">Change Language</string>
-    <string name="choisirLang">Choisir Langue</string>
-    <string name="my_lang">My language</string>
+    <string name="VERT">verde</string>
+    <string name="BLANC">blanca</string>
+    <string name="changeLang">Cambiar la lengua</string>
+    <string name="choisirLang">Escoja la lengua</string>
+    <string name="my_lang">Mi lengua</string>
 
 </resources>

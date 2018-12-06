@@ -3,38 +3,38 @@
     <string name="app_name">VladimirChrisphonte</string>
 
 
-    <string name="bonjour">Hello!</string>
+    <string name="bonjour">Gute Morgenlandschaft</string>
     <string name="paysage">landscape</string>
 
-    <string name="hauteur">Height: </string>
+    <string name="hauteur">Höhe: </string>
     <string name="largeur">Width: </string>
-    <string name="pour_gagner">To win: </string>
+    <string name="pour_gagner">um zu gewinnen: </string>
 
-    <string name="parametres">Parameters</string>
+    <string name="parametres">Parameter</string>
 
-    <string name="jouer">Play</string>
-    <string name="jouer_enligne">Play on-line</string>
+    <string name="jouer">spielen</string>
+    <string name="jouer_enligne">spielen Sie on-line</string>
 
 
-    <string name="joueur1">player1</string>
-    <string name="joueur2">player2</string>
+    <string name="joueur1">Spieler1</string>
+    <string name="joueur2">Spieler2</string>
 
     <string name="connexion">login</string>
     <string name="deconnexion">logout</string>
 
     <string name="effacer_partie_courante">Delete current game</string>
 
-    <string name="en_attente_adversaire">Waiting for an opponent…</string>
+    <string name="en_attente_adversaire">Das Warten auf einen Gegner...</string>
 
-    <string name="message_au_gagnant">@@ won!</string>
+    <string name="message_au_gagnant">@ @ gewann!</string>
 
-    <string name="ROUGE">red</string>
-    <string name="JAUNE">yellow</string>
+    <string name="ROUGE">rotes</string>
+    <string name="JAUNE">Gelb</string>
 
-    <string name="VERT">green</string>
-    <string name="BLANC">white</string>
-    <string name="changeLang">Change Language</string>
-    <string name="choisirLang">Choisir Langue</string>
-    <string name="my_lang">My language</string>
+    <string name="VERT">grünes</string>
+    <string name="BLANC">Weiß</string>
+    <string name="changeLang">grüne weiße Änderungssprache</string>
+    <string name="choisirLang">Wählen Sie Sprache</string>
+    <string name="my_lang">Meine Sprache</string>
 
 </resources>
